@@ -9,13 +9,15 @@ import { useColorScheme } from "@mui/material/styles";
 
 export default function ColorModeIconDropdown(props: IconButtonOwnProps) {
   const { mode, systemMode, setMode } = useColorScheme();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
+    null
+  );
+  const open = Boolean(anchorElement);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorElement(event.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorElement(null);
   };
   const handleMode = (targetMode: "system" | "light" | "dark") => () => {
     setMode(targetMode);
@@ -57,7 +59,7 @@ export default function ColorModeIconDropdown(props: IconButtonOwnProps) {
         {icon}
       </IconButton>
       <Menu
-        anchorEl={anchorEl}
+        anchorEl={anchorElement}
         id="account-menu"
         open={open}
         onClose={handleClose}
