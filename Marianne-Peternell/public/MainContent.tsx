@@ -7,10 +7,11 @@ import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
-import { Divider, Menu, MenuItem } from "@mui/material";
+import { Container, Divider, Menu, MenuItem } from "@mui/material";
 
 const SyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
+  minHeight: 200,
   flexDirection: "column",
   padding: 0,
   height: "auto",
@@ -27,14 +28,20 @@ const SyledCard = styled(Card)(({ theme }) => ({
 
 const StyledCardContent = styled(CardContent)({
   display: "flex",
-  overflow: "auto",
+  // overflow: "auto",
   wordWrap: "break-word",
   flexDirection: "column",
+  whiteSpace: "pre-wrap",
   gap: 4,
   padding: 16,
   "&:last-child": {
     paddingBottom: 16,
   },
+  textAlign: "left",
+  overflowWrap: "break-word", // or "anywhere"
+  wordBreak: "break-word", // fallback for older browsers
+  hyphens: "auto", // enables hyphenation when supported
+  // flexGrow: 1, // allows it to grow as needed
 });
 
 const StyledTypography = styled(Typography)({
@@ -43,6 +50,9 @@ const StyledTypography = styled(Typography)({
   WebkitBoxOrient: "vertical",
   whiteSpace: "pre-wrap",
   textAlign: "left",
+  overflowWrap: "break-word", // or "anywhere"
+  wordBreak: "break-word", // fallback for older browsers
+  hyphens: "auto", // enables hyphenation when supported
 });
 
 export default function MainContent() {
@@ -74,21 +84,31 @@ Viel Vergnügen! `}
     Gedichte: {
       title: "",
       description: (
-        <div>
+        <Container
+          sx={{
+            diplay: "flex",
+            flexDirection: "column",
+            justifyItems: "center",
+          }}
+        >
+          <a>
+            {`Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright.
+            `}
+          </a>
           <CardMedia
             component="img"
             alt=""
-            image="./assets/matisse_sorrow-of-the-king.jpg"
+            image="public/matisse_sorrow-of-the-king.jpg"
             sx={{
               aspectRatio: "16 / 9",
               borderBottom: "1px solid",
               borderColor: "divider",
             }}
           />
-          {
-            "Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright."
-          }
-        </div>
+          <i style={{ textAlign: "center" }}>
+            Henri Matisse - Die Traurigkeit des Königs (1952)
+          </i>
+        </Container>
       ),
       subPages: {
         "KEIN SCHATTEN": (
@@ -176,21 +196,29 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
     Kurzgeschichten: {
       title: "",
       description: (
-        <div>
+        <Container
+          sx={{
+            diplay: "flex",
+            flexDirection: "column",
+            justifyItems: "center",
+          }}
+        >
+          <a>
+            {`Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright.
+            `}
+          </a>
           <CardMedia
             component="img"
             alt=""
-            image="./assets/matisse_spanisches stillleben.jpg"
+            image="public/matisse_spanisches stillleben.jpg"
             sx={{
               aspectRatio: "16 / 9",
               borderBottom: "1px solid",
               borderColor: "divider",
             }}
           />
-          {
-            "Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright."
-          }
-        </div>
+          <i>Henri Matisse - Spanisches Stillleben (1911)</i>
+        </Container>
       ),
       subPages: {
         Netzwerke: (
@@ -230,7 +258,18 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
     Malerei: {
       tag: "",
       title: "",
-      description: <div />,
+      description: (
+        <CardMedia
+          component="img"
+          alt=""
+          image="public/matisse_sorrow-of-the-king.jpg"
+          sx={{
+            aspectRatio: "16 / 9",
+            borderBottom: "1px solid",
+            borderColor: "divider",
+          }}
+        />
+      ),
     },
     Photographie: {
       tag: "",
@@ -246,7 +285,9 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
       title: "Frauen und ihr Erbe",
       description: (
         <div>
-          <h3>Veröffentlichung im März 2021</h3>
+          <i>{`Veröffentlichung im März 2021
+
+`}</i>
           <StyledTypography>
             Als ebook z.B. bei{" "}
             <a href="https://www.amazon.de/Frauen-ihr-Erbe-Marianne-Peternell/dp/3754970380">
@@ -257,6 +298,11 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
             <a href="https://www.morawa.at/detail/ISBN-9783754970386/Peternell-Marianne/Frauen-und-ihr-Erbe">
               Morawa{" "}
             </a>
+            <b>{`
+            
+Beschreibung`}</b>
+            {`
+Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Menschen, nach dem historisch Gewachsenen von Frauen- und Männerentwürfen in ihrem Menschenleben. Zahlreiche Facetten der weiblichen Rolle 'Mutter' werden dargestellt. Es werden auch bedeutende Beiträge zum Diskurs des Frauen- und Männerbildes, des Menschenbildes aus der Geschichte (Hegel, Kant, Judith Butler, Maria Montessori) herangezogen. Dabei wird auch die Frage nach Patriarchat und Matriarchat gestreift. Ich befasse mich damit, eine möglichst eigenständige Positionierung herauszuarbeiten und besonders die Frage der Fruchtbarkeit, der Reprodiktion der Gesellschaft und der Rollenverteilung zwischen Frauen und Männern für das Individuum und für die Gesellschaft zuuntersuchen. Ich beschäftige mich schon seit Jahrzehnten mit der Thematik meines Buches, ich war auch im Radio Agora vor vielen Jahren zum Thema als Interviewpartnerin in einer einstündigen Sendung zum Thema 'Frauen und ihr Erbe'. Ich habe Germanistik und Geschichte studiert, viele Jahrzehnte an einer HTL und am BFI unterrichtet, bin literarisch produktiv und habe als Alleinerzieherin nebenbei zwei Kinder großgezogen. Ich bin 1956 geboren und seit 2016 in Alterspension.`}
           </StyledTypography>
         </div>
       ),
@@ -330,42 +376,80 @@ März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
   const [focusedCardIndex, setFocusedCardIndex] = React.useState<number | null>(
     null
   );
-  const [selectedPage, setSelectedPage] = React.useState<PageKey>("Start");
-  const [selectedSubPage, setSelectedSubPage] = React.useState<string | null>(
-    null
-  );
-
-  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
-    null
-  );
-  const open = Boolean(anchorElement);
-  const handleAnchorClick = (
-    event: React.MouseEvent<HTMLElement>,
-    page?: string
-  ) => {
-    setAnchorElement(event.currentTarget);
-    if (page) setSelectedPage(page);
-  };
-  const handleClose = () => {
-    setAnchorElement(null);
-  };
-
-  const handlePageSelection = (page: PageKey, subPage?: string) => {
-    setSelectedPage(page);
-    console.log(page + " " + subPage);
-    if (subPage) setSelectedSubPage(subPage);
-    else setSelectedSubPage(null);
-  };
-
   const handleFocus = (index: number) => {
     setFocusedCardIndex(index);
   };
   const handleBlur = () => {
     setFocusedCardIndex(null);
   };
+
+  const [selectedPage, setSelectedPage] = React.useState<PageKey>("Start");
+  const [selectedSubPage, setSelectedSubPage] = React.useState<string | null>(
+    null
+  );
+
+  const [anchorElements, setAnchorElements] = React.useState<
+    Record<string, HTMLElement | null>
+  >({});
+  React.useEffect(() => {
+    const initialAnchors: Record<string, HTMLElement | null> = {};
+    for (const page in pageData) {
+      if (pageData[page].subPages) initialAnchors[page] = null;
+    }
+    setAnchorElements(initialAnchors);
+  }, []);
+
+  React.useEffect(() => {}, [selectedPage]);
+
+  const handleChipClick = (
+    event: React.MouseEvent<HTMLElement>,
+    page: string
+  ) => {
+    setSelectedPage(page);
+    setSelectedSubPage(null);
+    setAnchorElements((prev) => ({
+      ...prev,
+      [page]: event.currentTarget,
+    }));
+  };
+  const handleClose = (page: string) => {
+    setAnchorElements((prev) => ({
+      ...prev,
+      [page]: null,
+    }));
+  };
+
+  const handlePageSelection = (
+    event: React.MouseEvent<HTMLElement>,
+    page: PageKey,
+    subPage?: string
+  ) => {
+    setSelectedPage(page);
+    console.log(subPage);
+    if (subPage) {
+      setSelectedSubPage(subPage);
+      setAnchorElements((prev) => ({
+        ...prev,
+        [page]: event.currentTarget,
+      }));
+    } else {
+      setSelectedSubPage(null);
+    }
+  };
+
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", gap: 4, width: "100%" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 4,
+        maxWidth: "800px",
+        minWidth: "800px",
+        width: "800px",
+        alignItems: "center",
+        justifyContent: "start",
+        justifyItems: "start",
+      }} // wraps entire page: Welcome & Wrapper
     >
       <div>
         <Typography variant="h2" gutterBottom>
@@ -376,12 +460,9 @@ März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column-reverse", md: "row" },
+          flexDirection: { xs: "column" },
           width: "100%",
-          justifyContent: "space-between",
-          alignItems: { xs: "start", md: "center" },
-          overflow: "auto",
-        }}
+        }} // wraps chips + cards
       >
         <Box
           sx={{
@@ -390,14 +471,14 @@ März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
             justifyContent: "space-evenly",
             alignItems: "initial",
             width: "100%",
-          }}
+          }} // box for the chips
         >
           {Object.keys(pageData).map((page) => {
             if (!pageData[page].subPages) {
               return (
                 <Chip
                   key={page}
-                  onClick={() => handlePageSelection(page)}
+                  onClick={(e) => handleChipClick(e, page)}
                   size="medium"
                   label={page}
                   sx={{
@@ -411,7 +492,7 @@ März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
                 <React.Fragment key={page}>
                   <Chip
                     onClick={(e) => {
-                      handleAnchorClick(e, page);
+                      handleChipClick(e, page);
                     }}
                     size="medium"
                     label={page}
@@ -421,11 +502,11 @@ März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
                     }}
                   />
                   <Menu
-                    anchorEl={anchorElement}
+                    anchorEl={anchorElements[page]}
                     id={page}
-                    open={open}
-                    onClose={handleClose}
-                    onClick={handleClose}
+                    open={anchorElements[page] != null}
+                    onClose={() => handleClose(page)}
+                    onClick={() => handleClose(page)}
                     slotProps={{
                       paper: {
                         variant: "outlined",
@@ -442,7 +523,7 @@ März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
                       <MenuItem
                         key={subPage}
                         selected={subPage === "Netzwerke"}
-                        onClick={() => handlePageSelection(page, subPage)}
+                        onClick={(e) => handlePageSelection(e, page, subPage)}
                       >
                         {subPage}
                       </MenuItem>
@@ -454,8 +535,8 @@ März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
           })}
         </Box>
       </Box>
-      <Grid container spacing={2} columns={0}>
-        <Grid size={{ xs: 12, md: 3 }}>
+      <Grid container spacing={2}>
+        <Grid component="article" size={{ xs: 12 }}>
           <SyledCard
             variant="outlined"
             onFocus={() => handleFocus(0)}
