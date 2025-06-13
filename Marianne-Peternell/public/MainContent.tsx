@@ -6,25 +6,29 @@ import CardMedia from "@mui/material/CardMedia";
 import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import {
   Avatar,
   Container,
   Divider,
+  IconButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Menu,
   MenuItem,
+  Popover,
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const SyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
   minHeight: 200,
   flexDirection: "column",
   padding: 0,
+  minWidth: "800px",
   marginBottom: 25,
   height: "auto",
   backgroundColor: (theme.vars || theme).palette.background.paper,
@@ -66,6 +70,19 @@ const StyledTypography = styled(Typography)({
   wordBreak: "break-word", // fallback for older browsers
   hyphens: "auto", // enables hyphenation when supported
 });
+
+const StyledToolbar = styled(Box)(({ theme }) => ({
+  flexShrink: 0,
+  borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
+  backdropFilter: "blur(24px)",
+  border: "1px solid",
+  borderColor: (theme.vars || theme).palette.divider,
+  backgroundColor: theme.vars
+    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
+    : alpha(theme.palette.background.default, 0.4),
+  boxShadow: (theme.vars || theme).shadows[1],
+  padding: "8px 12px",
+}));
 
 export default function MainContent() {
   type PageKey = keyof typeof pageData;
@@ -193,7 +210,8 @@ Immer nett  spitz
 unter den Trauben.`}</div>
         ),
         HERBST: (
-          <div>{`Das Jahr beginnt im Herbst.
+          <>
+            <div>{`Das Jahr beginnt im Herbst.
 Die Wurzeln des Sommers treiben Sprösslinge,
 Die Augen blind vom Holunderrausch im Sturm.
 Gespanntes Tun – von der Feder getrieben.
@@ -207,6 +225,7 @@ Dünger auf die Felder des Geistes und
 Es weht durch uns durch und wohin
 Der kleine Knabe wird geboren.
 Die Herbstarbeit kommt zur Ruhe`}</div>
+          </>
         ),
       },
     },
@@ -242,27 +261,27 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
           <div>
             {`Hannah stand unter der Dusche. Das Wasser prasselte warm und regelmäßig über ihren Körper. Sie stand schon bis zu den Knöcheln im Wasser. Es floss nicht ab. Das unter der weiß glänzenden Duschtasse verborgene Abflussrohr war verstopft. Wohin es fließen sollte, dieses Wasser, sie wusste es nicht. Röhrensysteme stellte sie sich vor, Kanäle, Abwässerkläranlagen.
 
-          „Mama kommt das Wasser immer vom Berg?“ „Es kommt auf jeden Fall aus der Erde, Kind. Manchmal holt man es tief aus dem Grund, manchmal leitet man es aus den Bergen in die Stadt und verteilt es dort. In langen Rohren. Wie es genau funktioniert, weiß ich nicht. Zauberei. Ich drehe den Hahn auf und die Quelle fließt. Ich drehe den Hahn ab, und die Quelle versiegt. Es ist auch Zauberei, dass wir Licht haben, dass der Kühlschrank funktioniert und die Spülmaschine. Ich stecke Stecker ein, ich drücke auf Schalter. Es werde Licht. Keine große Sache mehr, Kleiner. Aber wie das geht? Es sind Drähte in Kabeln in der Mauer, die den Strom der Elektrizität leiten. Sie transportieren ihn viele Kilometer von den Kraftwerken. Ich verstehe nichts davon. Weiß nicht, was das genau ist, kaum jemand weiß es. Die Physiker können es erklären. Ich spiele einfach Gott. Ich mache Licht. Wenn es nicht funktioniert, hole ich den Elektriker.“
-          
-          Hannah war wütend so verknüpft zu sein ohne zu wissen wie. Zahllose Netzwerke in ihrer Wohnung. Der Fernseher, wie kamen die Bilder in den Kasten? Nie hatte sie die Erklärungen verstanden, die Max versucht hatte; detailgenau, wie alles zusammenhing, wie das gesendet wurde, die Systeme. Bewundert hatte sie ihn; wie er alles so genau wusste und so vernünftig erklärte und ihr war alles noch geheimnisvoller erschienen.
-          
-          An der U-Bahnstation stand der Mann und dirigierte die leere U-Bahn zu sich heran. Dann stieg er ein in die nachtschwarze Führerkabine und fuhr los. Alles einsteigen. Videotapes flimmerten im Abteil. Eine alte Frau erzählte von ihren Sorgen mit dem Installateur. Das gehörte sich nicht. Niemand kannte sie. Sie wurde streng gemustert. Ein Mann telefonierte lauthals mit seinem Handy, das war ganz normal. Er schimpfte offenbar mit seiner Freundin im Irgendwo. Ein Jugendlicher wippte im Takt zu unhörbarer Musik, er hatte die Stöpsel des Walkman im Ohr. Auch das war ganz normal. Hannah schwitzte. Sie fuhren durch die dunklen Röhren mit atemberaubender Geschwindigkeit und alle versuchten Abstand zu halten, ins Leere zu schauen, sie klebten zu eng aneinander, die Privatheit war gefährdet. Privatpersonen im öffentlichen Raum schotteten sich gegeneinander ab. Man wollte sich nichts sagen, wollte nur aneinander vorbei, die Strecke überwinden zum Ziel. Jeder hatte ein Ziel. Hannah hatte keines. Sie wollte ankommen. Es gab keinen Ort. Bewegen im U-Bahnnetz. Max war fort. Gedränge am Ausstieg. Niemand sah sie an.
-          
-          Elisabeth war in Indien und Klara in Griechenland. Mit dem Flugzeug in andere Schaltpläne verteilt worden. Autobahn. „Es ist seltsam,“ sagte Oma, „man steigt in ein Auto ein und wie durch Zauberei kommt man an, wo man hinwollte. Wie macht ihr das bloß?“ „Heute geht das auch mit Flugzeugen, Oma. Wir essen frische Kiwis aus Australien und Orangen aus Israel. Zahllose Verbindungen sind geknüpft, es funktioniert.“ Hannah schüttelte sich. „Ich will eine durchschaubare Welt. Eine, die mir ganz gehört. Und doch, ist es nicht fein mit der Tiefkühlkost für jeden Geschmack? Und mit der Waschmaschine? Und dem Fernseher? Alle wollen das. Alle überall auf der Welt. Alle wollen Autobahnen. Die Welt wird zum Fußboden, auf den wir spucken. Wir sind Ameisen im Räderwerk zahlloser Netzwerke, die größer und größer sind als unser kleines Hirn. Es gibt keinen mehr, der sie ganz versteht, sagt man. Im Internet Fluten von Informationen und 900.000 Bücher und Millionen Produkte. Ströme, Kanäle. Oben schwimmen nur die mit klaren Zielen, klarer Entscheidung, was man will. Es gleitet weg. Dahintreiben. Im Sand versinken. Die Bilder-fluten. Worte. Es verpickt sich. Max! Sie bauen dir ein neues Herz ein, Hannah, das alte ging kaputt. Sofern du die Euro hast, ist alles wunderbar! Wunderbare Welt! Das Auto fährt 180. Das brauche ich jetzt. Ich bin schwarz. Innen. Ich schleudere dahin. Im Fadenkreuz der Netzwerke.“
-          
-          Hannah Winter wurde gegen 6 Uhr abends aus ihrem Wagen geborgen und in ein Krankenhaus gebracht. Ein Lastwagenfahrer sah auf der Autobahn, wie der kleine Mazda gegen die Leitplanken schleuderte, sie durchschlug und über die Böschung drei Meter abstürzte. Mit seinem Handy verständigte er die nahegelegene Polizei und den Notarzt. Die Einsatzwagen waren sofort zur Stelle. Hannah war schwer verletzt. Ihre Rippen waren gebrochen, ihr Brustkorb gequetscht, sie hatte eine Gehirnerschütterung. Sie konnte den Ärzten stammelnd mitteilen, dass ihr 8-jähriger Sohn seit drei Stunden allein zu Hause in Wien in ihrer Wohnung saß und auf sie wartete. „Und ich weiß nicht, wo Max ist“, dann verlor sie das Bewusstsein. Im Krankenwagen erhielt Hannah jede erdenkliche Hilfe. Der Arzt benachrichtigte die Polizei Wien, man möge die Wohnung von Frau Hannah Winter ausforschen, dort befände sich der unbeaufsichtigte Sohn der schwer verletzten Frau, die soeben ins Krankenhaus überstellt wurde. Mit Hilfe des Computers ermittelte die Polizei Wien in Sekundenschnelle über das Melderegister die Wohnung von Hannah, Max und Paul Winter in der Oberen Donaustraße im 2. Bezirk. Das Jugendamt wurde benachrichtigt und sofort machte sich eine Frau auf den Weg um Paul sanft zu informieren. Paul war hungrig, aber nicht beunruhigt gewesen. Mama konnte aufgehalten worden sein. Sie hatte viel geweint in der letzten Zeit, seit Papa weg war. Wo Papa bloß hin war. Es läutete an der Tür. „Hallo, ich bin die Vera.“, sagte die Frau. „Du musst jetzt sehr tapfer sein. Deine Mama hat einen Unfall gehabt und ist im Krankenhaus. Aber sie wird sich wieder erholen. Ich komme vom Jugendamt. Das ist mein Ausweis. Ich werde heute nacht bei dir bleiben.“ Frau Vera Graf war über 50 und kannte sich gut mit Kindern aus. Sie redete viel mit Paul. Über den Unfall. Über den Papa.
-          
-          Und Paul beruhigte sich. Sie kochte ihm ein Abendessen und brachte ihn zu Bett.
-          Als er schlief, setzte sie sich an den Computer und gab in die google-Suchmaschine „Max Winter“ ein. Max Winter, Sozial-reformer und Journalist von 1870 bis 1937 fand sie da, Gebäude am Max Winter-Platz, ein Max Winter hatte sich sogar in dem Gästebuch des Kindertenniscamps eines Wiener Tennisclubs eingetragen, dann gab es noch Max Winter, den Detektiv, kein Lebenszeichen von Pauls Vater, Hannahs Mann, Computerspieleprogrammierer. In seiner kleinen Firma, die er mit zwei Kollegen betrieb, hatte er gesagt, er wollte einige Zeit an einem Programm ungestört zu Hause arbeiten, an sein Handy ging er nicht ran, auf emails antwortete er nicht, so wusste niemand, wo er war. Vera machte sich Sorgen, dann legte sie sich in Hannahs Bett und schlief ein.
-          
-          Hannah schlief schlecht. Sie hatte starke Schmerzen in der Brust, Beklemmungen und Atemnot. Sie klingelte nach der Schwester, doch noch bevor diese bei ihr war, verlor sie das Bewusstsein. Lungenversagen. Hannah wurde an ein Beatmungs-gerät angeschlossen. Die Lunge war gequetscht worden und verletzt, schmerzstillende Medikamente, Medikamente, die die Heilung beschleunigen sollten, Vitamine, Mineralstoffe und Spurenelemente bekam sie zur Kräftigung mit Infusionen zugeführt. Hannah war verkabelt. Eine freundliche Schwester hatte ihr alles ausführlich erklärt, dass jemand bei Paul war, dass man Max suchte, dass alles wieder gut werden würde, sie solle unbesorgt sein, dann würde sie schneller wieder gesund. Hannah konnte schwer sprechen, das Beatmungsgerät presste die Luft gewaltsam in ihre verletzten Lungenflügel, regelmäßig.
-          
-           
-          Max lag auf dem Rücken und schaute in den Himmel. Weiße Wölkchen fächerten sich auf. Er war sich jetzt ganz sicher. Hannah und er konnten nicht mehr zusammen leben. Und Paul? Natürlich war für Paul das Nest, das sie beide ihm boten, wichtig. Er würde leiden, wenn er wegginge. Er litt noch immer, weil Hannahs Mutter, seine geliebte Kärntner Oma, im letzten Jahr gestorben war. Aber ganz sicher war es für das Kind schlimmer, wenn er bliebe. Hannah und er hatten sich nur noch gestritten, wenn sie überhaupt noch miteinander geredet hatten. Ihr passte die unkonventionelle Art nicht, wie er sein Leben lebte. Er liebte es, manchmal bis in die tiefe Nacht zu arbeiten und hundert Zigaretten zu rauchen. Wenn sein Projekt dann gediehen war, brauchte er eine kreative Pause und er kam kaum noch aus dem Bett. Hannah mit ihrem Lehrerinnenjob und ihrem geregelten Leben hatte kein Verständnis für seine Arbeitswut und kein Verständnis für seine Faulheit. Und sie warf ihm vor, dass sich sein letztes Spiel überhaupt nicht gut verkauft hatte und er kaum etwas zum Lebensunterhalt beitragen konnte. Hannah versteht nichts mehr von mir. Wie sie mich früher liebte, verabscheut sie mich jetzt. Sie ist eine liebe Mutter. Hannah und Paul werden ohne mich allein besser zurechtkommen. Wir werden unsere Einsamkeiten nicht mehr ineinander spiegeln. Ich werde weggehen. Ich werde wegfahren. Ich werde an meinem Projekt arbeiten und niemand wird mich schief anschauen. Tag und Nacht werde ich arbeiten. Ich werde Carlo besuchen. Er wird nicht fragen und ich habe meine Ruhe. Dann werden wir weitersehen. Max stand auf und stieg in sein Auto, er sah auf die Uhr, es war kurz nach drei Uhr. Das wollte er sich für immer merken. Am 3. August 2004 um 15 Uhr hatte er seinem Leben eine neue Richtung gegeben. Und jetzt würde er aufbrechen in eine andere Zukunft. Bis zum Abend würde er es nach Südtirol schaffen von hier aus dem schönen Kärntner Bergland. Er schaute kurz auf sein Handy. Nein, er würde Hannah nicht anrufen. Sie hatte ihn verletzt. Sie hatte ihn angeschrieen, dass er für eine Medien- und Konsumwelt noch mehr Konsum und Pseudowelten erzeugen wollte und gar nicht in der Wirklichkeit lebe. Sie sollte merken, dass niemand, auch sie nicht, so mit ihm reden durfte. Schließlich war er Max, Max Winter, der mit größter Selbstverständlichkeit jede komplizierte Spielvariante in Direkt X programmieren konnte. Da gab es nicht viele in Österreich. Das brauchte Kenntnisse und Geduld und Logik. Respekt, meine Dame, ich fordere Respekt. Pfeifend fuhr Max über die Landstraßen zur Grenze. In Thörl-Maglern hielt er an und trank einen Kaffee. Er überflog die Kronenzeitung. Und plötzlich stutzte er. Da stand sein Name. „Gesucht wird Max Winter!“ Sogar ein Foto von ihm war da. Er las den Artikel.
-          
-          Frau Hannah Winter,39,Lehrerin, Ehefrau von Max Winter, 36, Computerfachmann, fuhr am 31. Juli um 18 Uhr mit überhöhter Geschwindigkeit auf der Westautobahn von Wien Richtung Linz. Sie kam mit ihrem Mazda 2 ins Schleudern, durchschlug die Leitplanke und stürzte bei Linz etwa 3 Meter über eine Böschung ab. Ein Lastwagenfahrer alarmierte Rettung und Polizei. Max Winter ist unauffindbar. Der Zustand seiner Frau Hannah, die ins Linzer Landesrankenhaus eingeliefert wurde, ist nach wie vor kritisch. Der Sohn Paul wurde mittlerweile bei den Großeltern väterlicherseits untergebracht, da Hannah Winters Eltern bereits verstorben sind. Auch Max Winters Eltern wissen nichts über seinen Verbleib. Wir ersuchen Max Winter dringend sich zu melden.
-          
-          Völlig verstört holte Max sein Handy. Er rief im Linzer Landeskrankenhaus an und fragte nach Hannah. „Herr Winter, dass Sie sich endlich melden! Es tut uns sehr Leid, wir haben alles versucht, aber Ihre Frau Hannah Winter ist heute Nachmittag um 15 Uhr an einer Gehirnblutung gestorben.“`}
+„Mama kommt das Wasser immer vom Berg?“ „Es kommt auf jeden Fall aus der Erde, Kind. Manchmal holt man es tief aus dem Grund, manchmal leitet man es aus den Bergen in die Stadt und verteilt es dort. In langen Rohren. Wie es genau funktioniert, weiß ich nicht. Zauberei. Ich drehe den Hahn auf und die Quelle fließt. Ich drehe den Hahn ab, und die Quelle versiegt. Es ist auch Zauberei, dass wir Licht haben, dass der Kühlschrank funktioniert und die Spülmaschine. Ich stecke Stecker ein, ich drücke auf Schalter. Es werde Licht. Keine große Sache mehr, Kleiner. Aber wie das geht? Es sind Drähte in Kabeln in der Mauer, die den Strom der Elektrizität leiten. Sie transportieren ihn viele Kilometer von den Kraftwerken. Ich verstehe nichts davon. Weiß nicht, was das genau ist, kaum jemand weiß es. Die Physiker können es erklären. Ich spiele einfach Gott. Ich mache Licht. Wenn es nicht funktioniert, hole ich den Elektriker.“
+
+Hannah war wütend so verknüpft zu sein ohne zu wissen wie. Zahllose Netzwerke in ihrer Wohnung. Der Fernseher, wie kamen die Bilder in den Kasten? Nie hatte sie die Erklärungen verstanden, die Max versucht hatte; detailgenau, wie alles zusammenhing, wie das gesendet wurde, die Systeme. Bewundert hatte sie ihn; wie er alles so genau wusste und so vernünftig erklärte und ihr war alles noch geheimnisvoller erschienen.
+
+An der U-Bahnstation stand der Mann und dirigierte die leere U-Bahn zu sich heran. Dann stieg er ein in die nachtschwarze Führerkabine und fuhr los. Alles einsteigen. Videotapes flimmerten im Abteil. Eine alte Frau erzählte von ihren Sorgen mit dem Installateur. Das gehörte sich nicht. Niemand kannte sie. Sie wurde streng gemustert. Ein Mann telefonierte lauthals mit seinem Handy, das war ganz normal. Er schimpfte offenbar mit seiner Freundin im Irgendwo. Ein Jugendlicher wippte im Takt zu unhörbarer Musik, er hatte die Stöpsel des Walkman im Ohr. Auch das war ganz normal. Hannah schwitzte. Sie fuhren durch die dunklen Röhren mit atemberaubender Geschwindigkeit und alle versuchten Abstand zu halten, ins Leere zu schauen, sie klebten zu eng aneinander, die Privatheit war gefährdet. Privatpersonen im öffentlichen Raum schotteten sich gegeneinander ab. Man wollte sich nichts sagen, wollte nur aneinander vorbei, die Strecke überwinden zum Ziel. Jeder hatte ein Ziel. Hannah hatte keines. Sie wollte ankommen. Es gab keinen Ort. Bewegen im U-Bahnnetz. Max war fort. Gedränge am Ausstieg. Niemand sah sie an.
+
+Elisabeth war in Indien und Klara in Griechenland. Mit dem Flugzeug in andere Schaltpläne verteilt worden. Autobahn. „Es ist seltsam,“ sagte Oma, „man steigt in ein Auto ein und wie durch Zauberei kommt man an, wo man hinwollte. Wie macht ihr das bloß?“ „Heute geht das auch mit Flugzeugen, Oma. Wir essen frische Kiwis aus Australien und Orangen aus Israel. Zahllose Verbindungen sind geknüpft, es funktioniert.“ Hannah schüttelte sich. „Ich will eine durchschaubare Welt. Eine, die mir ganz gehört. Und doch, ist es nicht fein mit der Tiefkühlkost für jeden Geschmack? Und mit der Waschmaschine? Und dem Fernseher? Alle wollen das. Alle überall auf der Welt. Alle wollen Autobahnen. Die Welt wird zum Fußboden, auf den wir spucken. Wir sind Ameisen im Räderwerk zahlloser Netzwerke, die größer und größer sind als unser kleines Hirn. Es gibt keinen mehr, der sie ganz versteht, sagt man. Im Internet Fluten von Informationen und 900.000 Bücher und Millionen Produkte. Ströme, Kanäle. Oben schwimmen nur die mit klaren Zielen, klarer Entscheidung, was man will. Es gleitet weg. Dahintreiben. Im Sand versinken. Die Bilder-fluten. Worte. Es verpickt sich. Max! Sie bauen dir ein neues Herz ein, Hannah, das alte ging kaputt. Sofern du die Euro hast, ist alles wunderbar! Wunderbare Welt! Das Auto fährt 180. Das brauche ich jetzt. Ich bin schwarz. Innen. Ich schleudere dahin. Im Fadenkreuz der Netzwerke.“
+
+Hannah Winter wurde gegen 6 Uhr abends aus ihrem Wagen geborgen und in ein Krankenhaus gebracht. Ein Lastwagenfahrer sah auf der Autobahn, wie der kleine Mazda gegen die Leitplanken schleuderte, sie durchschlug und über die Böschung drei Meter abstürzte. Mit seinem Handy verständigte er die nahegelegene Polizei und den Notarzt. Die Einsatzwagen waren sofort zur Stelle. Hannah war schwer verletzt. Ihre Rippen waren gebrochen, ihr Brustkorb gequetscht, sie hatte eine Gehirnerschütterung. Sie konnte den Ärzten stammelnd mitteilen, dass ihr 8-jähriger Sohn seit drei Stunden allein zu Hause in Wien in ihrer Wohnung saß und auf sie wartete. „Und ich weiß nicht, wo Max ist“, dann verlor sie das Bewusstsein. Im Krankenwagen erhielt Hannah jede erdenkliche Hilfe. Der Arzt benachrichtigte die Polizei Wien, man möge die Wohnung von Frau Hannah Winter ausforschen, dort befände sich der unbeaufsichtigte Sohn der schwer verletzten Frau, die soeben ins Krankenhaus überstellt wurde. Mit Hilfe des Computers ermittelte die Polizei Wien in Sekundenschnelle über das Melderegister die Wohnung von Hannah, Max und Paul Winter in der Oberen Donaustraße im 2. Bezirk. Das Jugendamt wurde benachrichtigt und sofort machte sich eine Frau auf den Weg um Paul sanft zu informieren. Paul war hungrig, aber nicht beunruhigt gewesen. Mama konnte aufgehalten worden sein. Sie hatte viel geweint in der letzten Zeit, seit Papa weg war. Wo Papa bloß hin war. Es läutete an der Tür. „Hallo, ich bin die Vera.“, sagte die Frau. „Du musst jetzt sehr tapfer sein. Deine Mama hat einen Unfall gehabt und ist im Krankenhaus. Aber sie wird sich wieder erholen. Ich komme vom Jugendamt. Das ist mein Ausweis. Ich werde heute nacht bei dir bleiben.“ Frau Vera Graf war über 50 und kannte sich gut mit Kindern aus. Sie redete viel mit Paul. Über den Unfall. Über den Papa.
+
+Und Paul beruhigte sich. Sie kochte ihm ein Abendessen und brachte ihn zu Bett.
+Als er schlief, setzte sie sich an den Computer und gab in die google-Suchmaschine „Max Winter“ ein. Max Winter, Sozial-reformer und Journalist von 1870 bis 1937 fand sie da, Gebäude am Max Winter-Platz, ein Max Winter hatte sich sogar in dem Gästebuch des Kindertenniscamps eines Wiener Tennisclubs eingetragen, dann gab es noch Max Winter, den Detektiv, kein Lebenszeichen von Pauls Vater, Hannahs Mann, Computerspieleprogrammierer. In seiner kleinen Firma, die er mit zwei Kollegen betrieb, hatte er gesagt, er wollte einige Zeit an einem Programm ungestört zu Hause arbeiten, an sein Handy ging er nicht ran, auf emails antwortete er nicht, so wusste niemand, wo er war. Vera machte sich Sorgen, dann legte sie sich in Hannahs Bett und schlief ein.
+
+Hannah schlief schlecht. Sie hatte starke Schmerzen in der Brust, Beklemmungen und Atemnot. Sie klingelte nach der Schwester, doch noch bevor diese bei ihr war, verlor sie das Bewusstsein. Lungenversagen. Hannah wurde an ein Beatmungs-gerät angeschlossen. Die Lunge war gequetscht worden und verletzt, schmerzstillende Medikamente, Medikamente, die die Heilung beschleunigen sollten, Vitamine, Mineralstoffe und Spurenelemente bekam sie zur Kräftigung mit Infusionen zugeführt. Hannah war verkabelt. Eine freundliche Schwester hatte ihr alles ausführlich erklärt, dass jemand bei Paul war, dass man Max suchte, dass alles wieder gut werden würde, sie solle unbesorgt sein, dann würde sie schneller wieder gesund. Hannah konnte schwer sprechen, das Beatmungsgerät presste die Luft gewaltsam in ihre verletzten Lungenflügel, regelmäßig.
+
+ 
+Max lag auf dem Rücken und schaute in den Himmel. Weiße Wölkchen fächerten sich auf. Er war sich jetzt ganz sicher. Hannah und er konnten nicht mehr zusammen leben. Und Paul? Natürlich war für Paul das Nest, das sie beide ihm boten, wichtig. Er würde leiden, wenn er wegginge. Er litt noch immer, weil Hannahs Mutter, seine geliebte Kärntner Oma, im letzten Jahr gestorben war. Aber ganz sicher war es für das Kind schlimmer, wenn er bliebe. Hannah und er hatten sich nur noch gestritten, wenn sie überhaupt noch miteinander geredet hatten. Ihr passte die unkonventionelle Art nicht, wie er sein Leben lebte. Er liebte es, manchmal bis in die tiefe Nacht zu arbeiten und hundert Zigaretten zu rauchen. Wenn sein Projekt dann gediehen war, brauchte er eine kreative Pause und er kam kaum noch aus dem Bett. Hannah mit ihrem Lehrerinnenjob und ihrem geregelten Leben hatte kein Verständnis für seine Arbeitswut und kein Verständnis für seine Faulheit. Und sie warf ihm vor, dass sich sein letztes Spiel überhaupt nicht gut verkauft hatte und er kaum etwas zum Lebensunterhalt beitragen konnte. Hannah versteht nichts mehr von mir. Wie sie mich früher liebte, verabscheut sie mich jetzt. Sie ist eine liebe Mutter. Hannah und Paul werden ohne mich allein besser zurechtkommen. Wir werden unsere Einsamkeiten nicht mehr ineinander spiegeln. Ich werde weggehen. Ich werde wegfahren. Ich werde an meinem Projekt arbeiten und niemand wird mich schief anschauen. Tag und Nacht werde ich arbeiten. Ich werde Carlo besuchen. Er wird nicht fragen und ich habe meine Ruhe. Dann werden wir weitersehen. Max stand auf und stieg in sein Auto, er sah auf die Uhr, es war kurz nach drei Uhr. Das wollte er sich für immer merken. Am 3. August 2004 um 15 Uhr hatte er seinem Leben eine neue Richtung gegeben. Und jetzt würde er aufbrechen in eine andere Zukunft. Bis zum Abend würde er es nach Südtirol schaffen von hier aus dem schönen Kärntner Bergland. Er schaute kurz auf sein Handy. Nein, er würde Hannah nicht anrufen. Sie hatte ihn verletzt. Sie hatte ihn angeschrieen, dass er für eine Medien- und Konsumwelt noch mehr Konsum und Pseudowelten erzeugen wollte und gar nicht in der Wirklichkeit lebe. Sie sollte merken, dass niemand, auch sie nicht, so mit ihm reden durfte. Schließlich war er Max, Max Winter, der mit größter Selbstverständlichkeit jede komplizierte Spielvariante in Direkt X programmieren konnte. Da gab es nicht viele in Österreich. Das brauchte Kenntnisse und Geduld und Logik. Respekt, meine Dame, ich fordere Respekt. Pfeifend fuhr Max über die Landstraßen zur Grenze. In Thörl-Maglern hielt er an und trank einen Kaffee. Er überflog die Kronenzeitung. Und plötzlich stutzte er. Da stand sein Name. „Gesucht wird Max Winter!“ Sogar ein Foto von ihm war da. Er las den Artikel.
+
+Frau Hannah Winter,39,Lehrerin, Ehefrau von Max Winter, 36, Computerfachmann, fuhr am 31. Juli um 18 Uhr mit überhöhter Geschwindigkeit auf der Westautobahn von Wien Richtung Linz. Sie kam mit ihrem Mazda 2 ins Schleudern, durchschlug die Leitplanke und stürzte bei Linz etwa 3 Meter über eine Böschung ab. Ein Lastwagenfahrer alarmierte Rettung und Polizei. Max Winter ist unauffindbar. Der Zustand seiner Frau Hannah, die ins Linzer Landesrankenhaus eingeliefert wurde, ist nach wie vor kritisch. Der Sohn Paul wurde mittlerweile bei den Großeltern väterlicherseits untergebracht, da Hannah Winters Eltern bereits verstorben sind. Auch Max Winters Eltern wissen nichts über seinen Verbleib. Wir ersuchen Max Winter dringend sich zu melden.
+
+Völlig verstört holte Max sein Handy. Er rief im Linzer Landeskrankenhaus an und fragte nach Hannah. „Herr Winter, dass Sie sich endlich melden! Es tut uns sehr Leid, wir haben alles versucht, aber Ihre Frau Hannah Winter ist heute Nachmittag um 15 Uhr an einer Gehirnblutung gestorben.“`}
             ,
           </div>
         ),
@@ -1082,6 +1101,16 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
   const [focusedCardIndex, setFocusedCardIndex] = React.useState<number | null>(
     null
   );
+  const [anchorElements, setAnchorElements] = React.useState<
+    Record<string, HTMLElement | null>
+  >({});
+  const hoverTimeout = React.useRef<number | null>(null);
+  const [selectedPage, setSelectedPage] = React.useState<PageKey>("Start");
+  const [selectedSubPage, setSelectedSubPage] = React.useState<string | null>(
+    null
+  );
+
+  // card effects
   const handleFocus = (index: number) => {
     setFocusedCardIndex(index);
   };
@@ -1089,14 +1118,31 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
     setFocusedCardIndex(null);
   };
 
-  const [selectedPage, setSelectedPage] = React.useState<PageKey>("Start");
-  const [selectedSubPage, setSelectedSubPage] = React.useState<string | null>(
-    null
-  );
+  // chip menu display
+  const handleEnter = (event: React.MouseEvent<HTMLElement>, page: string) => {
+    if (hoverTimeout.current) {
+      clearTimeout(hoverTimeout.current);
+    }
+    hoverTimeout.current = setTimeout(() => {
+      setAnchorElements((prev) => ({
+        ...prev,
+        [page]: event.currentTarget,
+      }));
+    }, 200);
+  };
+  const handleExit = (page: string) => {
+    hoverTimeout.current = setTimeout(() => {
+      const active = document.activeElement as HTMLElement;
+      if (active) active.blur(); // remove focus to prevent aria-hidden issue
 
-  const [anchorElements, setAnchorElements] = React.useState<
-    Record<string, HTMLElement | null>
-  >({});
+      setAnchorElements((prev) => ({
+        ...prev,
+        [page]: null,
+      }));
+    }, 200); // 200ms delay
+  };
+
+  // create anchors placeholders initially
   React.useEffect(() => {
     const initialAnchors: Record<string, HTMLElement | null> = {};
     for (const page in pageData) {
@@ -1105,18 +1151,10 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
     setAnchorElements(initialAnchors);
   }, []);
 
-  React.useEffect(() => {}, [selectedPage]);
-
-  const handleChipClick = (
-    event: React.MouseEvent<HTMLElement>,
-    page: string
-  ) => {
+  const handleChipClick = (page: string) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setSelectedPage(page);
     setSelectedSubPage(null);
-    setAnchorElements((prev) => ({
-      ...prev,
-      [page]: event.currentTarget,
-    }));
   };
   const handleClose = (page: string) => {
     setAnchorElements((prev) => ({
@@ -1125,19 +1163,16 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
     }));
   };
 
-  const handlePageSelection = (
-    event: React.MouseEvent<HTMLElement>,
-    page: PageKey,
-    subPage?: string
-  ) => {
+  const handlePageSelection = (page: PageKey, subPage?: string) => {
     setSelectedPage(page);
     console.log(subPage);
     if (subPage) {
       setSelectedSubPage(subPage);
       setAnchorElements((prev) => ({
         ...prev,
-        [page]: event.currentTarget,
+        [page]: null,
       }));
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setSelectedSubPage(null);
     }
@@ -1169,7 +1204,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           }}
         >
           <Avatar
-            src="/public/marianne_peternell_2.png"
+            src="/marianne_peternell_2.png"
             sx={{ width: 100, height: 100 }}
           />
           <div>
@@ -1185,9 +1220,12 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           display: "flex",
           flexDirection: { xs: "column" },
           width: "100%",
+          position: "sticky",
+          top: 15,
+          zIndex: 10, // ensure it stays above scrolling content
         }} // wraps chips + cards
       >
-        <Box
+        <StyledToolbar
           sx={{
             display: "flex",
             flexDirection: "row",
@@ -1201,7 +1239,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               return (
                 <Chip
                   key={page}
-                  onClick={(e) => handleChipClick(e, page)}
+                  onClick={() => handleChipClick(page)}
                   size="medium"
                   label={page}
                   sx={{
@@ -1213,29 +1251,61 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             } else {
               return (
                 <React.Fragment key={page}>
-                  <Chip
-                    onClick={(e) => {
-                      handleChipClick(e, page);
+                  <div
+                    style={{ display: "inline-block" }} // prevents line breaks
+                    onMouseEnter={(e) => {
+                      console.log("enter");
+                      handleEnter(e, page);
                     }}
-                    size="medium"
-                    label={page}
-                    sx={{
-                      backgroundColor: "transparent",
-                      border: "none",
+                    onMouseLeave={() => {
+                      console.log("leave");
+                      handleExit(page);
                     }}
-                  />
-                  <Menu
+                    aria-owns={
+                      Boolean(anchorElements[page])
+                        ? "mouse-over-popover"
+                        : undefined
+                    }
+                    aria-haspopup="true"
+                  >
+                    <Chip
+                      key={page}
+                      onClick={() => {
+                        console.log("click");
+                        handleChipClick(page);
+                      }}
+                      size="medium"
+                      label={page}
+                      sx={{
+                        backgroundColor: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </div>
+                  <Popover
+                    disableRestoreFocus
+                    key={"menu_" + page}
                     anchorEl={anchorElements[page]}
                     id={page}
-                    open={anchorElements[page] != null}
+                    onMouseEnter={() => {
+                      if (hoverTimeout.current) {
+                        clearTimeout(hoverTimeout.current);
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      console.log("left menu");
+                      handleExit(page);
+                    }}
+                    open={Boolean(anchorElements[page])}
                     onClose={() => handleClose(page)}
-                    onClick={() => handleClose(page)}
                     slotProps={{
                       paper: {
                         variant: "outlined",
-                        elevation: 0,
+                        elevation: 1,
                         sx: {
                           my: "4px",
+                          pointerEvents: "auto",
                         },
                       },
                     }}
@@ -1245,20 +1315,29 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                     {Object.keys(pageData[page].subPages).map((subPage) => (
                       <MenuItem
                         key={subPage}
-                        selected={subPage === "Netzwerke"}
-                        onClick={(e) => handlePageSelection(e, page, subPage)}
+                        selected={subPage === selectedSubPage}
+                        onClick={() => handlePageSelection(page, subPage)}
                       >
                         {subPage}
                       </MenuItem>
                     ))}
-                  </Menu>
+                  </Popover>
                 </React.Fragment>
               );
             }
           })}
-        </Box>
+          <IconButton>
+            <ArrowUpwardIcon
+              sx={{ height: 17 }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            />
+          </IconButton>
+        </StyledToolbar>
       </Box>
-      <Grid container spacing={2}>
+
+      <Grid container spacing={2} sx={{ flexGrow: 1, overflow: "auto" }}>
         <Grid component="article" size={{ xs: 12 }}>
           {pageData[selectedPage].description.map((cardDescription) => (
             <SyledCard
@@ -1271,11 +1350,11 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               <StyledCardContent>
                 {selectedSubPage ? (
                   <>
-                    {pageData[selectedPage].title && (
+                    {
                       <Typography gutterBottom variant="h6" component="div">
-                        {pageData[selectedPage].title}
+                        {selectedSubPage}
                       </Typography>
-                    )}
+                    }
                     <Typography gutterBottom variant="body2" component="div">
                       {pageData[selectedPage].subPages?.[selectedSubPage] ?? (
                         <em>Unterseite nicht gefunden.</em>

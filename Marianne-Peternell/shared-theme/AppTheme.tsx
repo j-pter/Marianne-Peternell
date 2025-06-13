@@ -2,7 +2,6 @@ import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import type { ThemeOptions } from "@mui/material/styles";
 // import { inputsCustomizations } from "./customizations/inputs";
-// import { dataDisplayCustomizations } from "./customizations/dataDisplay";
 import { feedbackCustomizations } from "./customizations/feedback.tsx";
 import { navigationCustomizations } from "./customizations/navigation.tsx";
 import { surfacesCustomizations } from "./customizations/surfaces.ts";
@@ -33,10 +32,10 @@ export default function AppTheme(props: AppThemeProps) {
           shadows,
           shape,
           components: {
-            ...feedbackCustomizations,
-            ...navigationCustomizations,
+            // ...feedbackCustomizations,
+            // ...navigationCustomizations,
             ...surfacesCustomizations,
-            ...themeComponents,
+            // ...themeComponents,
           },
         });
   }, [disableCustomTheme, themeComponents]);
