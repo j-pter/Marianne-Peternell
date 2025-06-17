@@ -21,6 +21,8 @@ import {
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
 
+const bulletPointWidth = 40;
+
 const SyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
   minHeight: 200,
@@ -42,8 +44,7 @@ const SyledCard = styled(Card)(({ theme }) => ({
 
 const StyledCardContent = styled(CardContent)({
   display: "flex",
-  // overflow: "auto",
-  wordWrap: "break-word",
+  wordWrap: "normal",
   flexDirection: "column",
   whiteSpace: "pre-wrap",
   gap: 4,
@@ -52,10 +53,8 @@ const StyledCardContent = styled(CardContent)({
     paddingBottom: 16,
   },
   textAlign: "left",
-  overflowWrap: "break-word", // or "anywhere"
-  wordBreak: "break-word", // fallback for older browsers
-  hyphens: "auto", // enables hyphenation when supported
-  // flexGrow: 1, // allows it to grow as needed
+  overflowWrap: "break-word",
+  wordBreak: "normal",
 });
 
 const StyledTypography = styled(Typography)({
@@ -64,9 +63,8 @@ const StyledTypography = styled(Typography)({
   WebkitBoxOrient: "vertical",
   whiteSpace: "pre-wrap",
   textAlign: "left",
-  overflowWrap: "break-word", // or "anywhere"
+  overflowWrap: "normal", // or "anywhere"
   wordBreak: "break-word", // fallback for older browsers
-  hyphens: "auto", // enables hyphenation when supported
 });
 
 const StyledToolbar = styled(Box)(({ theme }) => ({
@@ -123,18 +121,18 @@ Viel Vergnügen! `}
             justifyItems: "center",
           }}
         >
-          <a>
+          <p>
             {`Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright.
             `}
-          </a>
+          </p>
           <CardMedia
             component="img"
             alt=""
             image="public/matisse_sorrow-of-the-king.jpg"
             sx={{
-              aspectRatio: "16 / 9",
               borderBottom: "1px solid",
               borderColor: "divider",
+              marginBottom: 1,
             }}
           />
           <i style={{ textAlign: "center" }}>
@@ -237,18 +235,18 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
             justifyItems: "center",
           }}
         >
-          <a>
+          <p>
             {`Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright.
             `}
-          </a>
+          </p>
           <CardMedia
             component="img"
             alt=""
             image="public/matisse_spanisches stillleben.jpg"
             sx={{
-              aspectRatio: "16 / 9",
               borderBottom: "1px solid",
               borderColor: "divider",
+              marginBottom: 1,
             }}
           />
           <i>Henri Matisse - Spanisches Stillleben (1911)</i>
@@ -283,10 +281,122 @@ Völlig verstört holte Max sein Handy. Er rief im Linzer Landeskrankenhaus an u
             ,
           </div>
         ),
-        "Der Zauberbrunnen": <div>{``}</div>,
-        Zoom: <div>{``}</div>,
-        "Maria und die Kastanien": <div>{``}</div>,
-        "Ein Krimianfang": <div>{``}</div>,
+        "Der Zauberbrunnen": (
+          <div>{`Ich saß an einem Tisch in diesem verrauchten Lokal, wo jetzt alle hingingen, nahe der Tür, trank Wein und unterhielt mich damit, Menschen zu beobachten. Roman kam und setzte sich zu mir. Ich schaute in sein Gesicht, in dem alles so groß und weitläufig war, die Nase, die Ohren, die Lippen, die dunklen Augen und verlief mich ein bisschen in dieser Landschaft, ich mochte ihn wirklich, er war ein feiner Kerl. Das Bittersüße des Mandelbaums hatte er mir gezeigt, die schwarze Milch und die Asche Claasens, die auf dem Herzen klopft. Sein schwatzkantiges Wien hatte ich kennen gelernt und das Lachen im Keller über die giftigen Witze.
+
+Da kam Peter herein, winkte zu uns herüber, schwenkte seinen dunklen runden Leib mit Eleganz zwischen den Stühlen durch, umarmte uns, setzte sich. Er schimpfte. „Seit Jahren habe ich nichts anderes getan als Reden, Schreiben und Vorlesungen halten, Sätze bilden, nach Formulierungen suchen. Kein Wort ist mir noch präzis genug, die Wörter fliegen wie Sandkörner durch mein Gehirn.
+
+Ich habe Kopfschmerzen und kann nicht schlafen. Die Nichtigkeit der Wörter soll für immer untergehen in den Farben. Ich sehne mich nach einem gewaltigen Bilderrausch.“ "Ich will schreiben Peter. Ich versuche kleine Szenen zu beobachten, zum Beispiel wie Menschen ein Lokal betreten. Ich finde das spannend." "Mach es einfach, Rebekka. Schreib jeden Tag ein bissel was, es wächst in Ringen, du wirst sehen."
+
+Roman sprang auf und lief aus dem Lokal und kam herein mit forschem Gesicht, warf ruckartig Blicke nach allen Seiten wie ein Revolverheld. Erfreut über mein Gekicher lief er wieder hinaus und kam ganz schüchtern herein mit verstör- tem Gesicht, dann wieder, in den Knien gebeugt, viel kleiner, fragend; wieder und wieder verwandelt kam er herein und ich lachte. Ich hielt ihn fest und lief selbst hinaus in die Nacht und kam herein, tat als bemerkte ich die beiden nicht, schaute mich forschend um und ließ mich anschauen, bis ich die beiden ins Blickfeld bekam, dann sprintete ich strahlend auf Roman zu, breitete meine Arme aus, und sagte fordernd "Du. Dich will ich." Roman lächelte. "Das ist stark. Machen wir ein Kind, Rebekka. Ich weiß nicht, ob ich so einfach eins machen kann. Wir können ja ein Retortenbaby machen. Ich meine so eins, wo sie meinen Samen in dein Ei und das Ganze dann in deinen Bauch pflanzen." Ich schaute ihn unbehaglich an. " Rebekka soll schreiben, das will sie", schimpfte Peter. "Ich wün- sche mir aber auch ein Kind. Beides soll sein. Das will ich." Ich sprang auf und warf meinen Sessel um. "Heb ihn auf!", rief ich wild Roman zu, Roman blieb sitzen. "Heb ihn auf!" schrie ich noch einmal und schüttelte meine Haare durch den Raum. Ein junger Mann mit einem frischen, offenen Gesicht, schmal, fast mager mit scharfgeschnittenen Zügen und sehr kurzem Blond- haar bahnte sich einen Weg von der Theke auf mich zu. Er trug eine Blumenvase mit vielen Frühlingsblumen, die er offenbar von der Theke weggenommen hatte, und stellte sie mit beiden Händen fest vor mir auf den Tisch. "Gregor", sagte er und hob den Sessel auf. Er schaute mich an und sagte "Kundera". Ich nickte "Marquez", sagte ich. Er "Paolo Conte". "Ja.", antwortete ich." Gregor ist ein schöner Name. Ich werde meinen Sohn Gregor nennen. Ich heiße Rebekka". Er "In einer Woche, gleiche Zeit, gleicher Platz" und weg war er. "Du freundest dich aber schnell an", giftete Roman. 
+
+Peter sagte "Du wirst viele Kinderchen bekommen in vielen Farben, Rebekka:" 
+ 
+Während Peter von den Farben zu erzählen begann, die er in den Schatten fand, trank ich aus, nahm meinen Spazierstock, meine Melone und mein Sakko, verbeugte mich liebenswür- dig und wanderte einsam und fröhlich Richtung Hernals in meine Heimat.
+ 
+Es schrie und ich ließ seine Schreie durch mich durch wie Messer. Das Baby schrie unerbittlich das Duftende, Warme, Weiche, Runde an. Dort musste alles sein, was es brauchte. Alles. Es kam nicht. Sein Körper krümmte sich vor Schmerzen, vor Hunger, vor Sehnsucht, vor Angst. Getrenntheit. Absoluter Schmerz. Das da war da. Das Baby roch es, leckte, biss hinein, saugte mit aller Kraft. Nichts. Die Verzweiflung schüttelte es. Es gibt deins, mein Kind. Ich hielt es in den Armen. 
+
+Ich dämmerte fort.
+
+Ich saß ganz oben in den dünneren Ästen des Apfelbaumes und schaute dem Eichhörnchen zu, wie es elegant zwischen den Bäumen hin und her sprang und dabei Töne von sich gab wie ein seltener Vogel. 
+
+Der Himmel war tiefblau, der Baum breitete sich mächtig aus rund um mich und ich fühlte mich sehr geborgen in meinem Garten. Ich freute mich, dass der Garten, mein verwunschener Dornröschengarten rundum von anderen Gärten umgrenzt und für jeden unerreichbar war. Ich lehnte mich an den Stamm und versuchte die unterschiedlichen Grüntöne des Baumes zu sehen. Das Licht in den Blättern. Zahlloses Grün. 
+
+Ich kletterte vom Baum, brach Salbei und verbrannte etwas davon. Mitten im Garten legte ich einen Kreis aus großen weißen Flusskieseln. Ich setzte mich in die Mitte und schwieg feierlich. In ein Stück Holz ritzte ich lange Zeichen für alle Verletzungen, die Gregor mir zugefügt hatte. Dann begrub ich das Holz und den Ärger.
+
+In den kleinen Springbrunnen legte ich einen Bergkristall. Mit großem Ernst brachte ich eine Schale Milch zum Was- ser als Geschenk für die kleine Schlange, die dort wohnte. 
+ 
+Ich wachte auf. Ich tauchte auf aus einem tiefen Brunnen, aus einer unendlichen Ferne. Das Baby schrie, es klammerte sich an. Es gibt deins mein Kind, es gibt deins. Ich stand auf und trug das aufgelöste kleine Wesen durch die Wohnung. Legte mich wieder hin. Und dann spürte ich. Aus den Tiefen kam es angebraust. Fast hörte ich es. Es kam mit Gewalt, es tat weh, es drückte meinen Busen innen auseinander, das Baby schob sich seitwärts zum Brunnen und saugte sich fest, weißes Licht, Überfließen, die Quelle, der zarte Körper, das lustvolle reiche Saugen, kleine Schauer auf meiner Haut. Der Busen, ein Zauberbrunnen. Je mehr man herausnimmt, umso mehr ist drinnen. Wie in der Liebe. Alles ist da.
+ 
+Ich ordnete alle Dinge im Haus, ein großer Frieden war über mich gekommen, als hätte ich stundenlang geschlafen. Gregor kam und ich gab ihm zu essen. Er redete, er redete, er redete. Stundenlang erzählte er von der Arbeit. Ich hörte ihm zu, nickte, machte Anmerkungen. Dann legte ich das große Küchenmesser auf den Tisch. Die Spitze zielte auf Gregor. Doch Gregor hatte sich warm geredet. 
+
+Dann begann ich ohne Umstände mitten in seine Rede hinein zu erzählen. Ich erzählte vom Zauberbrunnen und vom Berg- kristall, von der Milch für Hannah und für die Schlange. 
+
+Gregor staunte mich an: "Ich dachte, du erlebst nichts und hättest nur Belastungen. Ganz schön verrückt, was du erzählst und schön irgendwie. Ich wär froh, wenn ich da auch irgend- wo vorgekommen wär, wenn da irgendwo Platz wäre für mich." " Tag und Nacht, Wochen und Monate hab’ ich immer nur ein bis drei Stunden geschlafen. Das ist das Ge- schenk, das ich bekomme. Komm zu uns, schlaf bei uns, teil mit uns. Gregor, bitte.“ Gregor grinste schief. "Was willst du, Rebekka. D u solltest kommen. Zu mir. Du solltest das Kind nach mir reihen. Endlich!"
+
+Ich schaute ihn bestürzt an. Ich sprang auf, holte Honig und bestrich das Küchenmesser damit, dann leckte ich mit hoher Aufmerksamkeit den Honig von der Schneide, langsam und angespannt. "Wenn man seine Gedanken darauf fixiert, sich nicht am Messer zu schneiden, spürt man keine Schmerzen mehr.", sagte ich wild in Gregors Augen. "Gute Nacht", ich ging aus dem Zimmer und schloss sorgfältig die Tür.
+
+
+Ich saß nackt vor dem großen dunklen Spiegel, der fast blind war und beobachtete die Linien meines müden, nun volleren Gesichts. Gregor lebt hier nicht mehr. Hinter die Schleier ge- sehen mit weltalten, schwarzen Augen. Meine Mutter bäckt Kuchen. Grillengezirp und Vogelgezwitscher. Das Feuer, das in mir brennt. Das lustige Weiberleben, das alte Weiber- wissen, die Lebensfreude, die Liebhaber, die sich heimlich davonstehlen. Wie lustig das Leben sein könnte. Die Freude und der Reichtum der Brunnen, der Gärten sind verloren. Ich verstumme.
+
+Immer weitermachen. Tag und Nacht unerschöpflich. Schreien. Mangel. Verzweiflung. Überfluss. Nahrung. Lust. Körpern. Das zarte Körpern. Das Greifen, das Fließen. Zauberbrunnen der Tiefe, der Träume, des Lichts.
+ 
+Roman und Peter tanzten Tango, sie schmiegten Bein an Bein, sie schlängelten sich durch den Rhythmus der Nacht unter dem johlenden Beifall der Freunde. Es wurde gefeiert. Ich saß da und bewunderte sie. Sie feierten Peters Erfolg. Seine Schattenbilder hatten die besten Kritiken, Roman schrieb Lobeshymnen für die Zeitungen. Hannah schlief im Bett nebenan und ließ sich von dem Lärm nicht stören.
+
+Bald saß Roman neben mir. "Es gibt fast keine Sprache für meins, ich bin müde", lächelte ich. "Ist es ein Problem für dich, dass Peter so erfolgreich ist und deine Gedichte kaum einer kennt, nur so hoffnungslose Fans wie ich eine bin?" "Bohre nicht in meinen Wunden. Natürlich ist das schwierig.“ "Ich frage nur, weil kaum einer mein Kind kennt, du hast sie niemals angeschaut, mich niemals besucht, seit sie bei mir ist. Das ist hart." "Ich verstehe nichts von diesen kleinen Monstern und ihre Mütter haben wenig Zeit." "Ich brauche dich, Roman. Es könnte auch dein Kind sein." "Welches Stück von mir brauchst du Rebekka?", grinste Roman. "Dich ganz, kein abgetrenntes Stück, du bist in meinen Augen nicht einer von diesen kastrierten Männern, die nur ein Stück geben können." "Soll ich nachts das Baby wickeln, weil Gregor keine Lust dazu hat, ist es das?" "Ich brauche Gegenwart, unerhörte Gegenwart und Aufmerksamkeit, etwas, was die Männer den Frauen in diesem Land nicht zu geben bereit sind. Hingabe. Ohne Forderung. Ich will alles." "Weshalb sollte es etwas geben, was keinen Preis hat, Rebekka?" "Weil das die Liebe ist. Ich habe es gelernt von Hannah, sie hat mich gelehrt, was Hingabe ist." "Du willst ein Verschmelzen, wie eine Mutter mit ihrem Baby noch teils verschmolzen ist, weil sie es mit ihrem Körper nährt." "Ich fordere Hingabe, die restlose Hingabe! Die Hingabe eines erwachsenen Mannes, nicht die des bedürftigen Kindes in diesem Mann. Ihr habt alle Angst.
+
+Und Hingabe heißt geben, da sein, geben ohne Rechnung, Aufmerksamkeit. Ich denke, es wird nicht gehen ohne ein lustiges Weibervolk rundum.
+
+Doch wir könnten es immerhin versuchen in das Land hinter den Spiegeln, in das Land der Zauberbrunnen zu kommen, in dem alles Überfluss ist, wenn die Sehnsucht zuvor Körper, Herz und Hirn zerrissen hat und.. Ich bin gekommen um dich mitzunehmen, mit in den Schmerzton, den Sehnsuchtston, in die geisterhafte Musik der unerhörten Gegenwart. Ich muss gehen." 
+
+Ich wickelte mich in meinen dunkelroten Sari, holte Hannah, setzte mich vor Roman auf den Boden, stillte das Kind und schaute in den Mann hinein.`}</div>
+        ),
+        Zoom: (
+          <div>{`Klarissa hatte kaum etwas zu sagen. Sie träumte viel. Sie saß in der Klasse und sah träumend auf den Baum vor dem Fenster. Er sah finster aus mit seinen vielen dunklen Blättern. Dahinter ein Haus. Ein Haus mit vielen Giebeln, Erkern, der Putz blätterte ab. Sie war sicher, dass es ein Geisterhaus war. Oder zumindest ein Haus, in dem merkwürdige Dinge vor sich gingen. Nie hatte sie jemanden hineingehen oder herauskommen sehen. Heute hörte sie Geräusche von dort. Doch nur undeutlich. Sie stieß Fatma an und sagte es ihr flüsternd. Fatma war die einzige, mit der sie darüber sprechen konnte. „Es ist jemand da. Es klopft.“ Fatma schrak zusammen. Sie war dabei zu rechnen. 35+27. Das war nicht einfach. „Was?“ „Es klopft. Schau.” Fatma schaute. Sie flogen aus dem Klassenzimmer in das Haus. Ein alter Raum war es, ein alter Raum mit abgeschabten Möbeln. Ein elegantes geschwungenes Sofa mit Plüschbezug, ein riesiges Bild, das einen Offizier zeigte, Säbel an den Wänden, kleine Tischchen und Stühle. Niemand zu sehen. Sie wandten sich nach links, stiegen die Treppe hinauf, irgendwo klopfte es. Im oberen Stock begegnete ihnen niemand. Sie schlichen den Gang entlang, er war schon lange nicht ausgemalt worden, die Wände waren geschwärzt. Sie spürten die Anwesenheit von etwas Bedrohlichem, Ungeheuerlichem, etwas Grausames war hier. Eine alte Frau kam gestützt auf einen Stock durch eine Tür gehumpelt. Sie hatte viele Runzeln und schaute sie nicht an. „Hannah!“, schrie sie schrill. „Hannah!“ Da kam eine Frau, sie war rüstig, doch nicht mehr jung angelaufen. „Ja, Mama? Du sollst doch nicht aufstehen, Mama! Brauchst du etwas?“ „Nie bist du da, wenn ich dich brauche!“,schrie die Alte und schlug die jüngere mit dem Stock auf den Kopf. „Ich habe schon lange gerufen! Ich kann nicht allein aufs Klo gehen, das weißt du. Wozu bist du überhaupt da?“ „Ja Mama, entschuldige Mama, ich habe mich nur kurz hingelegt. Ich war müde. Du weißt, letzte Nacht!“ Dann stütze sie die Alte und die beiden humpelten davon. Klarissa und Fatma wussten, dass in diesem Haus viele Geheimnisse lagen. Im Garten der Villa hatten Räuber einen Schatz vergraben, es gab einen hohen Zaun um den Garten. An der verborgenen Stelle ging es tief nach unten, eine Falltür. Ein eisernes Gitter fiel herab und sie hatten keinen Schlüssel. Niemand konnte herausfinden, wer den Schatz hier vergraben hatte, wem er gestohlen worden war. Die Räuber konnten jeden Moment wieder kommen, wie wilde Hunde umschlichen sie ihren Schatz. Fatma und Klarissa mussten fliehen. Klarissa half Fatma mit einer Räuberleiter aus dem Loch, Fatma zog Klarissa, dann rannten sie, sie waren hinter ihnen her. „Hannah!“, schrie es wieder aus dem Haus. Schwarze Hunde auf dem Grundstück. Da flogen Fatma und Klarissa zurück in ihre Klasse. Der Lehrer schimpfte. „Ich werde mit euren Müttern sprechen. Vielleicht sollte ich euch auch zur Psychagogin schicken. Ständig seid ihr mit den Gedanken irgendwo. Ihr sollt in der Schule lernen! Rechnen, schreiben, lesen! Ich bemühe mich, ich bin geduldig, aber ich kann nicht Kinder unterrichten, die ständig mit offenen Augen träumen. Ich werde einen schwarzen Punkt machen bei dir Fatma und bei dir Klarissa. Morgen machen wir Konzentrationsübungen. Danach geht es weiter. Ich hoffe, ihr werdet besser mittun, wer mittut und die Aufgaben erfolgreich löst, bekommt ein Zuckerl. Also, bis morgen!“ Fatma und Klarissa standen mit hochrotem Gesicht in der Klasse. Ein paar Kinder tanzten um sie herum, haha, ihr müsst zum Psychologen, ihr seid nicht ganz richtig im Kopf. Und Zuckerl bekommt ihr auch keins. Ihr habt ja gar nicht aufgepasst. Ein Mädchen schlug Klarissa ins Gesicht, nur leicht, doch der Schlag wog schwer. Mit gesenktem Kopf liefen Fatma und Klarissa nach Hause.
+
+II.
+Herbert stand schon die dritte Stunde in der Klasse. Er sah Klarissa nur aus den Augenwinkeln und schon war er wütend. Er mochte sie und er mochte sie nicht. Sie war nicht ganz real die kleine Fee, Wesen zwischen Traumland und Hierland, wer sollte sie erden? Nie war sie, wo alle waren, stets war sie abwesend, spann sich ein, am liebsten würde er vor ihrem Gesicht klatschen, aber dann würde sie weinen. Und dann würde er sich schämen, so zart war sie und so stark, das auch. Sie stieß Fatma an. Fatma war ein nettes Mädchen, sie war immer so bemüht und wollte so gern verstehen, was ihr meist misslang, was ihn wiederum herausforderte, ihr so gut wie nur möglich zu helfen. Und nun stieß sie Fatma an. „Klarissa!“ rief er mahnend durch die Klasse, doch sie hörte ihn nicht. Er wollte nicht, dass sie Fatmas Aufmerksamkeit abzog, Fatma lernte schwer, Klarissa tat sich leicht, das war es nicht. Da bat Tonio ihn, ihm zum wer weiß wie often Mal zu helfen. Er verstand die Zehnerüberschreitung noch immer nicht. Georg hatte aus weiß Gott welchem Grund einen Wutanfall und warf einen Stuhl um. Dann schlug er Sebastian auf den Kopf. Herbert musste Entscheidungen treffen. „Andrea“, sagte er, „bitte setz dich zu Tonio und erkläre ihm, wie du 35+27 rechnest!“ Dann ging er zu Georg, er hielt ihn fest. Das durfte er eigentlich nicht, körperliche Berührungen waren verboten, doch er empfand, Georg brauchte das, er hielt ihn fest, während Georg schrie, inzwischen blutete Sebastian aus der Nase. Die Kinder hatten aufgehört zu rechnen. Sie wollten wissen, wie er die Sache meistern würde. Er sprach mit Georg beruhigend und freundlich. Georg schlug auf Herbert ein, Herbert bat ihn leise aufzuhören und hielt ihn wieder fest. Er wusste, Georgs Mutter war vor einem Jahr bei einem Autounfall verstorben, er wusste, Georg musste sein, wie er war und Freundlichkeit konnte er kaum ertragen. Herbert fühlte sich hilflos, denn einige Kinder forderten harte Strafen für Georg, Klarissa und Fatma träumten immer noch, Sebastians Mutter würde morgen da stehen und sich beschweren, sie war aktive Elternvertreterin. Georg war ein Problem. Er bat die Kinder sich in einen Sesselkreis zu setzen. Er zwang auch Klarissa und Fatma aus ihren Träumen, erwähnte die Psychagogin, Zuckerln. Er bat die Kinder, alle Vorwürfe, die sich gegen Georg angesammelt hatten, vorzutragen und er bat Georg sich alles ruhig anzuhören. Er dachte daran, dass er unbedingt irgendwann mit Klarissas Mutter sprechen musste. Anja erklärte, sie wollte nicht, dass Georg so wichtig war, sie musste auch brav sein.
+
+Die Rechenstunde entfiel. Ob sie das Pensum dieses Semester noch schaffen würden? Es war Vorschrift, doch er konnte nicht anders, er interessierte sich für die Kinder, wer sie waren. Er wollte ein guter Lehrer sein.  
+
+ 
+III
+„Mama, in dem Haus vor der Schule wohnt eine alte Frau, die böse ist. Ich glaube, es ist ihre Tochter, die auf sie aufpasst.. Es gibt dort einen vergrabenen Schatz und Hunde, die ihn bewachen. Ich habe alles genau gesehen und Fatma weiß es auch.“
+
+„Du meinst das Haus mit den Türmchen und den düsteren Tannen davor. Ja, es wirkt seltsam, aber ich denke, es steht da ganz verlassen. Ich weiß nicht, welche Geschichte es hat. Du träumst zu viel.“
+
+„Aber ich weiß es genau und Fatma auch.“ Klarissa weinte. Ihre Mutter streichelte sie und fühlte sich hilflos, denn sie wusste nichts zu erwidern. Waren Häuser nur außen? War etwas dahinter? Was wusste ihre Tochter wirklich? Was sollte sie tun?
+
+Sie erhielt eine Vorladung des Lehrers, Klarissa sollte beim Psychagogen vorgestellt werden, da sie mit ihren Gedanken häufig abwesend sei.
+
+Der Lehrer hielt eine längere Rede. Er erklärte, dass Klarissa einen guten Kopf zum Lernen hätte, wenn sie nicht stets wegträumte. Sie lebte in phantastischen Räumen und, was er nicht dulden konnte, sie steckte schlechtere Schüler an. „Fatma träumt nun auch mit offenen Augen. Die Kinder entwickeln eigene Welten. Wir dürfen sie nicht dort belassen. Sie werden verstehen, Frau Horten, dass ich etwas unternehmen muss.“ „Ich weiß nicht.“, antwortete Klarissas Mutter schwächlich, denn sie hatte keine Ahnung, wie sie widersprechen sollte, was sie erklären sollte von ihren eigenen Zweifeln an der realen Welt. Der Lehrer legte ihr ein Papier vor, zeigte ihr, wo sie unterschreiben musste und sie unterschrieb.
+
+ 
+IV
+Mama sitzt neben Klarissa mit ihrem schönen Kleid und der hübschen Frisur im Zug, der voll ist mit Leuten in schönen Kleidern und hübschen Frisuren. Alle Leute in dem Zug haben Angst. Sie zittern. Manche beten und auch Klarissa faltet die Hände und Tränen der Angst rinnen aus ihren Augen. „Nimm dich zusammen und bete!“, sagt eine Frau, als Klarissa sie bittet mit ihr wegzugehen. „Komm mit mir, du kannst mit mir kommen!“, sagt der Lehrer. Heftig schüttelt Klarissa den Kopf. „Wir müssen bleiben.“ Alle warten auf etwas. Alle sitzen da, ergeben in ihr Schicksal, haben Angst und warten. Ein Zug rast vorbei und alle sehen die Toten in dem Zug: grausam verstümmelte Leichen in hübschen Kleidern und mit hübschen Frisuren. Klarissa bäumt sich auf und schreit, ganz laut, sie bebt am ganzen Körper und es tut gut zu schreien.
+
+Sie wacht auf, sie hat geträumt diese Nacht.
+ 
+ 
+V
+In dieser Nacht starb in dem Haus mit den Türmchen vor der Schule Hannahs Mutter. Hannah beschloss das Haus zu verkaufen und aufs Land zu ziehen, zu flüchten. Sie wollte nichts wissen von den Geheimnissen der Vergangenheit.
+
+Ein Käufer interessierte sich für das Haus. Es gab einen kleinen Skandal, als sich herausstellte, dass es ein arisiertes Haus war. Doch niemand kümmerte sich darum, niemand forschte nach, wer Hannah war, wer die nun tote, alte Frau war und niemand fand den geraubten Schatz, der vielleicht wirklich auf dem Grundstück vergraben lag. Frau Horten, Klarissas Mutter, blieb die unsichere zweifelnde Frau, die tat, was man ihr sagte und nicht wagte zu widersprechen
+
+Klarissa lernte beim Psychagogen die reale Welt anzunehmen und ihre Träume als Hirngespinste abzutun. Sie galt als ein bisschen verrückt. Das war eine Last, die sie ein Leben lang begleiten sollte. Immer wieder würde sie zum Psychologen müssen.`}</div>
+        ),
+        "Maria und die Kastanien": (
+          <div>{`Sie saß in der Essecke ihrer Küche. Soeben war sie mit Aufräumen fertig geworden. Es war eine neue Küche. Ihre Tochter hatte sie für sie ausgesucht. Marion war eines Tages gekommen und hatte darauf bestanden, dass die alten Kästchen und der Herd, von dem nur noch zwei Kochplatten funktionierten, weg mussten. Auch der alte Kühlschrank wurde entsorgt.
+
+Maria kaufte mit ihrer Tochter Marion bei Peter Max eine neue Küche, einen Herd mit Ceran- Kochfeld, einen Kühlschrank mit Dreistern-Kühlfach und Kästchen, Ober- und Unterschränke mit mittelbraunen Holztüren. Das alles bezahlte sie von ihrem mühsam Ersparten. Marion brachte einen Bekannten, der die Küche montierte, nachdem sie geliefert worden war. Und da stand sie nun, aufgeregt zwischen all den neuen Dingen in ihrer 2-Zimmer-Wohnung und begann sofort sie sorgfältig zu putzen, obwohl doch eigentlich alles neu und sauber war. „Das macht man.“, sagte sie „so wird das Neue was Eigenes.“
+
+Seither hatte Maria ihre neue Küche täglich sauber und ordentlich aufgeräumt, sogar ein eigenes Pflegemittel für das Ceran-Kochfeld hatte sie im Supermarkt besorgt.
+
+Maria war schon alt, gerade 71 Jahre alt geworden und dennoch hatte sie sich diese Küche geleistet. Das verhieß ihr Lebensmut. Sie würde noch lange leben wollen, damit sich diese Investition auszahlte, damit die Anschaffung der neuen Küche auch wirklich Sinn hatte.
+
+Maria liebte es gepflegt. Sie ließ ihr kurzes Haar regelmäßig beim Friseur in geordnete Dauerwellen legen. Sie bestellte sich Kleidung aus dem Katalog für gesetzte Damen. So empfand sie sich ordentlich und schön; sonntags legte sie dezenten Lippenstift auf, bevor sie in die Kirche ging. Sie war nicht gläubig, doch ihrer Meinung nach gehörte es sich in die Kirche zu gehen.
+
+So saß sie an diesem Tag also, es war mitten in der Woche, mit ihrem dauergewellten Haar und ihren Kleidern aus dem Katalog, einem dunkelblauen Rock und einer dunkelblau-rosa gemusterten Bluse in Gr.44 in ihrer geputzten Küche. Doch etwas war anders. Etwas irritierte sie.
+
+Auf der Arbeitsfläche ihrer Küche lag ein Sackmit Kastanien. Marions Sohn Lukas war gestern zu Besuch gewesen. Er hatte die Kastanien im Hof gesammelt und war begeistert gewesen, wie schön sie waren, wie glänzend, wie glatt. Er hatte lange mit ihnen gespielt. Sie waren zu Autos geworden, zu Männchen, zu Bällen.
+
+Als er ging, hatte er sie vergessen.
+Und nun saß Maria da. knetete ihre Hände und starrte die Kastanien an. Sie störten ihren Ordnungssinn und sie hätte sie auch ohne Zögern weggeworfen, wenn nicht das Leuchten in den Augen von Lukas beim Spielen, an das sie sich erinnerte, sie davon abgehalten hätte. Sie holte die Kastanien und breitete sie vor sich auf dem Tisch aus. Sie befühlte sie, doch zuckte sie dabei zusammen, als würde sie etwas Verbotenes tun. „Mit Kastanien spielen nur Kinder. Das gehört sich nicht.“, sagte sie sich. „Ob ich die Kastanien für Lukas aufheben sollte?“ Nein, das wohl nicht, sie werden alt werden und ihre Glätte und Schönheit verlieren.“ Maria starrte die Kastanien an. Tränen standen plötzlich in ihren Augen, doch sie wusste nicht weshalb.
+
+Mit einem plötzlichen Ruck stand sie auf, warf die Kastanien wütend zurück in den Sack und brachte den Sack zum Mülleimer.
+
+Alles hatte wieder seine Ordnung. Maria las nun „Das goldene Blatt“, das sie am Morgen gekauft hatte, las über die Schwierigkeiten und Probleme in Königshäusern, deren Familienmitglieder ihr alle namentlich vertraut waren.`}</div>
+        ),
+        "Ein Krimianfang": (
+          <div>{`Der Anfang eines Krimis zum selber Weiterschreiben
+
+ 
+Ich beobachtete die Schmeißfliegen, die sich in der Hitze auf die Wurstsemmeln setzen wollten und schwitzte. Ich hatte schon genug von diesem Job. Ich wickelte die Wurstsemmeln in Plastikfolie. Drecksarbeit. Wie kann man bloß so etwas machen? Ich mach das nur jetzt. Ich. Ich bin Kurt. Kurt Aufschneider, 50 Jahre, durchtrainiert und stehe für ein paar Tage in dieser heißen Würstelbude. Drüben am Donaukanal wartet mein Büro. Nichts Besonderes. Es sind nur zwei Räume. Ein Zimmer mit Zeitschriften und Sesseln, den ich den Wartesalon nenne und dann mein Allerheiligstes: Ein Raum mit Schreibtisch, Telefon, Aktenschrank und jeder Menge Staub. Ein Stuhl steht hinter und vor dem Schreibtisch. Einer für mich und einer für den Klienten, sofern einer kommt. An der Tür hängt ein Schild. Kurt Aufschneider, Detektiv, private Ermittlungen jeder Art. Und tatsächlich. Manchmal verirrt sich einer zu mir. So wie gestern.
+
+Es regnete und ich hatte schon ein paar Whisky sour intus, weil nichts weiter ging außer die Zeiger der Uhr. Plötzlich schellte die Glocke, die anzeigte, dass jemand meinen Wartesalon betreten hatte. Ich schaute hinaus, sagte „Nur weiter, bitte.“ Und herein kam ein glatzköpfiger, sehr dicker, kleiner Mann. Ich hätte ihm auf den Schädel spucken können. Aber ich unterließ es, er war ja mein Geschäft. Er war im Regenmantel und zupfte nervös an einem runden Hut, den er abgenommen hatte und nun mit beiden Händen hielt. Er saß an der vordersten Kante des Besucherstuhls, als er mir seine Geschichte verklickerte. Er hieß Hermann Weiß, war 30 Jahre alt, er war Hilfsarbeiter und er war verzweifelt. Die große Liebe seines Lebens war spurlos verschwunden. Anna Rainer, erst 21 Jahre alt, lange schwarze Haare, Bankbeamtin und zart gebaut, hatte er vor sechs Wochen kennen gelernt und seither jede freie Minute mit ihr verbracht. Er zeigte mir mit fahrigen Fingern ein verknittertes Foto. Es war eine recht hübsche Schnecke und ich fragte mich, was die wohl an dem fetten Hermann Weiß gefunden haben mochte. Na jedenfalls war sie plötzlich von einem Tag auf den anderen verschwunden. Sie war weder in der Arbeit noch in der Wohnung aufgetaucht und hatte sich auch bei ihm nicht gemeldet. Er wollte nicht zur Polizei gehen, denn er wollte sie nicht in Schwierigkeiten bringen, falls sie schon irgendwelche Schwierigkeiten hatte und untertauchen musste. Aber er wollte, dass ich sie fände. Möglichst rasch und unauffällig. Er gab mir die Adresse ihrer Großmutter, einer Bäuerin im Ruhestand, von der er wenig wusste, nur dass sie Josefine Rainer hieß, im Waldviertel wohnte, 75 Jahre alt , kerngesund, rosig und lieb war und dass Anna und er sie irgendwann gemeinsam besuchen wollten. Außerdem gab er mir noch einen wichtigen Hinweis. Anna arbeitete manchmal als Babysitterin in einer Villa im 18. Bezirk bei einem gewissen Max, einem achtjährigen lieben Buben, goldgelockt und zu klein für sein Alter. Der Mann war gut im Beschreiben. Er hätte Polizist werden sollen. Obwohl er nicht nach Geld aussah, übernahm ich den Job. Ich hatte keinen anderen.
+
+Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand einen Notizkalender und ein Adressbuch. Da hatte ich bald die Telefonnummer von Maxens Eltern. Ich wollte nicht dort anrufen. Aus dem Kalender war ersichtlich, dass Anna an dem Abend verschwunden war, als sie bei Max gewesen war. Also musste ich mir etwas einfallen lassen. Kurz entschlossen mietete ich einen Würstelstand und baute ihn gegenüber von Maxens Haus auf, um alles Seltsame dort unauffällig beobachten zu können. Jetzt schwitze ich also hier in der Gymnasiumstrasse, verkaufe Würsteln und verjage Schmeißfliegen. Und da kommt ein Bub auf mich zu. Das müsste Max sein.`}</div>
+        ),
       },
     },
     Malerei: {
@@ -653,41 +763,41 @@ Völlig verstört holte Max sein Handy. Er rief im Linzer Landeskrankenhaus an u
 
 Integration verschiedener Bildungsbereiche:
 `}</div>
-          <List dense={true} sx={{ width: "100%", padding: "1px" }}>
-            <ListItem>
-              <ListItemIcon>
+          <List dense={true} sx={{ width: "100%", paddingLeft: 0.75 }}>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Literarhistorische Bildung (Arthur Schnitzler ‚Leutnant Gustl’ kennen lernen; Folgewirkungen für Schnitzler; Migrantenliteratur in Ansätzen kennen lernen)`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Kreative Kompetenz: einen inneren Monolog selbst verfassen können`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Literarische Kompetenz: die Leistung des inneren Monologs erfassen; die Leistung von Migrantenliteratur für den interkulturellen Dialog erfassen`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Politische Bildung (Gastarbeiter und ‚Fremde’ in der Wahrnehmung von Deutschen und Österreichern mit Hilfe des inneren Monologs realistisch gespiegelt durch einen arabischen Schriftsteller)`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
@@ -699,7 +809,11 @@ Integration verschiedener Bildungsbereiche:
           <b>1. UE</b>
           <div>
             Zunächst wird ein Ausschnitt aus Schnitzlers{" "}
-            <a href="https://www.gratis-webserver.de/marianne.peternell/data/downloads/138922/Leutnant_Gustl_Arthur_Schnitzler.pdf">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="/Leutnant_Gustl_Arthur_Schnitzler.pdf"
+            >
               „Leutnant Gustl“
             </a>{" "}
             gelesen.
@@ -886,149 +1000,149 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
       title: "Lebenslauf",
       description: [
         <>
-          <List dense={true}>
-            <ListItem>
-              <ListItemIcon>
+          <List dense={true} sx={{ paddingLeft: 0.5 }}>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`01.06.1956 geboren in Wieting/ Kärnten als Tochter einer Schneiderin und eines Schmieds`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`1962-66 Volksschule in Steiermark und Kärnten`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`1966-74 Neusprachliches Gymnasium in Villach`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText primary={`Juni 1974 Matura in Villach`} />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Werkstudentin: Studium von Deutsch, Geschichte und Philosophie`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Jobs als Kellnerin, Tankwartin, Interviewerin, Deutsch als Fremdsprache Lehrerin, Gruppentrainerin, Pädagogin, Erzieherin, Zeitungsverkäuferin, Malermodell usw.`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`1980-1982 im Tagesschulheim des BG 15, Dieffenbachgasse als Erzieherin tätig`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Mai 1985 Studienabschluss von Deutsch und Geschichte Lehramt`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`1985/86 Probejahr am Akademischen Gymnasium Wien; Erzieherin im Tagesschulheim des BG 10, Ettenreichgasse`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`1986-87 Deutsch als Zweitprache-Unterricht am BFI Wien`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`1987-1990 Mitarbeiterin des Wiener Schulservice, Abteilung Schulberatungsstelle für Ausländer`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Ab 1987 Lehrerin an der HTL-Donaustadt`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText primary={`06.04.1992 Geburt der Tochter Fanny`} />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText primary={`1992-1997 Karenz in Kärnten/Villach`} />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText primary={`Seminare zur Montessori-Pädagogik`} />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText primary={`Seminare bei Mauricio und Rebeca Wild`} />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Herbst 1995 Gründung der Montessori-Wild-Kindergruppe „Ich-DuWir“ in Sattendorf/Villach-Landskron`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText primary={`28.01.1996 Geburt des Sohnes Julian`} />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`seit Herbst 1998 als alleinerziehende Lehrerin in Wien, HTL Donaustadt`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
@@ -1036,54 +1150,54 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
 2005 Veröffentlichung von Lyrik in „dulzinea 7“; Lesungen`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Sommer 2005 Leitung eines Workshops „Kreatives Schreiben“ in der Sommerakademie Zakynthos (Vertretung des Schriftstellers Franzobel)`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
-                primary={`1.11.2005 zu Gast in der Sendung „Queer durch“ im Radio Agora/Klagenfurt zum Thema „Frauen und ihr Erbe“`}
+                primary={`01.11.2005 zu Gast in der Sendung „Queer durch“ im Radio Agora/Klagenfurt zum Thema „Frauen und ihr Erbe“`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`2009 Veröffentlichung eines Textes in der Kultur- und Literaturzeitschrift "Sterz" (Streit/Kultur; Nr.101)`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText primary={`01.09.2016 Alterspension`} />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`Am 25.5.2018 Lesung in der Buchhandlung "Seeseiten" in der Seestadt Aspern beim 3. Geburtstagsfest der Buchhandlung gemeinsam mit anderen AutorInnen.`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
                 primary={`nach einigen frühen Versuchen in der Malerei im Jahr 1987, neuerliche Versuche mit der Malerei ab Oktober 2020`}
               />
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem disablePadding>
+              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
               </ListItemIcon>
               <ListItemText
@@ -1203,7 +1317,16 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
         >
           <Avatar
             src="/marianne_peternell_2.png"
-            sx={{ width: 100, height: 100 }}
+            sx={{
+              width: 120,
+              height: 120,
+              overflow: "hidden",
+              "& img": {
+                transform: "scale(1.3)", // zoom into image
+                transformOrigin: "25% 30%", // control position of zoom
+              },
+              marginRight: 4,
+            }}
           />
           <div>
             <Typography variant="h2" gutterBottom>
@@ -1281,7 +1404,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                       }}
                     />
                   </div>
-                  <Popover
+                  <Menu
                     disableRestoreFocus
                     key={"menu_" + page}
                     anchorEl={anchorElements[page]}
@@ -1319,7 +1442,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                         {subPage}
                       </MenuItem>
                     ))}
-                  </Popover>
+                  </Menu>
                 </React.Fragment>
               );
             }
