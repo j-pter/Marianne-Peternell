@@ -4,6 +4,33 @@ import Container from "@mui/material/Container";
 import AppTheme from "../shared-theme/AppTheme";
 import MainContent from "../public/MainContent.tsx";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown.tsx";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import { styled, alpha } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+
+const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
+  position: "fixed",
+  bottom: 30,
+  right: 30,
+  zIndex: 1000,
+  height: 40,
+  width: 40,
+  outline: "0.1px solid",
+  outlineColor: theme.palette.primary[900],
+  outlineOffset: "2px",
+  borderRadius: theme.shape.borderRadius,
+  backdropFilter: "blur(24px)",
+  backgroundColor: theme.vars
+    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
+    : alpha(theme.palette.background.default, 0.4),
+  boxShadow: (theme.vars || theme).shadows[1],
+  color: theme.palette.info[900],
+  "&:hover": {
+    backgroundColor: theme.vars
+      ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.6)`
+      : alpha(theme.palette.background.default, 0.6),
+  },
+}));
 
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   return (
@@ -26,6 +53,13 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
           }}
         />
       </Container>
+      <ScrollToTopButton>
+        <ArrowUpwardIcon
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      </ScrollToTopButton>
     </AppTheme>
   );
 }

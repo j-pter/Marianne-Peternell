@@ -11,7 +11,6 @@ import {
   Avatar,
   Container,
   Divider,
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
@@ -21,7 +20,6 @@ import {
   Popover,
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const SyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
@@ -75,8 +73,8 @@ const StyledToolbar = styled(Box)(({ theme }) => ({
   flexShrink: 0,
   borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
   backdropFilter: "blur(24px)",
-  border: "1px solid",
-  borderColor: (theme.vars || theme).palette.divider,
+  // border: "1px solid",
+  // borderColor: (theme.vars || theme).palette.divider,
   backgroundColor: theme.vars
     ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
     : alpha(theme.palette.background.default, 0.4),
@@ -1326,17 +1324,8 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               );
             }
           })}
-          <IconButton>
-            <ArrowUpwardIcon
-              sx={{ height: 17 }}
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            />
-          </IconButton>
         </StyledToolbar>
       </Box>
-
       <Grid container spacing={2} sx={{ flexGrow: 1, overflow: "auto" }}>
         <Grid component="article" size={{ xs: 12 }}>
           {pageData[selectedPage].description.map((cardDescription) => (
