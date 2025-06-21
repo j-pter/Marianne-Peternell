@@ -17,7 +17,6 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Popover,
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
 
@@ -1216,7 +1215,6 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
   const [anchorElements, setAnchorElements] = React.useState<
     Record<string, HTMLElement | null>
   >({});
-  const hoverTimeout = React.useRef<number | null>(null);
   const [selectedPage, setSelectedPage] = React.useState<PageKey>("Start");
   const [selectedSubPage, setSelectedSubPage] = React.useState<string | null>(
     null
@@ -1231,27 +1229,15 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
   };
 
   // chip menu display
-  const handleEnter = (event: React.MouseEvent<HTMLElement>, page: string) => {
-    if (hoverTimeout.current) {
-      clearTimeout(hoverTimeout.current);
-    }
-    hoverTimeout.current = setTimeout(() => {
-      setAnchorElements((prev) => ({
-        ...prev,
-        [page]: event.currentTarget,
-      }));
-    }, 200);
-  };
-  const handleExit = (page: string) => {
-    hoverTimeout.current = setTimeout(() => {
-      const active = document.activeElement as HTMLElement;
-      if (active) active.blur(); // remove focus to prevent aria-hidden issue
-
-      setAnchorElements((prev) => ({
-        ...prev,
-        [page]: null,
-      }));
-    }, 200); // 200ms delay
+  const handleDropDownChipClick = (
+    event: React.MouseEvent<HTMLElement>,
+    page: string
+  ) => {
+    setAnchorElements((prev) => ({
+      ...prev,
+      [page]: event.currentTarget,
+    }));
+    if (selectedPage != page) handlePageSelection(page);
   };
 
   // create anchors placeholders initially
@@ -1284,10 +1270,10 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
         ...prev,
         [page]: null,
       }));
-      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setSelectedSubPage(null);
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -1372,52 +1358,24 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             } else {
               return (
                 <React.Fragment key={page}>
-                  <div
-                    style={{ display: "inline-block" }} // prevents line breaks
-                    onMouseEnter={(e) => {
-                      console.log("enter");
-                      handleEnter(e, page);
+                  <Chip
+                    key={page}
+                    onClick={(e) => {
+                      handleDropDownChipClick(e, page);
                     }}
-                    onMouseLeave={() => {
-                      console.log("leave");
-                      handleExit(page);
+                    size="medium"
+                    label={page}
+                    sx={{
+                      backgroundColor: "transparent",
+                      border: "none",
+                      cursor: "pointer",
                     }}
-                    aria-owns={
-                      Boolean(anchorElements[page])
-                        ? "mouse-over-popover"
-                        : undefined
-                    }
-                    aria-haspopup="true"
-                  >
-                    <Chip
-                      key={page}
-                      onClick={() => {
-                        console.log("click");
-                        handleChipClick(page);
-                      }}
-                      size="medium"
-                      label={page}
-                      sx={{
-                        backgroundColor: "transparent",
-                        border: "none",
-                        cursor: "pointer",
-                      }}
-                    />
-                  </div>
+                  />
                   <Menu
                     disableRestoreFocus
                     key={"menu_" + page}
                     anchorEl={anchorElements[page]}
                     id={page}
-                    onMouseEnter={() => {
-                      if (hoverTimeout.current) {
-                        clearTimeout(hoverTimeout.current);
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      console.log("left menu");
-                      handleExit(page);
-                    }}
                     open={Boolean(anchorElements[page])}
                     onClose={() => handleClose(page)}
                     slotProps={{
