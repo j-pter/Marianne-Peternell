@@ -27,7 +27,7 @@ const SyledCard = styled(Card)(({ theme }) => ({
   minHeight: 200,
   flexDirection: "column",
   padding: 0,
-  minWidth: "800px",
+  width: "100%",
   marginBottom: 25,
   height: "auto",
   backgroundColor: (theme.vars || theme).palette.background.paper,
@@ -220,6 +220,27 @@ Dünger auf die Felder des Geistes und
 Es weht durch uns durch und wohin
 Der kleine Knabe wird geboren.
 Die Herbstarbeit kommt zur Ruhe`}</div>
+            <br />
+            <Container
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <CardMedia
+                component="img"
+                alt=""
+                image="public/malerei/Sträuche.jpg"
+                sx={{
+                  // aspectRatio: "16 / 9",
+                  borderBottom: "1px solid",
+                  borderColor: "divider",
+                  marginBottom: 1,
+                }}
+              />
+              <i>Herbst (12.2020)</i>
+            </Container>
           </>
         ),
       },
@@ -1283,8 +1304,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
         flexDirection: "column",
         gap: 4,
         maxWidth: "800px",
-        minWidth: "800px",
-        width: "800px",
+        width: "100%",
         alignItems: "center",
         justifyContent: "start",
         justifyItems: "start",
@@ -1299,6 +1319,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             alignItems: "center",
             justifyContent: "start",
             justifyItems: "start",
+            width: "100%",
           }}
         >
           <Avatar
@@ -1327,6 +1348,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           display: "flex",
           flexDirection: { xs: "column" },
           width: "100%",
+          maxWidth: "800px",
           position: "sticky",
           top: 15,
           zIndex: 10, // ensure it stays above scrolling content
@@ -1336,9 +1358,11 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           sx={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "initial",
+            flexWrap: "wrap",
+            justifyContent: "space-around",
+            alignItems: "flex-start",
             width: "100%",
+            maxWidth: "800px",
           }} // box for the chips
         >
           {Object.keys(pageData).map((page) => {

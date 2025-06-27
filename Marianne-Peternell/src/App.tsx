@@ -39,6 +39,8 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
       <Container
         component="main"
         sx={{
+          width: "100%",
+          maxWidth: "800px",
           display: "flex",
           justifyContent: "center", // centers MainContent horizontally
           position: "relative", // needed for absolute positioning inside
