@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "predeploy": "echo www.marianne-peternell.com > dist/CNAME && copy dist\\index.html dist\\404.html && echo. > dist\\.nojekyll",
-    "deploy": "gh-pages -d dist",
+    "predeploy": "echo www.marianne-peternell.com > docs/CNAME && copy docs\\index.html docs\\404.html && echo. > docs\\.nojekyll",
+    "deploy": "gh-pages -d docs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
