@@ -6,11 +6,11 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig(({ command }) => {
   const config = {
     plugins: [react(), tailwindcss()],
-    base: "/", //  "/Marianne-Peternell/",
+    base: "/",
   };
 
   if (command !== "serve") {
-    config.base = "/react-vite-gh-pages/";
+    config.base = "/Marianne-Peternell/";
   }
 
   return config;
