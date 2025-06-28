@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import AppTheme from "../shared-theme/AppTheme";
@@ -36,7 +36,7 @@ const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   return (
     <BrowserRouter
-      basename={import.meta.env.DEV ? "/" : "/react-vite-gh-pages/"}
+      basename={import.meta.env.DEV ? "/" : "/Marianne-Peternell/"}
     >
       <Routes>
         <Route
