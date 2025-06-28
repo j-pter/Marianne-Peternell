@@ -28,7 +28,6 @@ const SyledCard = styled(Card)(({ theme }) => ({
   flexDirection: "column",
   padding: 0,
   width: "100%",
-  marginBottom: 25,
   height: "auto",
   backgroundColor: (theme.vars || theme).palette.background.paper,
   "&:hover": {
@@ -46,7 +45,7 @@ const StyledCardContent = styled(CardContent)({
   wordWrap: "normal",
   flexDirection: "column",
   whiteSpace: "pre-wrap",
-  gap: 4,
+  width: "100%",
   padding: 16,
   "&:last-child": {
     paddingBottom: 16,
@@ -76,7 +75,7 @@ const StyledToolbar = styled(Box)(({ theme }) => ({
     ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
     : alpha(theme.palette.background.default, 0.4),
   boxShadow: (theme.vars || theme).shadows[1],
-  padding: "8px 12px",
+  padding: "4px 4px",
 }));
 
 export default function MainContent() {
@@ -126,7 +125,6 @@ Viel Vergnügen! `}
           </p>
           <CardMedia
             component="img"
-            alt=""
             image="public/matisse_sorrow-of-the-king.jpg"
             sx={{
               borderBottom: "1px solid",
@@ -230,7 +228,6 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
             >
               <CardMedia
                 component="img"
-                alt=""
                 image="public/malerei/Sträuche.jpg"
                 sx={{
                   // aspectRatio: "16 / 9",
@@ -261,7 +258,6 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
           </p>
           <CardMedia
             component="img"
-            alt=""
             image="public/matisse_spanisches stillleben.jpg"
             sx={{
               borderBottom: "1px solid",
@@ -432,7 +428,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Odysseus.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -452,13 +447,12 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Meerbogen.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
               borderColor: "divider",
-              marginBottom: 1,
+              marginBottom: { sx: 0.0, sm: 1, md: 1 },
             }}
           />
           <i>Meerestor (01.2021)</i>
@@ -472,7 +466,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Meer.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -492,7 +485,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Boot.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -512,7 +504,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Sträuche.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -532,7 +523,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Vogel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -552,7 +542,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Granatapfel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -572,7 +561,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Seestadt-Strand.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -592,7 +580,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Hund.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -612,7 +599,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Eule.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -632,7 +618,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Punkte.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -652,7 +637,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Spatz.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -672,7 +656,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Loggia.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -692,7 +675,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Baum.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -712,7 +694,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Schwäne.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -732,7 +713,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Rose.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -752,7 +732,6 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            alt=""
             image="public/malerei/Kollektion.jpg"
             sx={{
               // aspectRatio: "16 / 9",
@@ -1020,7 +999,10 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
       title: "Lebenslauf",
       description: [
         <>
-          <List dense={true} sx={{ paddingLeft: 0.5 }}>
+          <List
+            dense={true}
+            sx={{ paddingLeft: { xs: 0.0, md: 0.5, sm: 0.5 } }}
+          >
             <ListItem disablePadding>
               <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
                 <CircleIcon sx={{ height: 12 }} />
@@ -1284,7 +1266,6 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
 
   const handlePageSelection = (page: PageKey, subPage?: string) => {
     setSelectedPage(page);
-    console.log(subPage);
     if (subPage) {
       setSelectedSubPage(subPage);
       setAnchorElements((prev) => ({
@@ -1298,181 +1279,209 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 4,
-        maxWidth: "800px",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "start",
-        justifyItems: "start",
-      }} // wraps entire page: Welcome & Wrapper
-    >
-      <div>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 2,
-            alignItems: "center",
-            justifyContent: "start",
-            justifyItems: "start",
-            width: "100%",
-          }}
-        >
-          <Avatar
-            src="/marianne_peternell_2.png"
-            sx={{
-              width: 120,
-              height: 120,
-              overflow: "hidden",
-              "& img": {
-                transform: "scale(1.3)", // zoom into image
-                transformOrigin: "25% 30%", // control position of zoom
-              },
-              marginRight: 4,
-            }}
-          />
-          <div>
-            <Typography variant="h2" gutterBottom>
-              Willkommen bei
-            </Typography>
-            <Typography variant="h4">Marianne Marlene Peternell</Typography>
-          </div>
-        </Box>
-      </div>
+    <>
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column" },
-          width: "100%",
+          flexDirection: "column",
+          gap: { xs: 2, sm: 3, md: 3 },
           maxWidth: "800px",
-          position: "sticky",
-          top: 15,
-          zIndex: 10, // ensure it stays above scrolling content
-        }} // wraps chips + cards
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "start",
+          justifyItems: "start",
+        }} // wraps entire page: Welcome & Wrapper
       >
-        <StyledToolbar
+        <div>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: { xs: 0, sm: 2, md: 2 },
+              alignItems: "center",
+              justifyContent: "start",
+              justifyItems: "start",
+              width: "100%",
+            }}
+          >
+            <Avatar
+              src="/marianne_peternell_2.png"
+              sx={{
+                width: { xs: 80, sm: 110, md: 120 },
+                height: { xs: 80, sm: 110, md: 120 },
+                overflow: "hidden",
+                "& img": {
+                  transform: "scale(1.3)", // zoom into image
+                  transformOrigin: "25% 30%", // control position of zoom
+                },
+                marginRight: { xs: 1, sm: 2, md: 4 },
+              }}
+            />
+            <div>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xs: "1.19rem",
+                    sm: "1.8rem",
+                    md: "2.2rem",
+                  },
+                }}
+                variant="h2"
+                gutterBottom
+              >
+                Willkommen bei
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xs: "0.9rem",
+                    sm: "1.4rem",
+                    md: "1.7rem",
+                  },
+                }}
+                variant="h4"
+              >
+                Marianne Marlene Peternell
+              </Typography>
+            </div>
+          </Box>
+        </div>
+        <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "space-around",
-            alignItems: "flex-start",
+            flexDirection: "column",
             width: "100%",
             maxWidth: "800px",
-          }} // box for the chips
+            position: "sticky",
+            top: 15,
+            zIndex: 10, // ensure it stays above scrolling content
+          }} // wraps chips + cards
         >
-          {Object.keys(pageData).map((page) => {
-            if (!pageData[page].subPages) {
-              return (
-                <Chip
-                  key={page}
-                  onClick={() => handleChipClick(page)}
-                  size="medium"
-                  label={page}
-                  sx={{
-                    backgroundColor: "transparent",
-                    border: "none",
-                  }}
-                />
-              );
-            } else {
-              return (
-                <React.Fragment key={page}>
+          <StyledToolbar
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "space-around",
+              alignItems: "flex-start",
+              width: "100%",
+              maxWidth: "800px",
+            }} // box for the chips
+          >
+            {Object.keys(pageData).map((page) => {
+              if (!pageData[page].subPages) {
+                return (
                   <Chip
                     key={page}
-                    onClick={(e) => {
-                      handleDropDownChipClick(e, page);
-                    }}
+                    onClick={() => handleChipClick(page)}
                     size="medium"
                     label={page}
                     sx={{
                       backgroundColor: "transparent",
                       border: "none",
-                      cursor: "pointer",
                     }}
                   />
-                  <Menu
-                    disableRestoreFocus
-                    key={"menu_" + page}
-                    anchorEl={anchorElements[page]}
-                    id={page}
-                    open={Boolean(anchorElements[page])}
-                    onClose={() => handleClose(page)}
-                    slotProps={{
-                      paper: {
-                        variant: "outlined",
-                        elevation: 1,
-                        sx: {
-                          my: "4px",
-                          pointerEvents: "auto",
+                );
+              } else {
+                return (
+                  <React.Fragment key={page}>
+                    <Chip
+                      key={page}
+                      onClick={(e) => {
+                        handleDropDownChipClick(e, page);
+                      }}
+                      size="medium"
+                      label={page}
+                      sx={{
+                        backgroundColor: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    />
+                    <Menu
+                      disableRestoreFocus
+                      key={"menu_" + page}
+                      anchorEl={anchorElements[page]}
+                      id={page}
+                      open={Boolean(anchorElements[page])}
+                      onClose={() => handleClose(page)}
+                      slotProps={{
+                        paper: {
+                          variant: "outlined",
+                          elevation: 1,
+                          sx: {
+                            my: "4px",
+                            pointerEvents: "auto",
+                          },
                         },
-                      },
-                    }}
-                    transformOrigin={{ horizontal: "right", vertical: "top" }}
-                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                  >
-                    {Object.keys(pageData[page].subPages).map((subPage) => (
-                      <MenuItem
-                        key={subPage}
-                        selected={subPage === selectedSubPage}
-                        onClick={() => handlePageSelection(page, subPage)}
-                      >
-                        {subPage}
-                      </MenuItem>
-                    ))}
-                  </Menu>
-                </React.Fragment>
-              );
-            }
-          })}
-        </StyledToolbar>
-      </Box>
-      <Grid container spacing={2} sx={{ flexGrow: 1, overflow: "auto" }}>
-        <Grid component="article" size={{ xs: 12 }}>
-          {pageData[selectedPage].description.map((cardDescription) => (
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(0)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 0 ? "Mui-focused" : ""}
-            >
-              <StyledCardContent>
-                {selectedSubPage ? (
-                  <>
-                    {
-                      <Typography gutterBottom variant="h6" component="div">
-                        {selectedSubPage}
+                      }}
+                      transformOrigin={{ horizontal: "right", vertical: "top" }}
+                      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                    >
+                      {Object.keys(pageData[page].subPages).map((subPage) => (
+                        <MenuItem
+                          key={subPage}
+                          selected={subPage === selectedSubPage}
+                          onClick={() => handlePageSelection(page, subPage)}
+                        >
+                          {subPage}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </React.Fragment>
+                );
+              }
+            })}
+          </StyledToolbar>
+        </Box>
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, overflow: "auto", width: "100%" }}
+        >
+          <Grid component="article" size={{ xs: 12 }}>
+            {pageData[selectedPage].description.map((cardDescription) => (
+              <SyledCard
+                sx={{ marginBottom: { xs: 2, md: 4, sm: 3 } }}
+                variant="outlined"
+                onFocus={() => handleFocus(0)}
+                onBlur={handleBlur}
+                tabIndex={0}
+                className={focusedCardIndex === 0 ? "Mui-focused" : ""}
+              >
+                <StyledCardContent>
+                  {selectedSubPage ? (
+                    <>
+                      {
+                        <Typography gutterBottom variant="h6" component="div">
+                          {selectedSubPage}
+                        </Typography>
+                      }
+                      <Typography gutterBottom variant="body2" component="div">
+                        {pageData[selectedPage].subPages?.[selectedSubPage] ?? (
+                          <em>Unterseite nicht gefunden.</em>
+                        )}
                       </Typography>
-                    }
-                    <Typography gutterBottom variant="body2" component="div">
-                      {pageData[selectedPage].subPages?.[selectedSubPage] ?? (
-                        <em>Unterseite nicht gefunden.</em>
+                    </>
+                  ) : (
+                    <>
+                      {pageData[selectedPage].title && (
+                        <Typography gutterBottom variant="h6" component="div">
+                          {pageData[selectedPage].title}
+                        </Typography>
                       )}
-                    </Typography>
-                  </>
-                ) : (
-                  <>
-                    {pageData[selectedPage].title && (
-                      <Typography gutterBottom variant="h6" component="div">
-                        {pageData[selectedPage].title}
+                      <Typography gutterBottom variant="body2" component="div">
+                        {cardDescription}
                       </Typography>
-                    )}
-                    <Typography gutterBottom variant="body2" component="div">
-                      {cardDescription}
-                    </Typography>
-                  </>
-                )}
-              </StyledCardContent>
-            </SyledCard>
-          ))}
+                    </>
+                  )}
+                </StyledCardContent>
+              </SyledCard>
+            ))}
+          </Grid>
         </Grid>
-      </Grid>
-      <Divider />
-    </Box>
+        <Divider />
+      </Box>
+    </>
   );
 }

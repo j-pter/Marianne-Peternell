@@ -8,6 +8,19 @@
   display: block;
 }
 
+/* For small screens (mobile) */
+@media (max-width: 600px) {
+  #root {
+    padding: 0.65rem;
+  }
+}
+/* For medium screens */
+@media (min-width: 601px) and (max-width: 900px) {
+  #root {
+    padding: 1.5rem;
+  }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
   position: "fixed",
   bottom: 30,
-  right: 30,
+  right: 5,
   zIndex: 1000,
   height: 40,
   width: 40,
@@ -50,8 +50,8 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
         <ColorModeIconDropdown
           sx={{
             position: "absolute",
-            top: 30,
-            right: -80,
+            top: { xs: 20, sm: 35, md: 40 },
+            right: { xs: -15, sm: 0, md: 0 },
           }}
         />
       </Container>
