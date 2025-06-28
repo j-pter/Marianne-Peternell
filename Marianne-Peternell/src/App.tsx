@@ -2,7 +2,7 @@ import "./App.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import AppTheme from "../shared-theme/AppTheme";
-import MainContent from "../public/MainContent.tsx";
+import MainContent from "./components/MainContent.tsx";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown.tsx";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { styled, alpha } from "@mui/material/styles";
@@ -10,8 +10,8 @@ import IconButton from "@mui/material/IconButton";
 
 const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
   position: "fixed",
-  bottom: 30,
-  right: 5,
+  bottom: 20,
+  right: 15,
   zIndex: 1000,
   height: 40,
   width: 40,
@@ -55,12 +55,12 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
           }}
         />
       </Container>
-      <ScrollToTopButton>
-        <ArrowUpwardIcon
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-        />
+      <ScrollToTopButton
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        <ArrowUpwardIcon />
       </ScrollToTopButton>
     </AppTheme>
   );
