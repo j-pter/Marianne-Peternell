@@ -1,4 +1,5 @@
 import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import AppTheme from "../shared-theme/AppTheme";
@@ -34,34 +35,45 @@ const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
 
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   return (
-    <AppTheme {...props}>
-      <CssBaseline enableColorScheme />
-      <Container
-        component="main"
-        sx={{
-          width: "100%",
-          maxWidth: "800px",
-          display: "flex",
-          justifyContent: "center", // centers MainContent horizontally
-          position: "relative", // needed for absolute positioning inside
-        }}
-      >
-        <MainContent />
-        <ColorModeIconDropdown
-          sx={{
-            position: "absolute",
-            top: { xs: 20, sm: 35, md: 40 },
-            right: { xs: -15, sm: 0, md: 0 },
-          }}
+    <BrowserRouter
+      basename={import.meta.env.DEV ? "/" : "/react-vite-gh-pages/"}
+    >
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <AppTheme {...props}>
+              <CssBaseline enableColorScheme />
+              <Container
+                component="main"
+                sx={{
+                  width: "100%",
+                  maxWidth: "800px",
+                  display: "flex",
+                  justifyContent: "center", // centers MainContent horizontally
+                  position: "relative", // needed for absolute positioning inside
+                }}
+              >
+                <MainContent />
+                <ColorModeIconDropdown
+                  sx={{
+                    position: "absolute",
+                    top: { xs: 20, sm: 35, md: 40 },
+                    right: { xs: -15, sm: 0, md: 0 },
+                  }}
+                />
+              </Container>
+              <ScrollToTopButton
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                <ArrowUpwardIcon />
+              </ScrollToTopButton>
+            </AppTheme>
+          }
         />
-      </Container>
-      <ScrollToTopButton
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <ArrowUpwardIcon />
-      </ScrollToTopButton>
-    </AppTheme>
+      </Routes>
+    </BrowserRouter>
   );
 }
