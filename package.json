@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "www.marianne-peternell.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build && echo www.marianne-peternell.com > docs/CNAME && copy docs\\index.html docs\\404.html && echo. > docs\\.nojekyll",

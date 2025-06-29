@@ -3,18 +3,18 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(({}) => {
   const config = {
     plugins: [react(), tailwindcss()],
-    base: "/",
+    base: "./",
     build: {
       outDir: "docs",
     },
   };
 
-  if (command !== "serve") {
-    config.base = "/Marianne-Peternell/";
-  }
+  // if (command !== "serve") {
+  //   config.base = "/Marianne-Peternell/";
+  // }
 
   return config;
 });
