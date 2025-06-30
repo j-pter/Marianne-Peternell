@@ -125,7 +125,7 @@ Viel Vergnügen! `}
           </p>
           <CardMedia
             component="img"
-            image="/matisse_sorrow-of-the-king.jpg"
+            src="/assets/matisse_sorrow-of-the-king.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -235,7 +235,7 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
           </p>
           <CardMedia
             component="img"
-            image="matisse_spanisches stillleben.jpg"
+            src="/assets/matisse_spanisches stillleben.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -405,7 +405,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image={`${import.meta.env.BASE_URL}assets/Malerei/Odysseus.jpg`}
+            src={`/assets/Malerei/Odysseus.jpg`}
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -424,7 +424,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Meerbogen.jpg"
+            src="/assets/Malerei/Meerbogen.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -443,7 +443,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Meer.jpg"
+            src="/assets/Malerei/Meer.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -462,7 +462,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Boot.jpg"
+            src="/assets/Malerei/Boot.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -481,7 +481,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Sträuche.jpg"
+            src="/assets/Malerei/Sträuche.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -500,7 +500,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Vogel.jpg"
+            src="/assets/Malerei/Vogel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -519,7 +519,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Granatapfel.jpg"
+            src="/assets/Malerei/Granatapfel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -538,7 +538,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Seestadt-Strand.jpg"
+            src="/assets/Malerei/Seestadt-Strand.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -557,7 +557,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Hund.jpg"
+            src="/assets/Malerei/Hund.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -576,7 +576,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Eule.jpg"
+            src="/assets/Malerei/Eule.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -595,7 +595,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Punkte.jpg"
+            src="/assets/Malerei/Punkte.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -614,7 +614,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Spatz.jpg"
+            src="/assets/Malerei/Spatz.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -633,7 +633,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Loggia.jpg"
+            src="/assets/Malerei/Loggia.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -652,7 +652,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Baum.jpg"
+            src="/assets/Malerei/Baum.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -671,7 +671,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Schwäne.jpg"
+            src="/assets/Malerei/Schwäne.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -690,7 +690,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Rose.jpg"
+            src="/assets/Malerei/Rose.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -709,7 +709,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="${import.meta.env.BASE_URL}assets/Malerei/Kollektion.jpg"
+            src="/assets/Malerei/Kollektion.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -741,7 +741,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/enten.jpg"
+            src="/assets/Fotografie/enten.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -760,7 +760,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/reiher.jpg"
+            src="/assets/Fotografie/reiher.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -779,7 +779,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/see.jpg"
+            src="/assets/Fotografie/see.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -797,7 +797,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/frau am see.jpg"
+            src="/assets/Fotografie/frau am see.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -815,7 +815,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/sonnenaufgang.jpg"
+            src="/assets/Fotografie/sonnenaufgang.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -833,7 +833,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/wohnung bilder.jpg"
+            src="/assets/Fotografie/wohnung bilder.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -851,7 +851,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/wohnung bilder 2.jpg"
+            src="/assets/Fotografie/wohnung bilder 2.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -1415,7 +1415,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             }}
           >
             <Avatar
-              src="/marianne_peternell_2.png"
+              src="/assets/marianne_peternell_2.png"
               sx={{
                 width: { xs: 80, sm: 110, md: 120 },
                 height: { xs: 80, sm: 110, md: 120 },
