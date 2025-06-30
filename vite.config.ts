@@ -11,10 +11,5 @@ export default defineConfig(({}) => {
       outDir: "docs",
     },
   };
-
-  // if (command !== "serve") {
-  //   config.base = "/Marianne-Peternell/";
-  // }
-
   return config;
 });

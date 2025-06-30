@@ -48,6 +48,8 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
                   width: "100%",
                   maxWidth: "800px",
                   display: "flex",
+                  flexShrink: 0,
+                  flexGrow: 0,
                   justifyContent: "center", // centers MainContent horizontally
                   position: "relative", // needed for absolute positioning inside
                 }}
