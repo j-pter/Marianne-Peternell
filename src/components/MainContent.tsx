@@ -405,7 +405,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Odysseus.jpg"
+            image="../Malerei/Odysseus.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -424,7 +424,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Meerbogen.jpg"
+            image="../Malerei/Meerbogen.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -443,7 +443,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Meer.jpg"
+            image="../Malerei/Meer.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -462,7 +462,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Boot.jpg"
+            image="../Malerei/Boot.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -481,7 +481,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Sträuche.jpg"
+            image="../Malerei/Sträuche.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -500,7 +500,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Vogel.jpg"
+            image="../Malerei/Vogel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -519,7 +519,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Granatapfel.jpg"
+            image="../Malerei/Granatapfel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -538,7 +538,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Seestadt-Strand.jpg"
+            image="../Malerei/Seestadt-Strand.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -557,7 +557,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Hund.jpg"
+            image="../Malerei/Hund.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -576,7 +576,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Eule.jpg"
+            image="../Malerei/Eule.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -595,7 +595,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Punkte.jpg"
+            image="../Malerei/Punkte.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -614,7 +614,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Spatz.jpg"
+            image="../Malerei/Spatz.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -633,7 +633,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Loggia.jpg"
+            image="../Malerei/Loggia.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -652,7 +652,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Baum.jpg"
+            image="../Malerei/Baum.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -671,7 +671,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Schwäne.jpg"
+            image="../Malerei/Schwäne.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -690,7 +690,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Rose.jpg"
+            image="../Malerei/Rose.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -709,7 +709,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Malerei/Kollektion.jpg"
+            image="../Malerei/Kollektion.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -741,7 +741,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/enten.jpg"
+            image="../Fotografie/enten.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -760,7 +760,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/reiher.jpg"
+            image="../Fotografie/reiher.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -779,7 +779,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/see.jpg"
+            image="../Fotografie/see.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -797,7 +797,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/frau am see.jpg"
+            image="../Fotografie/frau am see.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -815,7 +815,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/sonnenaufgang.jpg"
+            image="../Fotografie/sonnenaufgang.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -833,7 +833,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/wohnung bilder.jpg"
+            image="../Fotografie/wohnung bilder.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -851,7 +851,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            image="/Fotografie/wohnung bilder 2.jpg"
+            image="../Fotografie/wohnung bilder 2.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
