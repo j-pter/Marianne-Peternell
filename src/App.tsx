@@ -35,7 +35,7 @@ const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
 
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   return (
-    <BrowserRouter basename={import.meta.env.DEV ? "/" : ""}>
+    <BrowserRouter>
       <Routes>
         <Route
           path="/"
