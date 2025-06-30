@@ -198,8 +198,7 @@ Auf den Wiesen der Mohn
 Augengemurmel
 Streifengelächel
 Spitzen.
-Immer nett  spitz 
-
+Immer nett spitz 
 unter den Trauben.`}</div>
         ),
         HERBST: (
@@ -1398,8 +1397,9 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           maxWidth: "800px",
           width: "100%",
           alignItems: "center",
-          justifyContent: "start",
           justifyItems: "start",
+          justifyContent: "flex-start",
+          flexShrink: 0, // prevent shrinking
         }} // wraps entire page: Welcome & Wrapper
       >
         <div>
