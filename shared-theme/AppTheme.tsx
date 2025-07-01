@@ -18,6 +18,7 @@ interface AppThemeProps {
 
 export default function AppTheme(props: AppThemeProps) {
   const { children, disableCustomTheme, themeComponents } = props;
+  const baseTheme = createTheme(); // Step 1: create base theme
   const theme = React.useMemo(() => {
     return disableCustomTheme
       ? {}
@@ -32,10 +33,32 @@ export default function AppTheme(props: AppThemeProps) {
           shadows,
           shape,
           components: {
-            // ...feedbackCustomizations,
-            // ...navigationCustomizations,
             ...surfacesCustomizations,
-            // ...themeComponents,
+            MuiListItemIcon: {
+              styleOverrides: {
+                root: {
+                  minWidth: 40,
+                },
+              },
+            },
+            MuiSvgIcon: {
+              styleOverrides: {
+                root: {
+                  "&.custom-circle-icon": {
+                    height: 12,
+                    width: 12,
+                  },
+                },
+              },
+            },
+            MuiCardMedia: {
+              styleOverrides: {
+                root: {
+                  borderBottom: `1px solid ${baseTheme.palette.divider}`,
+                  marginBottom: baseTheme.spacing(1),
+                },
+              },
+            },
           },
         });
   }, [disableCustomTheme, themeComponents]);

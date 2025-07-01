@@ -20,8 +20,6 @@ import {
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
 
-const bulletPointWidth = 40;
-
 const SyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
   minHeight: 150,
@@ -131,11 +129,6 @@ Viel Vergnügen! `}
           <CardMedia
             component="img"
             src="/assets/matisse_sorrow-of-the-king.jpg"
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
           />
           <i style={{ textAlign: "center" }}>
             Henri Matisse - Die Traurigkeit des Königs (1952)
@@ -241,11 +234,6 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
           <CardMedia
             component="img"
             src="/assets/matisse_spanisches stillleben.jpg"
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
           />
           <i>Henri Matisse - Spanisches Stillleben (1911)</i>
         </Container>,
@@ -408,16 +396,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src={`/assets/Odysseus.jpg`}
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src={`/assets/Malerei/Odysseus.JPG`} />
           <i>Odysseus (01.2021)</i>
         </Container>,
         <Container
@@ -427,16 +406,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Meerbogen.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: { sx: 0.0, sm: 1, md: 1 },
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Meerbogen.JPG" />
           <i>Meerestor (01.2021)</i>
         </Container>,
         <Container
@@ -446,16 +416,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Meer.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Meer.JPG" />
           <i>Ohne Titel (12.2020)</i>
         </Container>,
         <Container
@@ -465,16 +426,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Boot.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Boot.JPG" />
           <i>Ohne Titel (05.2023)</i>
         </Container>,
         <Container
@@ -484,16 +436,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Sträuche.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Sträuche.JPG" />
           <i>Herbst (12.2020)</i>
         </Container>,
         <Container
@@ -503,16 +446,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Vogel.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Vogel.JPG" />
           <i>Blauracke (01.2021)</i>
         </Container>,
         <Container
@@ -522,16 +456,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Granatapfel.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Granatapfel.JPG" />
           <i>Der Granatapfel (12.2020)</i>
         </Container>,
         <Container
@@ -543,13 +468,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Seestadt-Strand.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
+            src="/assets/Malerei/Seestadt-Strand.JPG"
           />
           <i>Am See (02.2022)</i>
         </Container>,
@@ -560,16 +479,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Hund.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Hund.JPG" />
           <i>Schwarzer Hund (12.2020)</i>
         </Container>,
         <Container
@@ -579,16 +489,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Eule.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Eule.JPG" />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -598,16 +499,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Punkte.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Punkte.JPG" />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -617,16 +509,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Spatz.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Spatz.JPG" />
           <i>Ohne Titel (10.2020)</i>
         </Container>,
         <Container
@@ -636,16 +519,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Loggia.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Loggia.JPG" />
           <i>Morgenausblick</i>
         </Container>,
         <Container
@@ -655,16 +529,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Baum.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Baum.JPG" />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -674,16 +539,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Schwäne.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Schwäne.JPG" />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -693,16 +549,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Rose.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Rose.JPG" />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -712,16 +559,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/Kollektion.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Malerei/Kollektion.JPG" />
           <i>Kollektion ausgewählter Bilder</i>
         </Container>,
       ],
@@ -746,13 +584,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src={import.meta.env.BASE_URL + "assets/enten.jpg"}
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
+            src={import.meta.env.BASE_URL + "assets/Fotografie/enten.JPG"}
           />
           <i>31.03.2019</i>
         </Container>,
@@ -763,16 +595,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/reiher.jpg"
-            sx={{
-              // aspectRatio: "16 / 9",
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Fotografie/reiher.JPG" />
           <i>01.04.2019</i>
         </Container>,
         <Container
@@ -782,15 +605,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/see.jpg"
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Fotografie/see.JPG" />
           <i>16.05.2021</i>
         </Container>,
         <Container
@@ -800,15 +615,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src="/assets/frau am see.jpg"
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
-          />
+          <CardMedia component="img" src="/assets/Fotografie/frau am see.JPG" />
           <i>13.06.2020</i>
         </Container>,
         <Container
@@ -820,12 +627,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/sonnenaufgang.jpg"
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
+            src="/assets/Fotografie/sonnenaufgang.JPG"
           />
           <i>03.05.2017</i>
         </Container>,
@@ -838,12 +640,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/wohnung bilder.jpg"
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
+            src="/assets/Fotografie/wohnung bilder.JPG"
           />
           <i>13.07.2021</i>
         </Container>,
@@ -856,12 +653,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/wohnung bilder 2.jpg"
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              marginBottom: 1,
-            }}
+            src="/assets/Fotografie/wohnung bilder 2.JPG"
           />
           <i>02.06.2023</i>
         </Container>,
@@ -878,40 +670,40 @@ Integration verschiedener Bildungsbereiche:
 `}</div>
           <List dense={true} sx={{ width: "100%", paddingLeft: 0.75 }}>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Literarhistorische Bildung (Arthur Schnitzler ‚Leutnant Gustl’ kennen lernen; Folgewirkungen für Schnitzler; Migrantenliteratur in Ansätzen kennen lernen)`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Kreative Kompetenz: einen inneren Monolog selbst verfassen können`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Literarische Kompetenz: die Leistung des inneren Monologs erfassen; die Leistung von Migrantenliteratur für den interkulturellen Dialog erfassen`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Politische Bildung (Gastarbeiter und ‚Fremde’ in der Wahrnehmung von Deutschen und Österreichern mit Hilfe des inneren Monologs realistisch gespiegelt durch einen arabischen Schriftsteller)`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Persönlichkeitsbildung (Empathie: mit den Augen des Anderen sehen; der Umgang mit Anderen; Konfliktbewältigung; den Unterschied von Empathie und Identifikation erfassen)`}
@@ -1118,148 +910,148 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             sx={{ paddingLeft: { xs: 0.0, md: 0.5, sm: 0.5 } }}
           >
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`01.06.1956 geboren in Wieting/ Kärnten als Tochter einer Schneiderin und eines Schmieds`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`1962-66 Volksschule in Steiermark und Kärnten`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`1966-74 Neusprachliches Gymnasium in Villach`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText primary={`Juni 1974 Matura in Villach`} />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Werkstudentin: Studium von Deutsch, Geschichte und Philosophie`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Jobs als Kellnerin, Tankwartin, Interviewerin, Deutsch als Fremdsprache Lehrerin, Gruppentrainerin, Pädagogin, Erzieherin, Zeitungsverkäuferin, Malermodell usw.`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`1980-1982 im Tagesschulheim des BG 15, Dieffenbachgasse als Erzieherin tätig`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Mai 1985 Studienabschluss von Deutsch und Geschichte Lehramt`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`1985/86 Probejahr am Akademischen Gymnasium Wien; Erzieherin im Tagesschulheim des BG 10, Ettenreichgasse`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`1986-87 Deutsch als Zweitprache-Unterricht am BFI Wien`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`1987-1990 Mitarbeiterin des Wiener Schulservice, Abteilung Schulberatungsstelle für Ausländer`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Ab 1987 Lehrerin an der HTL-Donaustadt`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText primary={`06.04.1992 Geburt der Tochter Fanny`} />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText primary={`1992-1997 Karenz in Kärnten/Villach`} />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText primary={`Seminare zur Montessori-Pädagogik`} />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText primary={`Seminare bei Mauricio und Rebeca Wild`} />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Herbst 1995 Gründung der Montessori-Wild-Kindergruppe „Ich-DuWir“ in Sattendorf/Villach-Landskron`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText primary={`28.01.1996 Geburt des Sohnes Julian`} />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`seit Herbst 1998 als alleinerziehende Lehrerin in Wien, HTL Donaustadt`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`seit 1972 Beschäftigung mit Literatur und Schriftstellerei; 
@@ -1267,54 +1059,54 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Sommer 2005 Leitung eines Workshops „Kreatives Schreiben“ in der Sommerakademie Zakynthos (Vertretung des Schriftstellers Franzobel)`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`01.11.2005 zu Gast in der Sendung „Queer durch“ im Radio Agora/Klagenfurt zum Thema „Frauen und ihr Erbe“`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`2009 Veröffentlichung eines Textes in der Kultur- und Literaturzeitschrift "Sterz" (Streit/Kultur; Nr.101)`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText primary={`01.09.2016 Alterspension`} />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`Am 25.5.2018 Lesung in der Buchhandlung "Seeseiten" in der Seestadt Aspern beim 3. Geburtstagsfest der Buchhandlung gemeinsam mit anderen AutorInnen.`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`nach einigen frühen Versuchen in der Malerei im Jahr 1987, neuerliche Versuche mit der Malerei ab Oktober 2020`}
               />
             </ListItem>
             <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: bulletPointWidth }}>
-                <CircleIcon sx={{ height: 12 }} />
+              <ListItemIcon>
+                <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
                 primary={`März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
@@ -1506,7 +1298,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                 );
               } else {
                 return (
-                  <React.Fragment key={page}>
+                  <React.Fragment key={"fragment_" + page}>
                     <Chip
                       key={page}
                       onClick={(e) => {
@@ -1563,8 +1355,9 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           sx={{ flexGrow: 1, overflow: "auto", width: "100%" }}
         >
           <Grid component="article" size={12}>
-            {pageData[selectedPage].description.map((cardDescription) => (
+            {pageData[selectedPage].description.map((cardDescription, idx) => (
               <SyledCard
+                key={"card_" + idx}
                 sx={{ marginBottom: { xs: 2, sm: 3, md: 4 } }}
                 variant="outlined"
                 onFocus={() => handleFocus(0)}
@@ -1572,15 +1365,25 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                 tabIndex={0}
                 className={focusedCardIndex === 0 ? "Mui-focused" : ""}
               >
-                <StyledCardContent>
+                <StyledCardContent key={"content_" + idx}>
                   {selectedSubPage ? (
                     <>
                       {
-                        <Typography gutterBottom variant="h6" component="div">
+                        <Typography
+                          key={"h6_" + idx}
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                        >
                           {selectedSubPage}
                         </Typography>
                       }
-                      <Typography gutterBottom variant="body2" component="div">
+                      <Typography
+                        key={"body2_" + idx}
+                        gutterBottom
+                        variant="body2"
+                        component="div"
+                      >
                         {pageData[selectedPage].subPages?.[selectedSubPage] ?? (
                           <em>Unterseite nicht gefunden.</em>
                         )}
@@ -1589,11 +1392,17 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                   ) : (
                     <>
                       {pageData[selectedPage].title && (
-                        <Typography gutterBottom variant="h6" component="div">
+                        <Typography
+                          key={"h6_" + idx}
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                        >
                           {pageData[selectedPage].title}
                         </Typography>
                       )}
                       <Typography
+                        key={"body2_" + idx}
                         sx={{ width: "100%" }}
                         gutterBottom
                         variant="body2"
