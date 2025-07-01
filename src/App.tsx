@@ -4,7 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import AppTheme from "../shared-theme/AppTheme";
 import MainContent from "./components/MainContent.tsx";
-import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown.tsx";
+// import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown.tsx";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { styled, alpha } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
@@ -55,13 +55,13 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
                 }}
               >
                 <MainContent />
-                <ColorModeIconDropdown
+                {/* <ColorModeIconDropdown
                   sx={{
                     position: "absolute",
                     top: { xs: 20, sm: 35, md: 40 },
                     right: { xs: -15, sm: 0, md: 0 },
                   }}
-                />
+                /> */}
               </Container>
               <ScrollToTopButton
                 onClick={() => {

@@ -29,6 +29,8 @@ const SyledCard = styled(Card)(({ theme }) => ({
   padding: 0,
   width: "100%",
   height: "auto",
+  flexShrink: 0,
+  flexGrow: 0,
   backgroundColor: (theme.vars || theme).palette.background.paper,
   "&:hover": {
     backgroundColor: "transparent",
@@ -45,6 +47,8 @@ const StyledCardContent = styled(CardContent)({
   wordWrap: "normal",
   flexDirection: "column",
   whiteSpace: "pre-wrap",
+  flexShrink: 0,
+  flexGrow: 0,
   width: "100%",
   padding: 16,
   "&:last-child": {
@@ -67,6 +71,7 @@ const StyledTypography = styled(Typography)({
 
 const StyledToolbar = styled(Box)(({ theme }) => ({
   flexShrink: 0,
+  flexGrow: 0,
   borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
   backdropFilter: "blur(24px)",
   // border: "1px solid",
@@ -405,7 +410,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src={`/assets/Malerei/Odysseus.jpg`}
+            src={`/assets/Odysseus.jpg`}
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -424,7 +429,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Meerbogen.jpg"
+            src="/assets/Meerbogen.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -443,7 +448,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Meer.jpg"
+            src="/assets/Meer.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -462,7 +467,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Boot.jpg"
+            src="/assets/Boot.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -481,7 +486,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Sträuche.jpg"
+            src="/assets/Sträuche.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -500,7 +505,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Vogel.jpg"
+            src="/assets/Vogel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -519,7 +524,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Granatapfel.jpg"
+            src="/assets/Granatapfel.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -538,7 +543,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Seestadt-Strand.jpg"
+            src="/assets/Seestadt-Strand.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -557,7 +562,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Hund.jpg"
+            src="/assets/Hund.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -576,7 +581,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Eule.jpg"
+            src="/assets/Eule.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -595,7 +600,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Punkte.jpg"
+            src="/assets/Punkte.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -614,7 +619,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Spatz.jpg"
+            src="/assets/Spatz.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -633,7 +638,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Loggia.jpg"
+            src="/assets/Loggia.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -652,7 +657,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Baum.jpg"
+            src="/assets/Baum.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -671,7 +676,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Schwäne.jpg"
+            src="/assets/Schwäne.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -690,7 +695,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Rose.jpg"
+            src="/assets/Rose.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -709,7 +714,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Malerei/Kollektion.jpg"
+            src="/assets/Kollektion.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -741,7 +746,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Fotografie/enten.jpg"
+            src={import.meta.env.BASE_URL + "assets/enten.jpg"}
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -760,7 +765,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Fotografie/reiher.jpg"
+            src="/assets/reiher.jpg"
             sx={{
               // aspectRatio: "16 / 9",
               borderBottom: "1px solid",
@@ -779,7 +784,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Fotografie/see.jpg"
+            src="/assets/see.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -797,7 +802,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Fotografie/frau am see.jpg"
+            src="/assets/frau am see.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -815,7 +820,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Fotografie/sonnenaufgang.jpg"
+            src="/assets/sonnenaufgang.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -833,7 +838,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Fotografie/wohnung bilder.jpg"
+            src="/assets/wohnung bilder.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -851,7 +856,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
         >
           <CardMedia
             component="img"
-            src="/assets/Fotografie/wohnung bilder 2.jpg"
+            src="/assets/wohnung bilder 2.jpg"
             sx={{
               borderBottom: "1px solid",
               borderColor: "divider",
@@ -1399,7 +1404,8 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           alignItems: "center",
           justifyItems: "start",
           justifyContent: "flex-start",
-          flexShrink: 0, // prevent shrinking
+          flexShrink: 0,
+          flexGrow: 0,
         }} // wraps entire page: Welcome & Wrapper
       >
         <div>
@@ -1412,6 +1418,8 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               justifyContent: "start",
               justifyItems: "start",
               width: "100%",
+              flexShrink: 0,
+              flexGrow: 0,
             }}
           >
             <Avatar
@@ -1459,6 +1467,8 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
         <Box
           sx={{
             display: "flex",
+            flexShrink: 0,
+            flexGrow: 0,
             flexDirection: "column",
             width: "100%",
             maxWidth: "800px",
@@ -1476,6 +1486,8 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               alignItems: "flex-start",
               width: "100%",
               maxWidth: "800px",
+              flexShrink: 0,
+              flexGrow: 0,
             }} // box for the chips
           >
             {Object.keys(pageData).map((page) => {
