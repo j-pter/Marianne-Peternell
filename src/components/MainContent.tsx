@@ -29,6 +29,9 @@ const SyledCard = styled(Card)(({ theme }) => ({
   height: "auto",
   flexShrink: 0,
   flexGrow: 0,
+  alignSelf: "stretch",
+  justifySelf: "stretch",
+  alignContent: "stretch",
   backgroundColor: (theme.vars || theme).palette.background.paper,
   "&:hover": {
     backgroundColor: "transparent",
@@ -55,6 +58,10 @@ const StyledCardContent = styled(CardContent)({
   textAlign: "left",
   overflowWrap: "break-word",
   wordBreak: "normal",
+  alignSelf: "stretch",
+  justifySelf: "stretch",
+  alignItems: "stretch",
+  alignContent: "stretch",
 });
 
 const StyledTypography = styled(Typography)({
@@ -94,14 +101,13 @@ export default function MainContent() {
   const pageData: PageData = {
     Start: {
       tag: "",
-      title: "Willkommen!",
+      title: "Willkommen",
       description: [
         <div>
-          <div>{`Diese Webseite dient dem Gedenken an Marianne Marlene Peternell, die am 10.01.2025 verstorben ist.
-Sie hat zu Lebzeiten bereits eine Webseite (damals marianne-peternell.online) betrieben und deren Inhalt wird hier weitergeführt.
+          <div>{`Diese Webseite dient dem Gedenken an Marianne Marlene Peternell, die leider viel zu früh am 10. Januar 2025 verstorben ist. Zu Lebzeiten hat sie bereits eine Webseite betrieben (damals mariannepeternell.online), deren Inhalte hier in ihrem Sinne weitergeführt werden.
 
 `}</div>
-          <b>Willkommens-Text von Marianne Peternell:</b>
+          <b>Begrüßungstext von Marianne Peternell</b>
           {`
 Ich habe auf diesen Seiten Texte und Bilder veröffentlicht, die im Laufe der letzten Jahre entstanden sind.
 
@@ -569,11 +575,10 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
       title: "",
       description: [
         <div>
-          In den letzten Jahren ihres Lebens hat Marianne Peternell gerne
-          fotografiert. Sie hat die entstandenen Fotos ursprünglich nicht auf
-          ihrer Webseite veröffentlicht. Eine Auswahl ihrer schönsten Aufnahmen,
-          die häufig in der Seestadt Aspern in Wien entstanden sind, werden hier
-          präsentiert.
+          In den letzten Jahren hat Marianne Peternell gerne fotografiert. Sie
+          hat die entstandenen Fotos ursprünglich nicht auf ihrer Webseite
+          veröffentlicht. Eine Auswahl ihrer schönsten Aufnahmen, die häufig in
+          der Seestadt Aspern in Wien entstanden sind, werden hier präsentiert.
         </div>,
         <Container
           sx={{
@@ -582,10 +587,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            src={import.meta.env.BASE_URL + "assets/Fotografie/enten.JPG"}
-          />
+          <CardMedia component="img" src={"/assets/Fotografie/enten.JPG"} />
           <i>31.03.2019</i>
         </Container>,
         <Container
@@ -1206,7 +1208,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               display: "flex",
               flexDirection: "row",
               gap: { xs: 0, sm: 2, md: 2 },
-              alignItems: "center",
+              alignItems: "stretch",
               justifyContent: "start",
               justifyItems: "start",
               width: "100%",
@@ -1261,6 +1263,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             display: "flex",
             flexShrink: 0,
             flexGrow: 0,
+            alignItems: "stretch",
             flexDirection: "column",
             width: "100%",
             maxWidth: "800px",
@@ -1352,9 +1355,22 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
         <Grid
           container
           spacing={2}
-          sx={{ flexGrow: 1, overflow: "auto", width: "100%" }}
+          sx={{
+            flexGrow: 0,
+            overflow: "auto",
+            width: "100%",
+            flexShrink: 0,
+            alignItems: "stretch",
+            alignContent: "stretch",
+            alignSelf: "stretch",
+            justifyItems: "stretch",
+          }}
         >
-          <Grid component="article" size={12}>
+          <Grid
+            component="article"
+            size={{ xs: 12, md: 12, sm: 12 }}
+            sx={{ alignItems: "stretch", alignContent: "stretch" }}
+          >
             {pageData[selectedPage].description.map((cardDescription, idx) => (
               <SyledCard
                 key={"card_" + idx}
@@ -1367,13 +1383,19 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               >
                 <StyledCardContent key={"content_" + idx}>
                   {selectedSubPage ? (
-                    <>
+                    <div style={{ width: "100%" }}>
                       {
                         <Typography
                           key={"h6_" + idx}
                           gutterBottom
                           variant="h6"
                           component="div"
+                          sx={{
+                            flexShrink: 0,
+                            justifySelf: "stretch",
+                            alignSelf: "stretch",
+                            width: "100%",
+                          }}
                         >
                           {selectedSubPage}
                         </Typography>
@@ -1383,12 +1405,18 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                         gutterBottom
                         variant="body2"
                         component="div"
+                        sx={{
+                          flexShrink: 0,
+                          justifySelf: "stretch",
+                          alignSelf: "stretch",
+                          width: "100%",
+                        }}
                       >
                         {pageData[selectedPage].subPages?.[selectedSubPage] ?? (
                           <em>Unterseite nicht gefunden.</em>
                         )}
                       </Typography>
-                    </>
+                    </div>
                   ) : (
                     <>
                       {pageData[selectedPage].title && (
@@ -1403,7 +1431,6 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                       )}
                       <Typography
                         key={"body2_" + idx}
-                        sx={{ width: "100%" }}
                         gutterBottom
                         variant="body2"
                         component="div"

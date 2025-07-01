@@ -52,6 +52,8 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
                   flexGrow: 0,
                   justifyContent: "center", // centers MainContent horizontally
                   position: "relative", // needed for absolute positioning inside
+                  alignContent: "stretch",
+                  alignItems: "stretch",
                 }}
               >
                 <MainContent />
