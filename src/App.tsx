@@ -49,11 +49,11 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
                   maxWidth: "800px",
                   display: "flex",
                   flexShrink: 0,
-                  flexGrow: 0,
+                  flexGrow: 1,
                   justifyContent: "center", // centers MainContent horizontally
                   position: "relative", // needed for absolute positioning inside
-                  alignContent: "stretch",
-                  alignItems: "stretch",
+                  // alignContent: "stretch",
+                  // alignItems: "stretch",
                 }}
               >
                 <MainContent />

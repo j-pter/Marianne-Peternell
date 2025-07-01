@@ -29,9 +29,10 @@ const SyledCard = styled(Card)(({ theme }) => ({
   height: "auto",
   flexShrink: 0,
   flexGrow: 0,
-  alignSelf: "stretch",
-  justifySelf: "stretch",
-  alignContent: "stretch",
+  // alignSelf: "stretch",
+  // alignItems: "stretch",
+  // justifySelf: "stretch",
+  // alignContent: "stretch",
   backgroundColor: (theme.vars || theme).palette.background.paper,
   "&:hover": {
     backgroundColor: "transparent",
@@ -58,10 +59,10 @@ const StyledCardContent = styled(CardContent)({
   textAlign: "left",
   overflowWrap: "break-word",
   wordBreak: "normal",
-  alignSelf: "stretch",
-  justifySelf: "stretch",
-  alignItems: "stretch",
-  alignContent: "stretch",
+  // alignSelf: "stretch",
+  // justifySelf: "stretch",
+  // alignItems: "stretch",
+  // alignContent: "stretch",
 });
 
 const StyledTypography = styled(Typography)({
@@ -1196,8 +1197,8 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           maxWidth: "800px",
           width: "100%",
           alignItems: "center",
-          justifyItems: "start",
-          justifyContent: "flex-start",
+          // justifyItems: "stretch",
+          // justifyContent: "stretch",
           flexShrink: 0,
           flexGrow: 0,
         }} // wraps entire page: Welcome & Wrapper
@@ -1208,7 +1209,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               display: "flex",
               flexDirection: "row",
               gap: { xs: 0, sm: 2, md: 2 },
-              alignItems: "stretch",
+              alignItems: "center",
               justifyContent: "start",
               justifyItems: "start",
               width: "100%",
@@ -1263,7 +1264,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             display: "flex",
             flexShrink: 0,
             flexGrow: 0,
-            alignItems: "stretch",
+            // alignItems: "stretch",
             flexDirection: "column",
             width: "100%",
             maxWidth: "800px",
@@ -1357,19 +1358,18 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           spacing={2}
           sx={{
             flexGrow: 0,
-            overflow: "auto",
             width: "100%",
             flexShrink: 0,
-            alignItems: "stretch",
-            alignContent: "stretch",
-            alignSelf: "stretch",
-            justifyItems: "stretch",
+            // alignItems: "stretch",
+            // alignContent: "stretch",
+            // alignSelf: "stretch",
+            // justifyItems: "stretch",
           }}
         >
           <Grid
             component="article"
             size={{ xs: 12, md: 12, sm: 12 }}
-            sx={{ alignItems: "stretch", alignContent: "stretch" }}
+            // sx={{ alignItems: "stretch", alignContent: "stretch" }}
           >
             {pageData[selectedPage].description.map((cardDescription, idx) => (
               <SyledCard
@@ -1392,8 +1392,9 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                           component="div"
                           sx={{
                             flexShrink: 0,
-                            justifySelf: "stretch",
-                            alignSelf: "stretch",
+                            flexGrow: 0,
+                            // justifySelf: "stretch",
+                            // alignSelf: "stretch",
                             width: "100%",
                           }}
                         >
@@ -1407,9 +1408,17 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                         component="div"
                         sx={{
                           flexShrink: 0,
-                          justifySelf: "stretch",
-                          alignSelf: "stretch",
+                          flexGrow: 0,
+                          // justifySelf: "stretch",
+                          // alignSelf: "stretch",
                           width: "100%",
+                          ...(selectedPage === "Gedichte" && {
+                            overflowX: "auto",
+                            whiteSpace: "pre-line", // prevent line breaks
+                            wordBreak: "normal", // don't break words
+                            overflowWrap: "normal",
+                            maxWidth: "100%",
+                          }),
                         }}
                       >
                         {pageData[selectedPage].subPages?.[selectedSubPage] ?? (
