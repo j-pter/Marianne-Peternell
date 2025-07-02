@@ -48,24 +48,14 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
                   width: "100%",
                   maxWidth: "800px",
                   display: "flex",
-                  flexShrink: 0,
-                  flexGrow: 1,
                   justifyContent: "center", // centers MainContent horizontally
                   position: "relative", // needed for absolute positioning inside
-                  // alignContent: "stretch",
-                  // alignItems: "stretch",
                 }}
               >
                 <MainContent />
-                {/* <ColorModeIconDropdown
-                  sx={{
-                    position: "absolute",
-                    top: { xs: 20, sm: 35, md: 40 },
-                    right: { xs: -15, sm: 0, md: 0 },
-                  }}
-                /> */}
               </Container>
               <ScrollToTopButton
+                aria-label="Zurück nach oben scrollen"
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}

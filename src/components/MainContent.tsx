@@ -27,12 +27,6 @@ const SyledCard = styled(Card)(({ theme }) => ({
   padding: 0,
   width: "100%",
   height: "auto",
-  flexShrink: 0,
-  flexGrow: 0,
-  // alignSelf: "stretch",
-  // alignItems: "stretch",
-  // justifySelf: "stretch",
-  // alignContent: "stretch",
   backgroundColor: (theme.vars || theme).palette.background.paper,
   "&:hover": {
     backgroundColor: "transparent",
@@ -59,10 +53,6 @@ const StyledCardContent = styled(CardContent)({
   textAlign: "left",
   overflowWrap: "break-word",
   wordBreak: "normal",
-  // alignSelf: "stretch",
-  // justifySelf: "stretch",
-  // alignItems: "stretch",
-  // alignContent: "stretch",
 });
 
 const StyledTypography = styled(Typography)({
@@ -76,8 +66,6 @@ const StyledTypography = styled(Typography)({
 });
 
 const StyledToolbar = styled(Box)(({ theme }) => ({
-  flexShrink: 0,
-  flexGrow: 0,
   borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
   backdropFilter: "blur(24px)",
   // border: "1px solid",
@@ -136,6 +124,7 @@ Viel Vergnügen! `}
           <CardMedia
             component="img"
             src="/assets/matisse_sorrow-of-the-king.jpg"
+            alt="Henri Matisse - Die Traurigkeit des Königs (1952)"
           />
           <i style={{ textAlign: "center" }}>
             Henri Matisse - Die Traurigkeit des Königs (1952)
@@ -241,6 +230,7 @@ Die Herbstarbeit kommt zur Ruhe`}</div>
           <CardMedia
             component="img"
             src="/assets/matisse_spanisches stillleben.jpg"
+            alt="Henri Matisse - Spanisches Stillleben (1911)"
           />
           <i>Henri Matisse - Spanisches Stillleben (1911)</i>
         </Container>,
@@ -403,7 +393,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src={`/assets/Malerei/Odysseus.JPG`} />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Odysseus.JPG"
+            alt="Odysseus (01.2021)"
+          />
           <i>Odysseus (01.2021)</i>
         </Container>,
         <Container
@@ -413,7 +407,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Meerbogen.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Meerbogen.JPG"
+            alt="Meerestor (01.2021)"
+          />
           <i>Meerestor (01.2021)</i>
         </Container>,
         <Container
@@ -423,7 +421,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Meer.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Meer.JPG"
+            alt="Ohne Titel (12.2020)"
+          />
           <i>Ohne Titel (12.2020)</i>
         </Container>,
         <Container
@@ -433,7 +435,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Boot.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Boot.JPG"
+            alt="Ohne Titel (05.2023)"
+          />
           <i>Ohne Titel (05.2023)</i>
         </Container>,
         <Container
@@ -443,7 +449,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Sträuche.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Sträuche.JPG"
+            alt="Herbst (12.2020)"
+          />
           <i>Herbst (12.2020)</i>
         </Container>,
         <Container
@@ -453,7 +463,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Vogel.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Vogel.JPG"
+            alt="Blauracke (01.2021)"
+          />
           <i>Blauracke (01.2021)</i>
         </Container>,
         <Container
@@ -463,7 +477,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Granatapfel.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Granatapfel.JPG"
+            alt="Der Granatapfel (12.2020)"
+          />
           <i>Der Granatapfel (12.2020)</i>
         </Container>,
         <Container
@@ -476,6 +494,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           <CardMedia
             component="img"
             src="/assets/Malerei/Seestadt-Strand.JPG"
+            alt="Am See (02.2022)"
           />
           <i>Am See (02.2022)</i>
         </Container>,
@@ -486,7 +505,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Hund.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Hund.JPG"
+            alt="Schwarzer Hund (12.2020)"
+          />
           <i>Schwarzer Hund (12.2020)</i>
         </Container>,
         <Container
@@ -496,7 +519,25 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Eule.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Eule.JPG"
+            alt="Ohne Titel: Schneeuele"
+          />
+          <i>Schneeeule</i>
+        </Container>,
+        <Container
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Punkte.JPG"
+            alt="Punkte"
+          />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -506,8 +547,12 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Punkte.JPG" />
-          <i>Ohne Titel</i>
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Spatz.JPG"
+            alt="Spatz (10.2020)"
+          />
+          <i>Spatz (10.2020)</i>
         </Container>,
         <Container
           sx={{
@@ -516,17 +561,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Spatz.JPG" />
-          <i>Ohne Titel (10.2020)</i>
-        </Container>,
-        <Container
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <CardMedia component="img" src="/assets/Malerei/Loggia.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Loggia.JPG"
+            alt="Morgenausblick"
+          />
           <i>Morgenausblick</i>
         </Container>,
         <Container
@@ -536,7 +575,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Baum.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Baum.JPG"
+            alt="Baum"
+          />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -546,7 +589,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Schwäne.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Schwäne.JPG"
+            alt="Schwäne im See"
+          />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -556,7 +603,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Rose.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Rose.JPG"
+            alt="Rose"
+          />
           <i>Ohne Titel</i>
         </Container>,
         <Container
@@ -566,7 +617,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Malerei/Kollektion.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Malerei/Kollektion.JPG"
+            alt="Kollektion"
+          />
           <i>Kollektion ausgewählter Bilder</i>
         </Container>,
       ],
@@ -588,7 +643,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src={"/assets/Fotografie/enten.JPG"} />
+          <CardMedia
+            component="img"
+            src="/assets/Fotografie/enten.JPG"
+            alt="Enten"
+          />
           <i>31.03.2019</i>
         </Container>,
         <Container
@@ -598,7 +657,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Fotografie/reiher.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Fotografie/reiher.JPG"
+            alt="Reiher am See"
+          />
           <i>01.04.2019</i>
         </Container>,
         <Container
@@ -608,7 +671,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Fotografie/see.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Fotografie/see.JPG"
+            alt="See, Gebüsch"
+          />
           <i>16.05.2021</i>
         </Container>,
         <Container
@@ -618,7 +685,11 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
             alignItems: "center",
           }}
         >
-          <CardMedia component="img" src="/assets/Fotografie/frau am see.JPG" />
+          <CardMedia
+            component="img"
+            src="/assets/Fotografie/frau am see.JPG"
+            alt="Frau am See"
+          />
           <i>13.06.2020</i>
         </Container>,
         <Container
@@ -631,6 +702,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           <CardMedia
             component="img"
             src="/assets/Fotografie/sonnenaufgang.JPG"
+            alt="Sonnenaufgang Seestadt"
           />
           <i>03.05.2017</i>
         </Container>,
@@ -644,6 +716,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           <CardMedia
             component="img"
             src="/assets/Fotografie/wohnung bilder.JPG"
+            alt="Wohnung Bilder"
           />
           <i>13.07.2021</i>
         </Container>,
@@ -657,6 +730,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           <CardMedia
             component="img"
             src="/assets/Fotografie/wohnung bilder 2.JPG"
+            alt="Wohnung Bilder 2"
           />
           <i>02.06.2023</i>
         </Container>,
@@ -1197,10 +1271,6 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           maxWidth: "800px",
           width: "100%",
           alignItems: "center",
-          // justifyItems: "stretch",
-          // justifyContent: "stretch",
-          flexShrink: 0,
-          flexGrow: 0,
         }} // wraps entire page: Welcome & Wrapper
       >
         <div>
@@ -1213,8 +1283,6 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               justifyContent: "start",
               justifyItems: "start",
               width: "100%",
-              flexShrink: 0,
-              flexGrow: 0,
             }}
           >
             <Avatar
@@ -1239,7 +1307,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                     md: "2.2rem",
                   },
                 }}
-                variant="h2"
+                variant="h1"
                 gutterBottom
               >
                 Willkommen bei
@@ -1252,7 +1320,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                     md: "1.7rem",
                   },
                 }}
-                variant="h4"
+                variant="h2"
               >
                 Marianne Marlene Peternell
               </Typography>
@@ -1262,15 +1330,12 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
         <Box
           sx={{
             display: "flex",
-            flexShrink: 0,
-            flexGrow: 0,
-            // alignItems: "stretch",
             flexDirection: "column",
             width: "100%",
             maxWidth: "800px",
             position: "sticky",
             top: 15,
-            zIndex: 10, // ensure it stays above scrolling content
+            zIndex: 99,
           }} // wraps chips + cards
         >
           <StyledToolbar
@@ -1282,8 +1347,6 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               alignItems: "flex-start",
               width: "100%",
               maxWidth: "800px",
-              flexShrink: 0,
-              flexGrow: 0,
             }} // box for the chips
           >
             {Object.keys(pageData).map((page) => {
@@ -1353,28 +1416,25 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
             })}
           </StyledToolbar>
         </Box>
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            flexGrow: 0,
-            width: "100%",
-            flexShrink: 0,
-            // alignItems: "stretch",
-            // alignContent: "stretch",
-            // alignSelf: "stretch",
-            // justifyItems: "stretch",
-          }}
-        >
+        <Grid container spacing={2} sx={{ width: "100%" }}>
           <Grid
             component="article"
             size={{ xs: 12, md: 12, sm: 12 }}
-            // sx={{ alignItems: "stretch", alignContent: "stretch" }}
+            sx={{
+              ...(selectedPage === "Gedichte" && {
+                position: "relative",
+              }),
+            }}
           >
             {pageData[selectedPage].description.map((cardDescription, idx) => (
               <SyledCard
                 key={"card_" + idx}
-                sx={{ marginBottom: { xs: 2, sm: 3, md: 4 } }}
+                sx={{
+                  marginBottom: { xs: 2, sm: 3, md: 4 },
+                  ...(selectedPage === "Gedichte" && {
+                    height: "100%",
+                  }),
+                }}
                 variant="outlined"
                 onFocus={() => handleFocus(0)}
                 onBlur={handleBlur}
@@ -1386,54 +1446,62 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                     <div style={{ width: "100%" }}>
                       {
                         <Typography
-                          key={"h6_" + idx}
+                          key={"h3_" + idx}
                           gutterBottom
-                          variant="h6"
+                          variant="h3"
                           component="div"
                           sx={{
-                            flexShrink: 0,
-                            flexGrow: 0,
-                            // justifySelf: "stretch",
-                            // alignSelf: "stretch",
                             width: "100%",
+                            fontSize: { xs: 18, sm: 23, md: 25 },
+                            fontWeight: "bold",
                           }}
                         >
                           {selectedSubPage}
                         </Typography>
                       }
-                      <Typography
-                        key={"body2_" + idx}
-                        gutterBottom
-                        variant="body2"
-                        component="div"
+                      <Box
                         sx={{
-                          flexShrink: 0,
-                          flexGrow: 0,
-                          // justifySelf: "stretch",
-                          // alignSelf: "stretch",
-                          width: "100%",
                           ...(selectedPage === "Gedichte" && {
                             overflowX: "auto",
-                            whiteSpace: "pre-line", // prevent line breaks
-                            wordBreak: "normal", // don't break words
-                            overflowWrap: "normal",
-                            maxWidth: "100%",
+                            height: "auto",
                           }),
                         }}
                       >
-                        {pageData[selectedPage].subPages?.[selectedSubPage] ?? (
-                          <em>Unterseite nicht gefunden.</em>
-                        )}
-                      </Typography>
+                        <Typography
+                          key={"body2_" + idx}
+                          gutterBottom
+                          variant="body2"
+                          component="div"
+                          sx={{
+                            width: "100%",
+                            ...(selectedPage === "Gedichte" && {
+                              whiteSpace: "preserve nowrap", // prevent line breaks
+                              wordBreak: "normal", // don't break words
+                              overflowWrap: "normal",
+                              maxWidth: "100%",
+                              width: "100%",
+                              float: "left",
+                            }),
+                          }}
+                        >
+                          {pageData[selectedPage].subPages?.[
+                            selectedSubPage
+                          ] ?? <em>Unterseite nicht gefunden.</em>}
+                        </Typography>
+                      </Box>
                     </div>
                   ) : (
                     <>
                       {pageData[selectedPage].title && (
                         <Typography
-                          key={"h6_" + idx}
+                          key={"h3_" + idx}
                           gutterBottom
-                          variant="h6"
+                          variant="h3"
                           component="div"
+                          sx={{
+                            width: "100%",
+                            fontSize: { xs: 18, sm: 23, md: 25 },
+                          }}
                         >
                           {pageData[selectedPage].title}
                         </Typography>
