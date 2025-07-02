@@ -1287,6 +1287,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           >
             <Avatar
               src="/assets/marianne_peternell_2.png"
+              alt="Profil"
               sx={{
                 width: { xs: 80, sm: 110, md: 120 },
                 height: { xs: 80, sm: 110, md: 120 },
