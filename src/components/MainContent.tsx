@@ -1350,7 +1350,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
               maxWidth: "800px",
             }} // box for the chips
           >
-            {Object.keys(pageData).map((page) => {
+            {Object.keys(pageData).map((page: string) => {
               if (!pageData[page].subPages) {
                 return (
                   <Chip
@@ -1382,7 +1382,6 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                     />
                     <Menu
                       disableScrollLock
-                      disableRestoreFocus
                       key={"menu_" + page}
                       anchorEl={anchorElements[page]}
                       id={page}
@@ -1390,6 +1389,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                       onClose={() => handleClose(page)}
                       slotProps={{
                         paper: {
+                          "aria-hidden": false,
                           variant: "outlined",
                           elevation: 2,
                           sx: {
@@ -1406,6 +1406,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                           key={subPage}
                           selected={subPage === selectedSubPage}
                           onClick={() => handlePageSelection(page, subPage)}
+                          autoFocus={subPage === selectedSubPage} // Auto-focus the selected item
                         >
                           {subPage}
                         </MenuItem>
