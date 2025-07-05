@@ -1,10 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
-import imagemin from "imagemin";
-import imageminMozjpeg from "imagemin-mozjpeg";
-import imageminPngquant from "imagemin-pngquant";
+import { fileURLToPath } from "url";
+import sharp from "sharp";
 
-const DOCS_DIR = "docs";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const DOCS_DIR = __dirname + "/docs";
 
 async function getImagesRecursively(dir: string): Promise<string[]> {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -17,23 +19,41 @@ async function getImagesRecursively(dir: string): Promise<string[]> {
     })
   );
 
-  return files.flat().filter((file) => /\.(jpe?g|png)$/i.test(file));
+  return files.flat().filter((file) => /\.(jpe?g|png|JPG)$/i.test(file));
 }
 
 async function optimizeAndReplaceImages(files: string[]) {
   for (const filePath of files) {
     const originalBuffer = await fs.readFile(filePath);
-
-    const optimized = await imagemin.buffer(originalBuffer, {
-      plugins: [
-        imageminMozjpeg({ quality: 75 }),
-        imageminPngquant({ quality: [0.6, 0.8] }),
-      ],
-    });
-
-    await fs.writeFile(filePath, optimized);
-    console.log(`Optimized: ${filePath}`);
+    const optimized = await optimizeImageWithSharp(originalBuffer, filePath);
+    if (!optimized || !Buffer.isBuffer(optimized)) {
+      console.error(`Optimization failed for ${path.basename(filePath)}`);
+      continue;
+    }
+    const tempPath = filePath + ".tmp";
+    await fs.writeFile(tempPath, optimized);
+    await fs.rename(tempPath, filePath);
+    console.log(`Optimized: ${path.basename(filePath)}`);
   }
+}
+
+async function optimizeImageWithSharp(
+  buffer: Buffer,
+  filePath: string
+): Promise<Buffer> {
+  const ext = path.extname(filePath).toLowerCase();
+
+  if (ext === ".jpg" || ext === ".jpeg") {
+    return await sharp(buffer).jpeg({ quality: 75 }).toBuffer();
+  }
+
+  if (ext === ".png") {
+    return await sharp(buffer)
+      .png({ quality: 80, compressionLevel: 9 })
+      .toBuffer();
+  }
+
+  return buffer; // Return unmodified if format not recognized
 }
 
 async function run() {
@@ -45,10 +65,6 @@ async function run() {
   }
 
   await optimizeAndReplaceImages(images);
-
-  console.log(
-    `✅ Optimized ${images.length} image(s) in-place under ${DOCS_DIR}/`
-  );
 }
 
 run().catch(console.error);

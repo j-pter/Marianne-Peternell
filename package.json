@@ -5,9 +5,9 @@
   "type": "module",
   "homepage": "www.marianne-peternell.com",
   "scripts": {
-    "optimize-images": "ts-node optimize-images.ts",
+    "opt_img": "ts-node optimize-images.ts",
     "dev": "vite",
-    "build": "vite build && npm run optimize-images && echo www.marianne-peternell.com > docs/CNAME && copy docs\\index.html docs\\404.html && echo. > docs\\.nojekyll",
+    "build": "vite build && npm run opt_img && echo www.marianne-peternell.com > docs/CNAME && copy docs\\index.html docs\\404.html && echo. > docs\\.nojekyll",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -17,12 +17,10 @@
     "@mui/icons-material": "^7.1.1",
     "@mui/material": "^7.1.1",
     "@tailwindcss/vite": "^4.1.8",
-    "imagemin": "^9.0.1",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^10.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.3"
+    "react-router-dom": "^7.6.3",
+    "sharp": "^0.34.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
