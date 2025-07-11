@@ -93,9 +93,8 @@ export default function MainContent() {
       title: "Willkommen",
       description: [
         <div>
-          <div>{`Diese Webseite dient dem Gedenken an Marianne Marlene Peternell, die leider viel zu früh am 10. Januar 2025 verstorben ist. Zu Lebzeiten hat sie bereits eine Webseite betrieben (damals mariannepeternell.online), deren Inhalte hier in ihrem Sinne weitergeführt werden.
-
-`}</div>
+          <div>{`Diese Webseite dient dem Gedenken an Marianne Marlene Peternell, die leider viel zu früh am 10. Januar 2024 verstorben ist. Zu Lebzeiten hat sie bereits eine Webseite betrieben (damals mariannepeternell.online), deren Inhalte hier in ihrem Sinne weitergeführt werden. Nur der Abschnitt Fotografie ist neu und war bisher nicht auf ihrer Webseite inkludiert. `}</div>
+          <br />
           <b>Begrüßungstext von Marianne Peternell</b>
           {`
 Ich habe auf diesen Seiten Texte und Bilder veröffentlicht, die im Laufe der letzten Jahre entstanden sind.
