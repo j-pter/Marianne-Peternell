@@ -1060,7 +1060,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                 <CircleIcon className="custom-circle-icon" />
               </ListItemIcon>
               <ListItemText
-                primary={`1986-87 Deutsch als Zweitprache-Unterricht am BFI Wien`}
+                primary={`1986-87 Deutsch als Zweitsprache-Unterricht am BFI Wien`}
               />
             </ListItem>
             <ListItem disablePadding>
@@ -1463,8 +1463,10 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                       <Box
                         sx={{
                           ...(selectedPage === "Gedichte" && {
-                            overflowX: "auto",
+                            // overflowX: "auto",
                             height: "auto",
+                            // display: "block",
+                            // WebkitOverflowScrolling: "touch",
                           }),
                         }}
                       >
@@ -1476,12 +1478,23 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                           sx={{
                             width: "100%",
                             ...(selectedPage === "Gedichte" && {
-                              whiteSpace: "preserve nowrap", // prevent line breaks
-                              wordBreak: "normal", // don't break words
+                              whiteSpace: "pre", // prevent line breaks
+                              overflowX: "auto",
+                              WebkitOverflowScrolling: "touch",
+                              display: "block",
+                              wordBreak: "keep-all",
                               overflowWrap: "normal",
-                              maxWidth: "100%",
+                              maxWidth: "100vw",
                               width: "100%",
-                              float: "left",
+                              float: "none",
+                              textSizeAdjust: "none",
+                              overscrollBehaviorX: "contain",
+                              // Fix for some mobile browsers
+                              "&": {
+                                WebkitTextSizeAdjust: "none",
+                                MozTextSizeAdjust: "none",
+                                msTextSizeAdjust: "none",
+                              },
                             }),
                           }}
                         >
