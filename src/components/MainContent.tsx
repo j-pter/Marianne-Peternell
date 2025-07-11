@@ -1463,10 +1463,14 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                       <Box
                         sx={{
                           ...(selectedPage === "Gedichte" && {
-                            // overflowX: "auto",
                             height: "auto",
-                            // display: "block",
-                            // WebkitOverflowScrolling: "touch",
+                            overflowX: "auto",
+                            WebkitOverflowScrolling: "touch",
+                            display: "block",
+                            maxWidth: "100vw",
+                            // width: "100vw",
+                            float: "none",
+                            overscrollBehaviorX: "contain",
                           }),
                         }}
                       >
@@ -1476,19 +1480,15 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                           variant="body2"
                           component="div"
                           sx={{
-                            width: "100%",
+                            // width: "100vw",
                             ...(selectedPage === "Gedichte" && {
                               whiteSpace: "pre", // prevent line breaks
-                              overflowX: "auto",
-                              WebkitOverflowScrolling: "touch",
-                              display: "block",
+                              display: "inline-block",
                               wordBreak: "keep-all",
                               overflowWrap: "normal",
                               maxWidth: "100vw",
-                              width: "100%",
-                              float: "none",
+                              minWidth: "100%",
                               textSizeAdjust: "none",
-                              overscrollBehaviorX: "contain",
                               // Fix for some mobile browsers
                               "&": {
                                 WebkitTextSizeAdjust: "none",
