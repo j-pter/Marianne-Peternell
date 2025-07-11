@@ -1464,7 +1464,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                         sx={{
                           ...(selectedPage === "Gedichte" && {
                             height: "auto",
-                            overflowX: "auto",
+                            overflowX: "scroll",
                             WebkitOverflowScrolling: "touch",
                             display: "block",
                             maxWidth: "100vw",
