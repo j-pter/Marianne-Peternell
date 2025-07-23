@@ -1418,15 +1418,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
           </StyledToolbar>
         </Box>
         <Grid container spacing={2} sx={{ width: "100%" }}>
-          <Grid
-            component="article"
-            size={{ xs: 12, md: 12, sm: 12 }}
-            sx={{
-              ...(selectedPage === "Gedichte" && {
-                position: "relative",
-              }),
-            }}
-          >
+          <Grid component="article" size={{ xs: 12, md: 12, sm: 12 }}>
             {pageData[selectedPage].description.map((cardDescription, idx) => (
               <SyledCard
                 key={"card_" + idx}
@@ -1464,11 +1456,9 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                         sx={{
                           ...(selectedPage === "Gedichte" && {
                             height: "auto",
-                            overflowX: "scroll",
+                            overflowX: "auto",
                             WebkitOverflowScrolling: "touch",
-                            display: "block",
                             maxWidth: "100vw",
-                            // width: "100vw",
                             float: "none",
                             overscrollBehaviorX: "contain",
                           }),
@@ -1480,10 +1470,8 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                           variant="body2"
                           component="div"
                           sx={{
-                            // width: "100vw",
                             ...(selectedPage === "Gedichte" && {
                               whiteSpace: "pre", // prevent line breaks
-                              display: "inline-block",
                               wordBreak: "keep-all",
                               overflowWrap: "normal",
                               maxWidth: "100vw",
