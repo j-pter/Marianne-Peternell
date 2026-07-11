@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState, Fragment, forwardRef, useRef } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -19,6 +19,508 @@ import {
   MenuItem,
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+
+function DeskStartView() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // Chapter definitions for the bookmarks
+  const chapters = [
+    { title: "Vorwort", pageIndex: 0, color: "#4a4a4a" },
+    { title: "Inhalt", pageIndex: 1, color: "#8b0000" },
+    { title: "Lebenslauf", pageIndex: 2, color: "#556b2f" },
+    { title: "Gedichte", pageIndex: 3, color: "#4682b4" },
+    { title: "Kurzgeschichten", pageIndex: 4, color: "#d2b48c" },
+  ];
+
+  // Navigation handlers
+  const goToPage = (idx: number) => {
+    if (!isOpen) setIsOpen(true);
+    setCurrentPage(idx);
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (currentPage < pages.length - 1) setCurrentPage((p) => p + 1);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (currentPage > 0) setCurrentPage((p) => p - 1);
+  };
+
+  // Book content
+  const pages = [
+    {
+      id: "preface",
+      content: (
+        <>
+          <Typography
+            variant="h4"
+            sx={{ fontFamily: '"Playfair Display", serif', mb: 3 }}
+          >
+            Vorwort
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              fontFamily: '"Lora", serif',
+              lineHeight: 1.8,
+              color: "#3A3836",
+            }}
+          >
+            Diese Sammlung ist dem künstlerischen und literarischen Schaffen von
+            Max Mustermann gewidmet. Sie soll als digitaler Zufluchtsort dienen,
+            um seine Gedanken, Gedichte und Werke zu ehren und zu bewahren.
+          </Typography>
+        </>
+      ),
+    },
+    {
+      id: "contents",
+      content: (
+        <>
+          <Typography
+            variant="h4"
+            sx={{ fontFamily: '"Playfair Display", serif', mb: 3 }}
+          >
+            Inhalt
+          </Typography>
+          <Box
+            sx={{
+              fontFamily: '"Lora", serif',
+              fontSize: "1.1rem",
+              lineHeight: 2.5,
+              color: "#3A3836",
+            }}
+          >
+            {chapters.map((ch, idx) => (
+              <Box
+                key={idx}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPage(ch.pageIndex);
+                }}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  cursor: "pointer",
+                  borderBottom: "1px dotted #ccc",
+                  mb: 1,
+                  "&:hover": { color: "#8b0000" },
+                }}
+              >
+                <span>{ch.title}</span>
+                <span>{ch.pageIndex + 1}</span>
+              </Box>
+            ))}
+          </Box>
+        </>
+      ),
+    },
+    {
+      id: "cv",
+      content: (
+        <>
+          <Typography
+            variant="h4"
+            sx={{ fontFamily: '"Playfair Display", serif', mb: 3 }}
+          >
+            Lebenslauf
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ fontFamily: '"Lora", serif', color: "#3A3836" }}
+          >
+            Hier folgt der Lebenslauf...
+          </Typography>
+        </>
+      ),
+    },
+    {
+      id: "poems",
+      content: (
+        <>
+          <Typography
+            variant="h4"
+            sx={{ fontFamily: '"Playfair Display", serif', mb: 3 }}
+          >
+            Gedichte
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              fontFamily: '"Lora", serif',
+              fontStyle: "italic",
+              color: "#3A3836",
+            }}
+          >
+            "Der erste Schnee fällt leise..."
+          </Typography>
+        </>
+      ),
+    },
+    {
+      id: "stories",
+      content: (
+        <>
+          <Typography
+            variant="h4"
+            sx={{ fontFamily: '"Playfair Display", serif', mb: 3 }}
+          >
+            Kurzgeschichten
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ fontFamily: '"Lora", serif', color: "#3A3836" }}
+          >
+            Hier beginnen die Kurzgeschichten...
+          </Typography>
+        </>
+      ),
+    },
+  ];
+
+  // Reusable style for the inner white pages
+  const whitePageStyle = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#FDFBF7",
+    padding: { xs: 3, md: 5 },
+    boxSizing: "border-box",
+    boxShadow: "inset 0 0 20px rgba(0,0,0,0.03)",
+    overflowY: "auto",
+    "&::-webkit-scrollbar": { display: "none" },
+    transition: "opacity 0.4s ease",
+  };
+
+  // CSS for the interactive page curl corners
+  const pageCurlStyle = {
+    position: "absolute",
+    bottom: 0,
+    width: "50px",
+    height: "50px",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    zIndex: 10,
+    filter: "drop-shadow(-2px -2px 3px rgba(0,0,0,0.15))",
+    "&:hover": {
+      width: "75px",
+      height: "75px",
+      filter: "drop-shadow(-3px -3px 5px rgba(0,0,0,0.25))",
+    },
+  };
+
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "#3e2723",
+        backgroundImage:
+          "radial-gradient(circle at center, #4e342e 0%, #1a1110 100%)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        perspective: "1500px",
+      }}
+    >
+      {/* Background Decor (Lamp, Photo, Pen) */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "-15%",
+          left: "-10%",
+          width: "70vw",
+          height: "70vw",
+          background:
+            "radial-gradient(circle, rgba(255, 213, 138, 0.15) 0%, rgba(255, 213, 138, 0) 70%)",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          right: { xs: "5%", md: "4%" },
+          top: { xs: "10%", md: "15%" },
+          backgroundColor: "#faf8f5",
+          padding: "12px 12px 35px 12px",
+          boxShadow: "5px 8px 15px rgba(0,0,0,0.6)",
+          transform: "rotate(-8deg)",
+          zIndex: 2,
+        }}
+      >
+        <Box
+          component="img"
+          src="/assets/marianne_peternell_2.png"
+          alt="Portrait"
+          sx={{
+            width: { xs: "110px", md: "160px" },
+            height: { xs: "110px", md: "160px" },
+            objectFit: "cover",
+            // filter: "grayscale(100%) contrast(1.1) sepia(15%)",
+          }}
+        />
+        <Typography
+          sx={{
+            fontFamily: '"Caveat", cursive',
+            color: "#333",
+            textAlign: "center",
+            mt: 1,
+            fontSize: "0.9rem",
+            opacity: 0.8,
+            transform: "rotate(-2deg)",
+          }}
+        >
+          Wien, 2018
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          position: "absolute",
+          right: { xs: "5%", md: "20%" },
+          top: "55%",
+          width: "8px",
+          height: "180px",
+          background: "linear-gradient(to right, #111 0%, #444 50%, #111 100%)",
+          borderRadius: "4px",
+          transform: "rotate(15deg)",
+          boxShadow: "6px 6px 12px rgba(0,0,0,0.6)",
+          zIndex: 2,
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            bottom: "-15px",
+            left: "0",
+            borderLeft: "4px solid transparent",
+            borderRight: "4px solid transparent",
+            borderTop: "15px solid #d4af37",
+          },
+        }}
+      />
+
+      {/* THE BOOK WRAPPER */}
+      <Box
+        sx={{
+          position: "relative",
+          width: { xs: "260px", sm: "320px", md: "400px" },
+          height: { xs: "400px", sm: "480px", md: "550px" },
+          transformStyle: "preserve-3d",
+          transform: isOpen ? "translateX(50%)" : "translateX(0)",
+          transition: "transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)",
+          zIndex: 3,
+        }}
+      >
+        {/* === RIGHT SIDE (Inside Back Cover + Current Page) === */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#e3dfd5",
+            borderRadius: "0 14px 14px 0",
+            boxShadow: isOpen ? "10px 15px 30px rgba(0,0,0,0.5)" : "none",
+            zIndex: 1,
+            borderLeft: "2px solid rgba(0,0,0,0.1)",
+          }}
+        >
+          {/* Larger Bookmarks with Handwriting */}
+          <Box
+            sx={{
+              position: "absolute",
+              right: "-45px",
+              top: "5%",
+              display: "flex",
+              flexDirection: "column",
+              gap: 2.5,
+              zIndex: 0,
+            }}
+          >
+            {chapters.map((chapter, index) => {
+              const shadowOpacity = 0.6 - index * 0.08;
+              const horizontalShift = index * -2;
+
+              return (
+                <Box
+                  key={index}
+                  onClick={() => goToPage(chapter.pageIndex)}
+                  sx={{
+                    position: "relative",
+                    width: "55px",
+                    height: "85px",
+                    backgroundColor: chapter.color,
+                    borderRadius: "0 6px 6px 0",
+                    cursor: "pointer",
+                    transform: `translateX(${horizontalShift}px)`,
+                    boxShadow: `4px 4px 10px rgba(0,0,0,${shadowOpacity}), inset 2px 0 4px rgba(0,0,0,0.3)`,
+                    transition: "transform 0.2s ease",
+                    zIndex: 10 - index,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    "&:hover": {
+                      transform: `translateX(${horizontalShift + 10}px)`,
+                    },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: '"Caveat", cursive',
+                      color: "rgba(255,255,255,0.9)",
+                      transform: "rotate(90deg)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    {chapter.title}
+                  </Typography>
+                </Box>
+              );
+            })}
+          </Box>
+
+          {/* Right White Page (Current Page) */}
+          <Box
+            sx={{
+              ...whitePageStyle,
+              borderRadius: "0 14px 14px 0",
+              opacity: isOpen && currentPage < pages.length ? 1 : 0,
+              pointerEvents:
+                isOpen && currentPage < pages.length ? "auto" : "none",
+            }}
+          >
+            {pages[currentPage]?.content}
+
+            {/* Visual Page Curl indicating "Next" */}
+            {currentPage < pages.length - 1 && (
+              <Box
+                onClick={handleNext}
+                sx={{
+                  ...pageCurlStyle,
+                  right: 0,
+                  // Creates a dog-ear triangle on the bottom right
+                  background:
+                    "linear-gradient(135deg, transparent 50%, #e3dfd5 50%, #f4f0ea 55%)",
+                }}
+              />
+            )}
+          </Box>
+        </Box>
+
+        {/* === LEFT SIDE (Cover + Previous Page) === */}
+        <Box
+          onClick={() => {
+            if (!isOpen) setIsOpen(true);
+          }}
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            transformOrigin: "left center",
+            transformStyle: "preserve-3d",
+            transform: isOpen ? "rotateY(-180deg)" : "rotateY(0deg)",
+            transition: "transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)",
+            zIndex: 2,
+            cursor: isOpen ? "default" : "pointer",
+          }}
+        >
+          {/* Front Cover */}
+          <Box
+            sx={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              backfaceVisibility: "hidden",
+              backgroundColor: "#1c2833",
+              borderRadius: "4px 14px 14px 4px",
+              boxShadow: isOpen
+                ? "none"
+                : "15px 20px 30px rgba(0,0,0,0.8), inset 6px 0 12px rgba(0,0,0,0.5)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Typography
+              variant="h3"
+              sx={{
+                fontFamily: '"Playfair Display", serif',
+                color: "#d4af37",
+                textAlign: "center",
+                px: 3,
+              }}
+            >
+              Das Werk von <br /> Marianne Marlene Peternell
+            </Typography>
+            <Box
+              sx={{
+                position: "absolute",
+                left: "14px",
+                top: 0,
+                bottom: 0,
+                width: "4px",
+                background:
+                  "linear-gradient(to right, rgba(0,0,0,0.5), rgba(255,255,255,0.15), rgba(0,0,0,0.5))",
+              }}
+            />
+          </Box>
+
+          {/* Inside Cover */}
+          <Box
+            sx={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              backfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+              backgroundColor: "#e3dfd5",
+              borderRadius: "14px 4px 4px 14px",
+              boxShadow: isOpen ? "-10px 15px 30px rgba(0,0,0,0.5)" : "none",
+            }}
+          >
+            {/* Left White Page (Previous Page) */}
+            <Box
+              sx={{
+                ...whitePageStyle,
+                borderRadius: "14px 0 0 14px",
+                opacity: currentPage > 0 ? 1 : 0,
+                pointerEvents: currentPage > 0 ? "auto" : "none",
+                borderRight: "1px solid #dcd7cb",
+              }}
+            >
+              {currentPage > 0 && pages[currentPage - 1]?.content}
+
+              {/* Visual Page Curl indicating "Previous" */}
+              {currentPage > 0 && (
+                <Box
+                  onClick={handlePrev}
+                  sx={{
+                    ...pageCurlStyle,
+                    left: 0,
+                    // Creates a dog-ear triangle on the bottom left
+                    background:
+                      "linear-gradient(-135deg, transparent 50%, #e3dfd5 50%, #f4f0ea 55%)",
+                  }}
+                />
+              )}
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
 
 const SyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
@@ -76,6 +578,7 @@ const StyledToolbar = styled(Box)(({ theme }) => ({
   boxShadow: (theme.vars || theme).shadows[1],
   padding: "4px 4px",
 }));
+
 
 export default function MainContent() {
   type PageKey = keyof typeof pageData;
@@ -1194,18 +1697,14 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
     },
   };
 
-  const [focusedCardIndex, setFocusedCardIndex] = React.useState<number | null>(
-    null
-  );
-  const [anchorElements, setAnchorElements] = React.useState<
+  const [focusedCardIndex, setFocusedCardIndex] = useState<number | null>(null);
+  const [anchorElements, setAnchorElements] = useState<
     Record<string, HTMLElement | null>
   >({});
-  const [selectedPage, setSelectedPage] = React.useState<PageKey>("Start");
-  const [selectedSubPage, setSelectedSubPage] = React.useState<string | null>(
-    null
-  );
+  const [selectedPage, setSelectedPage] = useState<PageKey>("Start");
+  const [selectedSubPage, setSelectedSubPage] = useState<string | null>(null);
 
-  // card effects
+  //#region card effects
   const handleFocus = (index: number) => {
     setFocusedCardIndex(index);
   };
@@ -1216,7 +1715,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
   // chip menu display
   const handleDropDownChipClick = (
     event: React.MouseEvent<HTMLElement>,
-    page: string
+    page: string,
   ) => {
     setAnchorElements((prev) => ({
       ...prev,
@@ -1226,11 +1725,11 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
   };
 
   // create anchors placeholders initially
-  React.useEffect(() => {
+  useEffect(() => {
     const initialAnchors: Record<string, HTMLElement | null> = {};
-    for (const page in pageData) {
+    for (const page in pageData)
       if (pageData[page].subPages) initialAnchors[page] = null;
-    }
+
     setAnchorElements(initialAnchors);
   }, []);
 
@@ -1260,6 +1759,9 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  return <DeskStartView />;
+
+  //#region render
   return (
     <>
       <Box
@@ -1365,7 +1867,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                 );
               } else {
                 return (
-                  <React.Fragment key={"fragment_" + page}>
+                  <Fragment key={"fragment_" + page}>
                     <Chip
                       key={page}
                       onClick={(e) => {
@@ -1411,7 +1913,7 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
                         </MenuItem>
                       ))}
                     </Menu>
-                  </React.Fragment>
+                  </Fragment>
                 );
               }
             })}
