@@ -5,9 +5,47 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
+  SvgIcon,
+  type SvgIconProps,
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+
+// Custom stylish Diamond Icon
+const DiamondIcon = (props: SvgIconProps) => (
+  <SvgIcon {...props} viewBox="0 0 24 24">
+    <path d="M12 3L21 12L12 21L3 12Z" />
+  </SvgIcon>
+);
+
+export const BookListItem = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <ListItem
+      disablePadding
+      alignItems="flex-start"
+      sx={{
+        mb: 1.5,
+        breakInside: "avoid",
+        WebkitColumnBreakInside: "avoid",
+        pageBreakInside: "avoid",
+      }}
+    >
+      <ListItemIcon sx={{ minWidth: "24px", mt: "9px" }}>
+        <DiamondIcon sx={{ fontSize: "10px", color: "#5c4033" }} />
+      </ListItemIcon>
+      <ListItemText
+        primary={children}
+        slotProps={{
+          primary: {
+            fontFamily: '"Lora", serif',
+            color: "#3A3836",
+            lineHeight: 1.8,
+            fontSize: "1rem",
+          },
+        }}
+      />
+    </ListItem>
+  );
+};
 
 export type PageData = {
   [key: string]: {
@@ -63,14 +101,23 @@ Viel Vergnügen! `}
     ],
     subChapters: {
       "KEIN SCHATTEN": (
-        <div>{`Zuerst wurde der Tod verbannt und das Alter.
-Schöne und junge Menschen gab es überall.
-Jetzt wird der Schatten selbst verbannt.
-Keiner hat ein Problem.
-Oder sieht einen Schatten.
-Wo denn?
-
-Sonst ist er selber schuld.
+        <div>
+          Zuerst wurde der Tod verbannt und das Alter.
+          <br />
+          Schöne und junge Menschen gab es überall.
+          <br />
+          Jetzt wird der Schatten selbst verbannt.
+          <br />
+          Keiner hat ein Problem.
+          <br />
+          Oder sieht einen Schatten.
+          <br />
+          Wo denn?
+          <br />
+          <br />
+          Sonst ist er selber schuld.
+          <br />
+          {`
 Vielleicht hat er den falschen Umgang?
 Oder das falsche Buch gelesen.
 Die falschen Gedanken im Kopf.
@@ -91,7 +138,8 @@ Warte auf den Erlöser! Den Experten! Wir könnten dich beraten! Ha!
 Erfahrungen werden nicht getauscht. Die Sprache von Herz zu Herz verstummt.
 Hochgerüstet mit Weisheit, aufgerüstet, wehe du trittst in meinen Schmerz!
 
-Sonnenhell ausgeleuchtet ist das Land und schön.`}</div>
+Sonnenhell ausgeleuchtet ist das Land und schön.`}
+        </div>
       ),
       Europäerin: (
         <div>{`Ich hungere und doch habe ich immer zu essen.
@@ -869,7 +917,7 @@ Der Text ist hochaktuell, er ist in sich verschachtelt, er lässt sowohl nach de
         <i>{`Veröffentlichung im März 2021
 
 `}</i>
-        <Typography>
+        <div>
           Als ebook z.B. bei{" "}
           <a href="https://www.amazon.de/Frauen-ihr-Erbe-Marianne-Peternell/dp/3754970380">
             amazon für den Kindle.{" "}
@@ -879,12 +927,11 @@ Der Text ist hochaktuell, er ist in sich verschachtelt, er lässt sowohl nach de
           <a href="https://www.morawa.at/detail/ISBN-9783754970386/Peternell-Marianne/Frauen-und-ihr-Erbe">
             Morawa{" "}
           </a>
-          <b>{`
-            
-Beschreibung`}</b>
+          <br /> <br />
+          <b>Beschreibung</b> <br />
           {`
 Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Menschen, nach dem historisch Gewachsenen von Frauen- und Männerentwürfen in ihrem Menschenleben. Zahlreiche Facetten der weiblichen Rolle 'Mutter' werden dargestellt. Es werden auch bedeutende Beiträge zum Diskurs des Frauen- und Männerbildes, des Menschenbildes aus der Geschichte (Hegel, Kant, Judith Butler, Maria Montessori) herangezogen. Dabei wird auch die Frage nach Patriarchat und Matriarchat gestreift. Ich befasse mich damit, eine möglichst eigenständige Positionierung herauszuarbeiten und besonders die Frage der Fruchtbarkeit, der Reprodiktion der Gesellschaft und der Rollenverteilung zwischen Frauen und Männern für das Individuum und für die Gesellschaft zuuntersuchen. Ich beschäftige mich schon seit Jahrzehnten mit der Thematik meines Buches, ich war auch im Radio Agora vor vielen Jahren zum Thema als Interviewpartnerin in einer einstündigen Sendung zum Thema 'Frauen und ihr Erbe'. Ich habe Germanistik und Geschichte studiert, viele Jahrzehnte an einer HTL und am BFI unterrichtet, bin literarisch produktiv und habe als Alleinerzieherin nebenbei zwei Kinder großgezogen. Ich bin 1956 geboren und seit 2016 in Alterspension.`}
-        </Typography>
+        </div>
       </div>,
     ],
   },
@@ -893,207 +940,86 @@ Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Mens
     content: [
       <>
         <List dense={true} sx={{ paddingLeft: { xs: 0.0, md: 0.5, sm: 0.5 } }}>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`01.06.1956 geboren in Wieting/ Kärnten als Tochter einer Schneiderin und eines Schmieds`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`1962-66 Volksschule in Steiermark und Kärnten`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`1966-74 Neusprachliches Gymnasium in Villach`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`Juni 1974 Matura in Villach`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Werkstudentin: Studium von Deutsch, Geschichte und Philosophie`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Jobs als Kellnerin, Tankwartin, Interviewerin, Deutsch als Fremdsprache Lehrerin, Gruppentrainerin, Pädagogin, Erzieherin, Zeitungsverkäuferin, Malermodell usw.`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`1980-1982 im Tagesschulheim des BG 15, Dieffenbachgasse als Erzieherin tätig`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Mai 1985 Studienabschluss von Deutsch und Geschichte Lehramt`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`1985/86 Probejahr am Akademischen Gymnasium Wien; Erzieherin im Tagesschulheim des BG 10, Ettenreichgasse`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`1986-87 Deutsch als Zweitsprache-Unterricht am BFI Wien`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`1987-1990 Mitarbeiterin des Wiener Schulservice, Abteilung Schulberatungsstelle für Ausländer`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`Ab 1987 Lehrerin an der HTL-Donaustadt`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`06.04.1992 Geburt der Tochter Fanny`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`1992-1997 Karenz in Kärnten/Villach`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`Seminare zur Montessori-Pädagogik`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`Seminare bei Mauricio und Rebeca Wild`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Herbst 1995 Gründung der Montessori-Wild-Kindergruppe „Ich-DuWir“ in Sattendorf/Villach-Landskron`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`28.01.1996 Geburt des Sohnes Julian`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`seit Herbst 1998 als alleinerziehende Lehrerin in Wien, HTL Donaustadt`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`seit 1972 Beschäftigung mit Literatur und Schriftstellerei; 
-2005 Veröffentlichung von Lyrik in „dulzinea 7“; Lesungen`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Sommer 2005 Leitung eines Workshops „Kreatives Schreiben“ in der Sommerakademie Zakynthos (Vertretung des Schriftstellers Franzobel)`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`01.11.2005 zu Gast in der Sendung „Queer durch“ im Radio Agora/Klagenfurt zum Thema „Frauen und ihr Erbe“`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`2009 Veröffentlichung eines Textes in der Kultur- und Literaturzeitschrift "Sterz" (Streit/Kultur; Nr.101)`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText primary={`01.09.2016 Alterspension`} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Am 25.5.2018 Lesung in der Buchhandlung "Seeseiten" in der Seestadt Aspern beim 3. Geburtstagsfest der Buchhandlung gemeinsam mit anderen AutorInnen.`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`nach einigen frühen Versuchen in der Malerei im Jahr 1987, neuerliche Versuche mit der Malerei ab Oktober 2020`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"`}
-            />
-          </ListItem>
+          <BookListItem>
+            01.06.1956 geboren in Wieting/ Kärnten als Tochter einer Schneiderin
+            und eines Schmieds
+          </BookListItem>
+          <BookListItem>
+            1962-66 Volksschule in Steiermark und Kärnten
+          </BookListItem>
+          <BookListItem>
+            1966-74 Neusprachliches Gymnasium in Villach
+          </BookListItem>
+          <BookListItem>Juni 1974 Matura in Villach</BookListItem>
+          <BookListItem>
+            Werkstudentin: Studium von Deutsch, Geschichte und Philosophie
+          </BookListItem>
+          <BookListItem>
+            Jobs als Kellnerin, Tankwartin, Interviewerin, Deutsch als
+            Fremdsprache Lehrerin, Gruppentrainerin, Pädagogin, Erzieherin,
+            Zeitungsverkäuferin, Malermodell usw.
+          </BookListItem>
+          <BookListItem>
+            1980-1982 im Tagesschulheim des BG 15, Dieffenbachgasse als
+            Erzieherin tätig
+          </BookListItem>
+          <BookListItem>
+            Mai 1985 Studienabschluss von Deutsch und Geschichte Lehramt
+          </BookListItem>
+          <BookListItem>
+            1985/86 Probejahr am Akademischen Gymnasium Wien; Erzieherin im
+            Tagesschulheim des BG 10, Ettenreichgasse
+          </BookListItem>
+          <BookListItem>
+            1986-87 Deutsch als Zweitsprache-Unterricht am BFI Wien
+          </BookListItem>
+          <BookListItem>
+            1987-1990 Mitarbeiterin des Wiener Schulservice, Abteilung
+            Schulberatungsstelle für Ausländer
+          </BookListItem>
+          <BookListItem>Ab 1987 Lehrerin an der HTL-Donaustadt</BookListItem>
+          <BookListItem>06.04.1992 Geburt der Tochter Fanny</BookListItem>
+          <BookListItem>1992-1997 Karenz in Kärnten/Villach</BookListItem>
+          <BookListItem>Seminare zur Montessori-Pädagogik</BookListItem>
+          <BookListItem>Seminare bei Mauricio und Rebeca Wild</BookListItem>
+          <BookListItem>
+            Herbst 1995 Gründung der Montessori-Wild-Kindergruppe „Ich-DuWir“ in
+            Sattendorf/Villach-Landskron
+          </BookListItem>
+          <BookListItem>28.01.1996 Geburt des Sohnes Julian</BookListItem>
+          <BookListItem>
+            seit Herbst 1998 als alleinerziehende Lehrerin in Wien, HTL
+            Donaustadt
+          </BookListItem>
+          <BookListItem>
+            seit 1972 Beschäftigung mit Literatur und Schriftstellerei <br />{" "}
+            2005 Veröffentlichung von Lyrik in „dulzinea 7“ <br /> Lesungen
+          </BookListItem>
+          <BookListItem>
+            Sommer 2005 Leitung eines Workshops „Kreatives Schreiben“ in der
+            Sommerakademie Zakynthos (Vertretung des Schriftstellers Franzobel)
+          </BookListItem>
+          <BookListItem>
+            01.11.2005 zu Gast in der Sendung „Queer durch“ im Radio
+            Agora/Klagenfurt zum Thema „Frauen und ihr Erbe“
+          </BookListItem>
+          <BookListItem>
+            2009 Veröffentlichung eines Textes in der Kultur- und
+            Literaturzeitschrift "Sterz" (Streit/Kultur; Nr.101)
+          </BookListItem>
+          <BookListItem>01.09.2016 Alterspension</BookListItem>
+          <BookListItem>
+            Am 25.5.2018 Lesung in der Buchhandlung "Seeseiten" in der Seestadt
+            Aspern beim 3. Geburtstagsfest der Buchhandlung gemeinsam mit
+            anderen AutorInnen.
+          </BookListItem>
+          <BookListItem>
+            nach einigen frühen Versuchen in der Malerei im Jahr 1987,
+            neuerliche Versuche mit der Malerei ab Oktober 2020
+          </BookListItem>
+          <BookListItem>
+            März 2021 Veröffentlichung meines Sachbuches "Frauen und ihr Erbe"
+          </BookListItem>
         </List>
       </>,
     ],

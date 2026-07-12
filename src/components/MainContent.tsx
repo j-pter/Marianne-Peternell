@@ -6,11 +6,14 @@ import { pageData, type PageKey } from "../config/index.ts";
 
 const PageHeader = styled(Typography)({
   fontFamily: '"Playfair Display", serif',
-  marginBottom: "24px",
+  marginBottom: "22px",
   paddingRight: "32px",
   textAlign: "left",
   fontWeight: 700,
   breakAfter: "avoid", // Prevents the header from being on page 1 while the text is on page 2
+  breakInside: "avoid",
+  WebkitColumnBreakInside: "avoid",
+  pageBreakInside: "avoid",
 });
 
 const SubChapterHeader = styled(Typography)({
@@ -50,8 +53,8 @@ const NoBreakBlock = styled(Box)({
 
 const PageCounter = styled(Typography)({
   position: "absolute",
-  bottom: "20px",
-  right: "30px",
+  bottom: "25px",
+  right: "35px",
   fontFamily: '"Lora", serif',
   fontSize: "0.85rem",
   color: "#888",
@@ -87,6 +90,10 @@ export default function MainContent() {
     { title: "Sachbuch", color: "#d2b48c", key: "Sachbuch" as PageKey },
   ];
 
+  const [pageCounts, setPageCounts] = useState<number[]>(
+    chaptersBase.map(() => 1),
+  );
+
   const updatePageCount = useCallback(() => {
     if (contentRef.current) {
       const scrollWidth = contentRef.current.scrollWidth;
@@ -94,13 +101,21 @@ export default function MainContent() {
       const gapStr = window.getComputedStyle(contentRef.current).columnGap;
       const gap = parseFloat(gapStr) || 0;
 
-      // Calculate how many columns were generated using accurate spacing math
       const totalColumns = Math.round(
         (scrollWidth + gap) / (clientWidth + gap),
       );
-      setChapterPages(totalColumns > 0 ? totalColumns : 1);
+      const finalCount = totalColumns > 0 ? totalColumns : 1;
+
+      setChapterPages(finalCount);
+
+      // Update global tracking for this specific chapter
+      setPageCounts((prev) => {
+        const next = [...prev];
+        next[activeChapterIdx] = finalCount;
+        return next;
+      });
     }
-  }, []);
+  }, [activeChapterIdx]);
 
   useEffect(() => {
     updatePageCount();
@@ -195,7 +210,6 @@ export default function MainContent() {
         justifyContent: "center",
         overflow: "hidden",
         perspective: "1500px",
-        cursor: isOpen ? "pointer" : "default",
       }}
     >
       <Box
@@ -452,37 +466,43 @@ export default function MainContent() {
                     {activeData.subChapters &&
                       Object.entries(activeData.subChapters).map(
                         ([subTitle, subContent], idx) => (
-                          <Box
-                            key={`sub-${idx}`}
-                            sx={{
-                              // This ensures the sub-chapter gets pushed to the next clean page (column)
-                              breakBefore: "column",
-                              pageBreakBefore: "always",
-                              mb: 2,
-                            }}
-                          >
-                            <SubChapterHeader variant="h6">
+                          <Fragment key={`sub-${idx}`}>
+                            <SubChapterHeader
+                              variant="h6"
+                              sx={{
+                                breakBefore: "column",
+                                pageBreakBefore: "always",
+                                WebkitColumnBreakBefore: "always",
+                              }}
+                            >
                               {subTitle}
                             </SubChapterHeader>
+
                             {typeof subContent === "string" ? (
-                              <StyledBodyText>{subContent}</StyledBodyText>
+                              <StyledBodyText sx={{ mb: 2 }}>
+                                {subContent}
+                              </StyledBodyText>
                             ) : (
-                              <NoBreakBlock>
+                              <Box sx={{ mb: 2 }}>
                                 {subContent as React.ReactElement}
-                              </NoBreakBlock>
+                              </Box>
                             )}
-                          </Box>
+                          </Fragment>
                         ),
                       )}
                   </>
                 )}
               </Box>
 
-              {isOpen && (
-                <PageCounter>
-                  {activeSubPage + 1} / {chapterPages}
-                </PageCounter>
-              )}
+              {isOpen &&
+                (() => {
+                  // Sum pages of all PREVIOUS chapters
+                  const previousPages = pageCounts
+                    .slice(0, activeChapterIdx)
+                    .reduce((a, b) => a + b, 0);
+                  const currentGlobalPage = previousPages + activeSubPage + 1;
+                  return <PageCounter>{currentGlobalPage}</PageCounter>;
+                })()}
 
               {(activeSubPage < chapterPages - 1 ||
                 activeChapterIdx < chaptersBase.length - 1) && (
@@ -520,7 +540,7 @@ export default function MainContent() {
             transition: "transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)",
             zIndex: 2,
             cursor: !isOpen
-              ? "default"
+              ? "pointer"
               : activeSubPage > 0 || activeChapterIdx > 0
                 ? "pointer"
                 : "default",
