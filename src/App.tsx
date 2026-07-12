@@ -1,11 +1,30 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import AppTheme from "./theme/AppTheme.tsx";
 import MainContent from "./components/MainContent.tsx";
-// import { styled, alpha } from "@mui/material/styles";
-// import IconButton from "@mui/material/IconButton";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <MainContent />
+              {/* <ScrollToTopButton
+                aria-label="Zurück nach oben scrollen"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                <ArrowUpwardIcon />
+              </ScrollToTopButton> */}
+            </>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 // const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
 //   position: "fixed",
@@ -30,39 +49,3 @@ import MainContent from "./components/MainContent.tsx";
 //       : alpha(theme.palette.background.default, 0.6),
 //   },
 // }));
-
-export default function Blog(props: { disableCustomTheme?: boolean }) {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <AppTheme {...props}>
-              <CssBaseline enableColorScheme />
-              <Container
-                component="main"
-                sx={{
-                  width: "100%",
-                  // maxWidth: "800px",
-                  display: "flex",
-                  position: "relative", // needed for absolute positioning inside
-                }}
-              >
-                <MainContent />
-              </Container>
-              {/* <ScrollToTopButton
-                aria-label="Zurück nach oben scrollen"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                <ArrowUpwardIcon />
-              </ScrollToTopButton> */}
-            </AppTheme>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
-  );
-}

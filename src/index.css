@@ -1,41 +1,10 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-/* html,
-body,
-#root {
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-} */
-
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-/* html {
-  overflow-x: hidden;
-} */
-
-body {
-  overflow-y: auto;
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevents unwanted bounce scrollbars */
+  background-color: #1a1110; /* Match the darkest shade of your desk background */
 }
