@@ -67,8 +67,7 @@ export default function MainContent() {
   const [activeChapterIdx, setActiveChapterIdx] = useState(0);
   const [activeSubPage, setActiveSubPage] = useState(0);
   const [chapterPages, setChapterPages] = useState(1);
-
-  const contentRef = useRef<HTMLDivElement>(null);
+  const [shouldJumpToLastPage, setShouldJumpToLastPage] = useState(false);
 
   const chaptersBase = [
     { title: "Vorwort", color: "#4a4a4a", key: "Vorwort" as PageKey },
@@ -90,9 +89,12 @@ export default function MainContent() {
     { title: "Sachbuch", color: "#d2b48c", key: "Sachbuch" as PageKey },
   ];
 
+  // Track page counts per chapter so we can calculate the running total
   const [pageCounts, setPageCounts] = useState<number[]>(
     chaptersBase.map(() => 1),
   );
+
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const updatePageCount = useCallback(() => {
     if (contentRef.current) {
@@ -110,17 +112,22 @@ export default function MainContent() {
 
       // Update global tracking for this specific chapter
       setPageCounts((prev) => {
+        if (prev[activeChapterIdx] === finalCount) return prev; // prevent unnecessary renders
         const next = [...prev];
         next[activeChapterIdx] = finalCount;
         return next;
       });
+
+      if (shouldJumpToLastPage) {
+        setActiveSubPage(finalCount - 1);
+        setShouldJumpToLastPage(false);
+      }
     }
-  }, [activeChapterIdx]);
+  }, [activeChapterIdx, shouldJumpToLastPage]);
 
   useEffect(() => {
     updatePageCount();
 
-    // Images loading can expand the DOM, so check again slightly after render
     const timeoutId = setTimeout(updatePageCount, 250);
     window.addEventListener("resize", updatePageCount);
 
@@ -134,6 +141,7 @@ export default function MainContent() {
     if (!isOpen) setIsOpen(true);
     setActiveChapterIdx(idx);
     setActiveSubPage(0);
+    setShouldJumpToLastPage(false);
   };
 
   const handleNext = (e: React.MouseEvent) => {
@@ -151,8 +159,9 @@ export default function MainContent() {
     if (activeSubPage > 0) {
       setActiveSubPage((p) => p - 1);
     } else if (activeChapterIdx > 0) {
+      setShouldJumpToLastPage(true); // Flag that we need to jump to the end of the previous chapter
       setActiveChapterIdx((c) => c - 1);
-      setActiveSubPage(0); // Safely start at the beginning of the previous chapter
+      setActiveSubPage(0); // Temporarily set to 0 while we wait for updatePageCount to measure
     }
   };
 
@@ -216,7 +225,7 @@ export default function MainContent() {
         sx={{
           position: "absolute",
           right: { xs: "5%", md: "15%" },
-          top: { xs: "8%", md: "12%" },
+          top: { xs: "3%", md: "12%" },
           backgroundColor: "#faf8f5",
           padding: "12px 12px 35px 12px",
           boxShadow: "5px 8px 15px rgba(0,0,0,0.6)",
@@ -285,7 +294,7 @@ export default function MainContent() {
           transformStyle: "preserve-3d",
           transform: isOpen
             ? {
-                xs: "translateX(-45%) scale(1.1)",
+                xs: "translateX(-25%) scale(1.1)",
                 sm: "translateX(-40%) scale(1.15)",
                 md: "translateX(-35%) scale(1.25)",
               }
@@ -496,11 +505,13 @@ export default function MainContent() {
 
               {isOpen &&
                 (() => {
-                  // Sum pages of all PREVIOUS chapters
+                  // Sum pages of all chapters before the current one
                   const previousPages = pageCounts
                     .slice(0, activeChapterIdx)
-                    .reduce((a, b) => a + b, 0);
+                    .reduce((sum, count) => sum + count, 0);
+
                   const currentGlobalPage = previousPages + activeSubPage + 1;
+
                   return <PageCounter>{currentGlobalPage}</PageCounter>;
                 })()}
 
@@ -546,6 +557,7 @@ export default function MainContent() {
                 : "default",
           }}
         >
+          {/* Front Shell Outer Leather Cover Layout */}
           <Box
             sx={{
               position: "absolute",
@@ -557,8 +569,66 @@ export default function MainContent() {
               boxShadow: isOpen
                 ? "none"
                 : "15px 20px 30px rgba(0,0,0,0.8), inset 6px 0 12px rgba(0,0,0,0.5)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          />
+          >
+            {/* Golden Embossed Title */}
+            <Typography
+              variant="h4"
+              sx={{
+                fontFamily: '"Playfair Display", serif',
+                color: "#d4af37", // Classic gold
+                textAlign: "center",
+                fontWeight: 700,
+                // Creates a stamped/embossed metallic effect
+                textShadow:
+                  "1px 2px 3px rgba(0,0,0,0.8), -1px -1px 1px rgba(255,255,255,0.2)",
+                px: 3,
+                lineHeight: 1.4,
+                mt: 4
+              }}
+            >
+              Marianne
+              <br />
+              Marlene
+              <br />
+              Peternell
+            </Typography>
+
+            <Typography
+              variant="h5"
+              sx={{
+                fontFamily: '"Playfair Display", serif',
+                color: "#d4af37", // Classic gold
+                textAlign: "center",
+                fontWeight: 700,
+                mt: 10,
+                // Creates a stamped/embossed metallic effect
+                textShadow:
+                  "1px 2px 3px rgba(0,0,0,0.8), -1px -1px 1px rgba(255,255,255,0.2)",
+                px: 3,
+                lineHeight: 1.4,
+              }}
+            >
+              1956 - 2024
+            </Typography>
+
+            {/* Decorative Book Spine Hinge Indentation */}
+            <Box
+              sx={{
+                position: "absolute",
+                left: "14px",
+                top: 0,
+                bottom: 0,
+                width: "4px",
+                background:
+                  "linear-gradient(to right, rgba(0,0,0,0.5), rgba(255,255,255,0.15), rgba(0,0,0,0.5))",
+              }}
+            />
+          </Box>
           <Box
             sx={{
               position: "absolute",

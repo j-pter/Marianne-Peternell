@@ -1,14 +1,17 @@
 import {
+  Box,
   CardMedia,
   Container,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  styled,
   SvgIcon,
+  Typography,
   type SvgIconProps,
 } from "@mui/material";
-import CircleIcon from "@mui/icons-material/Circle";
+import { Children, isValidElement } from "react";
 
 // Custom stylish Diamond Icon
 const DiamondIcon = (props: SvgIconProps) => (
@@ -23,27 +26,78 @@ export const BookListItem = ({ children }: { children: React.ReactNode }) => {
       disablePadding
       alignItems="flex-start"
       sx={{
-        mb: 1.5,
+        mb: 1,
         breakInside: "avoid",
         WebkitColumnBreakInside: "avoid",
         pageBreakInside: "avoid",
       }}
     >
       <ListItemIcon sx={{ minWidth: "24px", mt: "9px" }}>
-        <DiamondIcon sx={{ fontSize: "10px", color: "#5c4033" }} />
+        <DiamondIcon sx={{ fontSize: "12px", color: "#5c4033" }} />
       </ListItemIcon>
       <ListItemText
         primary={children}
         slotProps={{
           primary: {
             fontFamily: '"Lora", serif',
-            color: "#3A3836",
-            lineHeight: 1.8,
-            fontSize: "1rem",
+            // color: "#3A3836",
+            // lineHeight: 1.8,
+            fontSize: "0.9rem",
           },
         }}
       />
     </ListItem>
+  );
+};
+
+const PoemLine = styled(Typography)({
+  fontFamily: '"Lora", serif',
+  fontSize: "1rem",
+  lineHeight: 1.8,
+  color: "#3A3836",
+  textAlign: "left",
+
+  // Hanging Indent
+  paddingLeft: "1rem",
+  textIndent: "-1rem",
+  wordBreak: "break-word",
+});
+
+const PoemContainer = styled(Box)({
+  marginBottom: "24px",
+  breakInside: "avoid",
+  WebkitColumnBreakInside: "avoid",
+  pageBreakInside: "avoid",
+});
+
+export const PoemBlock = ({ children }: { children: React.ReactNode }) => {
+  const lines: React.ReactNode[][] = [[]];
+
+  // Group children into lines, splitting on every <br /> tag
+  Children.forEach(children, (child) => {
+    if (isValidElement(child) && child.type === "br") {
+      lines.push([]); // Start a new line array when we hit <br/>
+    } else {
+      lines[lines.length - 1].push(child);
+    }
+  });
+
+  return (
+    <PoemContainer>
+      {lines.map((lineContent, index) => {
+        // Render nothing if we have completely empty lines at the very start/end
+        if (lineContent.length === 0) {
+          // If we have back-to-back <br/> tags, render a stanza spacer
+          const prevLineIsEmpty = index > 0 && lines[index - 1].length === 0;
+          if (index > 0 && !prevLineIsEmpty) {
+            return <Box key={index} sx={{ height: "1.5rem" }} />;
+          }
+          return null;
+        }
+
+        return <PoemLine key={index}>{lineContent}</PoemLine>;
+      })}
+    </PoemContainer>
   );
 };
 
@@ -60,158 +114,329 @@ export const pageData: PageData = {
   Vorwort: {
     title: "Vorwort",
     content: [
-      <div>
-        <div>{`Diese Webseite dient dem Gedenken an Marianne Marlene Peternell, die leider viel zu früh am 10. Januar 2024 verstorben ist. Zu Lebzeiten hat sie bereits eine Webseite betrieben (damals mariannepeternell.online), deren Inhalte hier in ihrem Sinne weitergeführt werden. Nur der Abschnitt Fotografie ist neu und war bisher nicht auf ihrer Webseite inkludiert. `}</div>
+      <Box
+        sx={{
+          fontFamily: '"Lora", serif',
+          // color: "#3A3836",
+          lineHeight: 1.5,
+          fontSize: "0.85rem",
+        }}
+      >
+        <Box>
+          Dieser Ort dient dem Gedenken an Marianne Marlene Peternell, die
+          leider viel zu früh am 10. Januar 2024 verstorben ist. Zu Lebzeiten
+          hat sie bereits eine Webseite betrieben (damals
+          mariannepeternell.online), deren Inhalte hier in ihrem Sinne
+          weitergeführt werden. Nur der Abschnitt Fotografie ist neu und war
+          bisher nicht auf ihrer Webseite inkludiert.
+        </Box>
         <br />
-        <b>Begrüßungstext von Marianne Peternell</b>
+        <Typography variant="subtitle1">
+          Begrüßungstext von Marianne Peternell
+        </Typography>
+        Ich habe auf diesen Seiten Texte und Bilder veröffentlicht, die im Laufe
+        der letzten Jahre entstanden sind. <br />
+        Es handelt sich um Literarisches, Malerisches, Theoretisches und
+        Persönliches. Ich bemühe mich, die Homepage immer wieder zu
+        aktualisieren. <br />
         <br />
-        {`
-Ich habe auf diesen Seiten Texte und Bilder veröffentlicht, die im Laufe der letzten Jahre entstanden sind.
-
-Es handelt sich um Literarisches, Malerisches, Theoretisches und Persönliches.
-Ich bemühe mich, die Homepage immer wieder zu aktualisieren.
-
-Viel Vergnügen! `}
-      </div>,
+        Viel Vergnügen!
+      </Box>,
     ],
   },
   Gedichte: {
     title: "Gedichte",
     content: [
-      <Container
+      <Box
         sx={{
-          diplay: "flex",
-          flexDirection: "column",
-          justifyItems: "center",
+          fontFamily: '"Lora", serif',
+          // color: "#3A3836",
+          lineHeight: 1.5,
+          fontSize: "0.85rem",
         }}
       >
         <p>
-          {`Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright.
-            `}
+          Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage
+          unterliegen dem Copyright.
         </p>
-        <CardMedia
-          component="img"
-          src="/assets/matisse_sorrow-of-the-king.jpg"
-          alt="Henri Matisse - Die Traurigkeit des Königs (1952)"
-        />
-        <i style={{ textAlign: "center" }}>
-          Henri Matisse - Die Traurigkeit des Königs (1952)
-        </i>
-      </Container>,
+        <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
+          <CardMedia
+            component="img"
+            src="/assets/matisse_sorrow-of-the-king.jpg"
+            alt="Henri Matisse - Die Traurigkeit des Königs (1952)"
+          />
+          <i style={{ textAlign: "center" }}>
+            Henri Matisse - Die Traurigkeit des Königs (1952)
+          </i>
+        </Box>
+      </Box>,
     ],
     subChapters: {
       "KEIN SCHATTEN": (
-        <div>
-          Zuerst wurde der Tod verbannt und das Alter.
-          <br />
-          Schöne und junge Menschen gab es überall.
-          <br />
-          Jetzt wird der Schatten selbst verbannt.
-          <br />
-          Keiner hat ein Problem.
-          <br />
-          Oder sieht einen Schatten.
-          <br />
-          Wo denn?
-          <br />
-          <br />
-          Sonst ist er selber schuld.
-          <br />
-          {`
-Vielleicht hat er den falschen Umgang?
-Oder das falsche Buch gelesen.
-Die falschen Gedanken im Kopf.
-Wer ein Problem hat, muss zum Experten. Heimlich.
-Es gibt massenhaft Ratgeber.
-
-Ängstlich verbergen wir voreinander die Schatten.
-
-Schweigemantel. Erfahrungen gemurmelt vertuschen im Sand.
-Schreib ein Buch, einen Ratgeber.
-Was, willst Rat geben, aber du, du hast doch auch, da, ich seh' das
-
-Zipfelchen, da Schatten, ein Problem, steig herab.
-
-Du hast uns nichts zu sagen!
-Warte auf den Erlöser! Den Experten! Wir könnten dich beraten! Ha!
-
-Erfahrungen werden nicht getauscht. Die Sprache von Herz zu Herz verstummt.
-Hochgerüstet mit Weisheit, aufgerüstet, wehe du trittst in meinen Schmerz!
-
-Sonnenhell ausgeleuchtet ist das Land und schön.`}
-        </div>
+        <Box>
+          <PoemBlock>
+            Zuerst wurde der Tod verbannt und das Alter.
+            <br />
+            Schöne und junge Menschen gab es überall.
+            <br />
+            Jetzt wird der Schatten selbst verbannt.
+            <br />
+            Keiner hat ein Problem.
+            <br />
+            Oder sieht einen Schatten.
+            <br />
+            Wo denn?
+          </PoemBlock>
+          <PoemBlock>
+            Sonst ist er selber schuld. <br />
+            Vielleicht hat er den falschen Umgang? <br /> Oder das falsche Buch
+            gelesen.
+            <br />
+            Die falschen Gedanken im Kopf.
+            <br />
+            Wer ein Problem hat, muss zum Experten. Heimlich.
+            <br />
+            Es gibt massenhaft Ratgeber.
+          </PoemBlock>
+          <PoemBlock>
+            Ängstlich verbergen wir voreinander die Schatten.
+          </PoemBlock>
+          <PoemBlock>
+            Schweigemantel. Erfahrungen gemurmelt vertuschen im Sand.
+            <br />
+            Schreib ein Buch, einen Ratgeber.
+            <br />
+            Was, willst Rat geben, aber du, du hast doch auch, da, ich seh' das
+          </PoemBlock>
+          <PoemBlock>
+            Zipfelchen, da Schatten, ein Problem, steig herab.
+          </PoemBlock>
+          <PoemBlock>
+            Du hast uns nichts zu sagen! <br />
+            Warte auf den Erlöser! Den Experten! Wir könnten dich beraten! Ha!
+          </PoemBlock>
+          <PoemBlock>
+            Erfahrungen werden nicht getauscht. Die Sprache von Herz zu Herz
+            verstummt.
+            <br />
+            Hochgerüstet mit Weisheit, aufgerüstet, wehe du trittst in meinen
+            Schmerz!
+          </PoemBlock>
+          <PoemBlock>
+            Sonnenhell ausgeleuchtet ist das Land und schön.
+          </PoemBlock>
+        </Box>
       ),
       Europäerin: (
-        <div>{`Ich hungere und doch habe ich immer zu essen.
-Ich friere und doch habe ich warme Kleider und Zentralheizung.
-Ich bin einsam und doch bin ich selten allein. Ich bin Europäerin.
-Es geht mir gut.`}</div>
+        <PoemBlock>
+          Ich hungere und doch habe ich immer zu essen. <br />
+          Ich friere und doch habe ich warme Kleider und Zentralheizung. <br />
+          Ich bin einsam und doch bin ich selten allein. Ich bin Europäerin.
+          <br />
+          Es geht mir gut.
+        </PoemBlock>
       ),
       "Weiche, kleine Wellen": (
-        <div>{`Weiche kleine Wellen
-tragen meinen Körper.
-Der See liegt grün und glatt
-im Morgenlicht.
- 
-Die Berge schweigen gefügig
-vor dem bewegten Wasser.
-Ich gleite und werde gewiegt.
- 
-Kein Stein fiel.
-Kein Stern zerbarst.
-Kein Mond zerbrach.
- 
-Das Käuzchen rief.`}</div>
+        <Box>
+          <PoemBlock>
+            Weiche kleine Wellen <br />
+            tragen meinen Körper.
+            <br />
+            Der See liegt grün und glatt
+            <br />
+            im Morgenlicht.
+            <br />
+            <br />
+            Die Berge schweigen gefügig
+            <br />
+            vor dem bewegten Wasser.
+            <br />
+            Ich gleite und werde gewiegt.
+            <br />
+            <br />
+            Kein Stein fiel.
+            <br />
+            Kein Stern zerbarst.
+            <br />
+            Kein Mond zerbrach.
+            <br />
+            <br />
+            Das Käuzchen rief.
+          </PoemBlock>
+        </Box>
       ),
       "Severin, Sievering": (
-        <div>{`Hartgeld und Weingut
-Klatschen und Klatsch
-Auf den Wiesen der Mohn
-Augengemurmel
-Streifengelächel
-Spitzen.
-Immer nett spitz 
-unter den Trauben.`}</div>
+        <>
+          <PoemBlock>
+            Hartgeld und Weingut <br />
+            Klatschen und Klatsch
+            <br />
+            Auf den Wiesen der Mohn
+            <br />
+            Augengemurmel
+            <br />
+            Streifengelächel
+            <br />
+            Spitzen.
+          </PoemBlock>
+          <PoemBlock>Immer nett spitz</PoemBlock>
+          <PoemBlock> unter den Trauben.</PoemBlock>
+        </>
       ),
       HERBST: (
-        <div>{`Das Jahr beginnt im Herbst.
-Die Wurzeln des Sommers treiben Sprösslinge,
-Die Augen blind vom Holunderrausch im Sturm.
-Gespanntes Tun – von der Feder getrieben.
- 
-Das Kreuz in der
-Novemberschwärze – eine Kulisse.
-Aus Sohlen und Kiefern holen wir Worte
-wie Zapfen und stampern sie ins Sein.
- 
-Dünger auf die Felder des Geistes und
-Es weht durch uns durch und wohin
-Der kleine Knabe wird geboren.
-Die Herbstarbeit kommt zur Ruhe`}</div>
+        <>
+          <PoemBlock>
+            Das Jahr beginnt im Herbst.
+            <br />
+            Die Wurzeln des Sommers treiben Sprösslinge, <br />
+            Die Augen blind vom Holunderrausch im Sturm. <br />
+            Gespanntes Tun – von der Feder getrieben.
+          </PoemBlock>
+          <PoemBlock>
+            Das Kreuz in der
+            <br />
+            Novemberschwärze – eine Kulisse.
+            <br />
+            Aus Sohlen und Kiefern holen wir Worte
+            <br />
+            wie Zapfen und stampern sie ins Sein.
+          </PoemBlock>
+          <PoemBlock>
+            Dünger auf die Felder des Geistes und
+            <br />
+            Es weht durch uns durch und wohin
+            <br />
+            Der kleine Knabe wird geboren.
+            <br />
+            Die Herbstarbeit kommt zur Ruhe
+          </PoemBlock>
+        </>
+      ),
+      Marlene: (
+        <>
+          <PoemBlock>
+            Unter der Laterne.
+            <br /> Nebelhauch. <br />
+            Schwarzes Haar und Seide.
+            <br /> Fremd beäugt sie den Freund.
+            <br /> Der fürchtet Hunde.
+          </PoemBlock>
+          <PoemBlock>Rauch. Rauchig.Verrucht.</PoemBlock>
+          <PoemBlock>
+            {" "}
+            Doch ihre Stimme weich und bestimmt und biegsam. <br />
+            Zuverlässiges Dasein.
+          </PoemBlock>
+          <PoemBlock> Die goldene Klingelkugel rollt über Glas. </PoemBlock>
+          <PoemBlock>
+            {" "}
+            Am großen Meer schweigt das Eichkätzchen still.{" "}
+          </PoemBlock>
+          <PoemBlock>
+            {" "}
+            Die kleine sehnige Tigerkatze schleicht abenteuernd aus der Türe.
+          </PoemBlock>
+          <PoemBlock> Die Gockel krähen herausfordernd.</PoemBlock>
+          <PoemBlock>Und über allem gespannte Stille. Gaze.</PoemBlock>
+          <PoemBlock> Der Sehnsuchtston im immerwährenden Lied.</PoemBlock>
+          <PoemBlock>
+            {" "}
+            Ein kleines rundes Mädchen läuft durch das Bild.
+          </PoemBlock>
+          <PoemBlock> Walten. Warten. Spannen. Sein.</PoemBlock>
+        </>
+      ),
+      Garfunkelgestein: (
+        <>
+          <PoemBlock>
+            Einst fürchtete ich (sinnlos war es)
+            <br />
+            an den Korallentoren meines Muschelpalastes
+            <br />
+            die Kerzen zu zünden.
+            <br />
+            (Du wolltest nicht suchen.)
+          </PoemBlock>
+
+          <PoemBlock>
+            Einst fürchtete ich (grausam war es)
+            <br />
+            in die blauesten Fahnen meiner Träume
+            <br />
+            zu weben die Schönheit der Erde deiner Augen.
+            <br />
+            (Du gehörtest mir nicht an.)
+          </PoemBlock>
+          <PoemBlock>
+            Tief sitzt du in Schwärze
+            <br />
+            - Diamantengarfunkel -<br />
+            Aber du spannst mich wieder ins Kreuz.
+            <br />
+            Das rädert samten.
+          </PoemBlock>
+          <PoemBlock>
+            Schwarze Flocken der Finsternis
+            <br />
+            beschneiten mein Antlitz
+            <br />
+            und über dem schrecklichen Mond
+            <br />
+            schäumte silbern mein Herz.
+          </PoemBlock>
+        </>
+      ),
+      "Julian L.": (
+        <>
+          <PoemBlock>
+            Abendsonne, rot und violett und orange warst du
+            <br />
+            Und ich sehe dich nicht mehr.
+            <br />
+            Du hast mich verjagt.
+            <br />
+            Ich soll nicht mehr kommen.
+            <br />
+            Und Sprache warst du und Bilder und Lieder
+            <br />
+            Und Welt und Leben.
+            <br />
+            Mein Herz.
+            <br />
+            Eine einfache Speise aus Griechenland,
+            <br />
+            Verzehrt in der Sonne.
+            <br />
+            Geduscht in einer kleinen Nische mit Ölfarben.
+          </PoemBlock>
+        </>
       ),
     },
   },
   Kurzgeschichten: {
     title: "Kurzgeschichten",
     content: [
-      <Container
+      <Box
         sx={{
-          diplay: "flex",
-          flexDirection: "column",
-          justifyItems: "center",
+          fontFamily: '"Lora", serif',
+          // color: "#3A3836",
+          lineHeight: 1.5,
+          fontSize: "0.85rem",
         }}
       >
         <p>
-          {`Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage unterliegen dem Copyright.
-            `}
+          Wildes Kopieren ist nicht erlaubt. Alle Texte dieser homepage
+          unterliegen dem Copyright.
         </p>
-        <CardMedia
-          component="img"
-          src="/assets/matisse_spanisches stillleben.jpg"
-          alt="Henri Matisse - Spanisches Stillleben (1911)"
-        />
-        <i>Henri Matisse - Spanisches Stillleben (1911)</i>
-      </Container>,
+        <Box display="flex" flexDirection="column" gap={1} alignItems="center">
+          <CardMedia
+            component="img"
+            src="/assets/matisse_spanisches stillleben.jpg"
+            alt="Henri Matisse - Spanisches Stillleben (1911)"
+          />
+          <i>Henri Matisse - Spanisches Stillleben (1911)</i>
+        </Box>
+      </Box>,
     ],
     subChapters: {
       Netzwerke: `Hannah stand unter der Dusche. Das Wasser prasselte warm und regelmäßig über ihren Körper. Sie stand schon bis zu den Knöcheln im Wasser. Es floss nicht ab. Das unter der weiß glänzenden Duschtasse verborgene Abflussrohr war verstopft. Wohin es fließen sollte, dieses Wasser, sie wusste es nicht. Röhrensysteme stellte sie sich vor, Kanäle, Abwässerkläranlagen.
@@ -355,6 +580,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -369,6 +595,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -383,6 +610,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -397,6 +625,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -411,6 +640,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -425,6 +655,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -439,6 +670,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -453,6 +685,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -467,6 +700,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -481,6 +715,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -495,6 +730,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -509,6 +745,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -523,6 +760,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -537,6 +775,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia component="img" src="/assets/Malerei/Baum.JPG" alt="Baum" />
@@ -547,6 +786,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -561,6 +801,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia component="img" src="/assets/Malerei/Rose.JPG" alt="Rose" />
@@ -571,6 +812,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -585,17 +827,25 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
   Fotografie: {
     title: "Fotografie",
     content: [
-      <div>
+      <Box
+        sx={{
+          fontFamily: '"Lora", serif',
+          // color: "#3A3836",
+          lineHeight: 1.5,
+          fontSize: "0.85rem",
+        }}
+      >
         In den letzten Jahren hat Marianne Peternell gerne fotografiert. Sie hat
         die entstandenen Fotos ursprünglich nicht auf ihrer Webseite
         veröffentlicht. Eine Auswahl ihrer schönsten Aufnahmen, die häufig in
         der Seestadt Aspern in Wien entstanden sind, werden hier präsentiert.
-      </div>,
+      </Box>,
       <Container
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -610,6 +860,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -624,6 +875,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -638,6 +890,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -652,6 +905,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -666,6 +920,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -680,6 +935,7 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 0.5,
         }}
       >
         <CardMedia
@@ -694,67 +950,57 @@ Zuerst fuhr ich natürlich in Annas Wohnung, um mich dort umzusehen. Ich fand ei
   "Deutsch-Unterricht": {
     title: "Deutsch-Unterricht in der Oberstufe",
     content: [
-      <>
-        <div>{`Interpretationsarbeit: Innerer Monolog, Monolog
+      <Box
+        sx={{
+          fontFamily: '"Lora", serif',
+          // color: "#3A3836",
+          lineHeight: 1.6,
+          fontSize: "0.9rem",
+          whiteSpace: "pre-line",
+        }}
+      >
+        <Box>{`Interpretationsarbeit: Innerer Monolog, Monolog
 
 Integration verschiedener Bildungsbereiche:
-`}</div>
+`}</Box>
         <List dense={true} sx={{ width: "100%", paddingLeft: 0.75 }}>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Literarhistorische Bildung (Arthur Schnitzler ‚Leutnant Gustl’ kennen lernen; Folgewirkungen für Schnitzler; Migrantenliteratur in Ansätzen kennen lernen)`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Kreative Kompetenz: einen inneren Monolog selbst verfassen können`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Literarische Kompetenz: die Leistung des inneren Monologs erfassen; die Leistung von Migrantenliteratur für den interkulturellen Dialog erfassen`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Politische Bildung (Gastarbeiter und ‚Fremde’ in der Wahrnehmung von Deutschen und Österreichern mit Hilfe des inneren Monologs realistisch gespiegelt durch einen arabischen Schriftsteller)`}
-            />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <CircleIcon className="custom-circle-icon" />
-            </ListItemIcon>
-            <ListItemText
-              primary={`Persönlichkeitsbildung (Empathie: mit den Augen des Anderen sehen; der Umgang mit Anderen; Konfliktbewältigung; den Unterschied von Empathie und Identifikation erfassen)`}
-            />
-          </ListItem>
+          <BookListItem>
+            Literarhistorische Bildung (Arthur Schnitzler ‚Leutnant Gustl’
+            kennen lernen; Folgewirkungen für Schnitzler; Migrantenliteratur in
+            Ansätzen kennen lernen)
+          </BookListItem>
+          <BookListItem>
+            Kreative Kompetenz: einen inneren Monolog selbst verfassen können
+          </BookListItem>
+          <BookListItem>
+            Literarische Kompetenz: die Leistung des inneren Monologs erfassen;
+            die Leistung von Migrantenliteratur für den interkulturellen Dialog
+            erfassen
+          </BookListItem>
+          <BookListItem>
+            Politische Bildung (Gastarbeiter und ‚Fremde’ in der Wahrnehmung von
+            Deutschen und Österreichern mit Hilfe des inneren Monologs
+            realistisch gespiegelt durch einen arabischen Schriftsteller)
+          </BookListItem>
+          <BookListItem>
+            Persönlichkeitsbildung (Empathie: mit den Augen des Anderen sehen;
+            der Umgang mit Anderen; Konfliktbewältigung; den Unterschied von
+            Empathie und Identifikation erfassen)
+          </BookListItem>
         </List>
-        <br />
-        <b>1. UE</b>
-        <div>
+        <Typography variant="h6">1. UE</Typography>
+        <Box>
           Zunächst wird ein Ausschnitt aus Schnitzlers{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="/Leutnant_Gustl_Arthur_Schnitzler.pdf"
+            href="/assets/Leutnant_Gustl_Arthur_Schnitzler.pdf"
           >
             „Leutnant Gustl“
           </a>{" "}
           gelesen.
-        </div>
-        <div>
+        </Box>
+        <Box>
           {`Die SchülerInnen werden über Arthur Schnitzlers Leistungen als „Seelenkundler“ zur Jahrhundertwende informiert. Sie erhalten Informationen über den Ehrenkodex der Offiziere in der Adelsgesellschaft. Der Textausschnitt mit der Kernaussage des Bäckermeisters „Sie dummer Bub“ zeigt deutlich die Mischung von Angst vor Gewalt und homoerotischem Übergriff bei Leutnant Gustl, der mit seinem Ehrenkodex vermischt ist. Das Problem, sich von einem einfachen Bäckermeister dummer Bub schimpfen und bedrohen zu lassen, ist zudem besonders mit der Offizierswürde und dem gesellschaftlichen Ansehen des jungen Leutnant Gustl unvereinbar.
 Schüler finden es meist erstaunlich, dass Schnitzler wegen dieses Textes unehrenhaft aus dem Offiziersrang entlassen worden ist.
  
@@ -762,9 +1008,10 @@ Meist finden sie den Text unterhaltsam und können Bezüge zu eigenem Erleben he
  
 Danach wird die Bauweise des inneren Monologs mit seinen subjektiven Assoziationen, Gedankensprüngen, Auslassungen usw. an der Tafel erläutert.`}
           <br />
-          <br /> <b>2. UE</b>
-        </div>
-        <div>
+          <br />
+          <Typography variant="h6">2. UE</Typography>
+        </Box>
+        <Box>
           {`Kreatives Schreiben:
 Die SchülerInnen sollen nun selbst die Textart „innerer Monolog“ erproben:
 „Die Indianer haben gesagt, du kennst nie einen anderen, wenn du nicht zumindest einmal in seinen Mokassins gegangen bist.“. Man müsse die Welt auch manchmal mit den Augen eines anderen betrachten. Leicht sei es, sich in jemanden zu versetzen, der einem sehr ähnlich sei. Schwieriger ist es, sich in jemanden zu versetzen, der nach Alter, Beruf oder sonstigen Zugehörigkeiten anders sei. Sie bekommen nun die schwierigere Aufgabe. Sie sollten sich an eine konkrete Stunde in ihrer Klasse erinnern, sich eine bestimmte Lehrkraft vergegenwärtigen und sich in diese Lehrkraft hinein versetzen. Arbeitsauftrag: „Verfasse den inneren Monolog einer Lehrkraft deiner Klasse nach Verlassen einer bestimmten Stunde in der Klasse.“
@@ -772,17 +1019,17 @@ Abschließend sollten sie in Zweiergruppen einander die Ergebnisse vorlesen. Sie
 Die Leistung des inneren Monologs ist offenbar, dass man damit Personen von innen her charakterisieren kann. Das haben die SchülerInnen nun selbst erlebt.`}
           <br />
           <br />
-          <b>3. UE</b>
-        </div>
-        <div>
+          <Typography variant="h6">3. UE</Typography>
+        </Box>
+        <Box>
           {`Ein „innerer Monolog eines Lehrers“ verfasst von einem fingierten Schüler, der damit einen Lehrer charakterisiert, der Schülern eher abwertend gegenüber steht, wird präsentiert. Es geht nun um die Frage der Interpretation. Angeblich deuten einige Erwachsene den Text ganz in der Perspektive des dargestellten Lehrers und bewerten nun die Klasse ebenfalls negativ.
 Der logische Fehler wird herausgearbeitet. Eine begriffliche Unterscheidung zwischen Empathie und Identifikation wird vorgenommen.
 Es wird darauf verwiesen, dass die Deutung eines (inneren) Monologs den Autor nicht vergessen darf, der die Absicht verfolgt mit Hilfe des inneren Monologs eine Person zu charakterisieren. Auf eigene Bewertungen der dargestellten Handlungen ist dabei zunächst zu verzichten.`}
-        </div>
+        </Box>
         <br />
-        <div>
-          {`Text:
-Stellt euch vor, ein Schüler, er hat in der Stunde zuvor eine Cola umgeworfen, hätte die Aufgabe einen inneren Monolog zu verfassen. Er versetzte sich in einen Lehrer, der SchülerInnen nicht besonders leiden kann und einen schlechten Tag hat.
+        <Box>
+          <Typography variant="subtitle1">Text:</Typography>
+          {`Stellt euch vor, ein Schüler, er hat in der Stunde zuvor eine Cola umgeworfen, hätte die Aufgabe einen inneren Monolog zu verfassen. Er versetzte sich in einen Lehrer, der SchülerInnen nicht besonders leiden kann und einen schlechten Tag hat.
 Der Schüler schreibt den inneren Monolog eines Lehrers im Konferenzzimmer, der halblaut vor sich hinredet: 
 „Diese blöden Idioten, diese Trotteln! Das Schülermaterial ist einfach unter jeder Kritik! Hat doch dieser Affe, der jedes Mal, wenn man ihm etwas beibringen will, mit seinem Nachbarn schwätzt, dann aber dumm dreinschaut, wenn er drankommt, dieses Mal seine Cola auf dem Tisch ausgeleert. „Scheiße!“, hat er geschrieen. So ungeschickt muss einer sein. Dass der auch über den Heften im Unterricht seine Cola trinken muss! Wahrscheinlich isst der zu Hause seine Fettbrote über den Hausaufgaben. Ordnungssinn geht denen ja heute völlig ab. Respekt vor dem Lehrpersonal gibt es selten. Ich finde meinen Kuli nicht mehr, den haben sicher diese Biester geklaut. Aber ich werde es ihnen nachweisen, ja das werde ich!
 Während der Lehrer Meier halblaut spricht, sagen die anderen im Raum halblaut „Jaja.“
@@ -792,14 +1039,14 @@ Der schreibt.
 Lehrer Meier hat in seiner Klasse mit lauter Idioten, Trotteln und respektlosen, ordnungsfeindlichen Biestern zu tun, die ungeschickt sind und keinen Respekt kennen. Man bekommt einen guten Eindruck, wie es heute in Schulen zugeht.
  
 Was ist das Problem dieser Interpretationsarbeit?`}
-        </div>
+        </Box>
         <br />
+        <Typography variant="h6"> 4. UE</Typography>
+        <Box
+          sx={{ whiteSpace: "pre-line" }}
+        >{`Der Text von Rafik Shami, einem syrischen Schriftsteller, der in Deutschland äußerst beliebt ist und zahlreiche Preise erringen konnte, „Der Kummer des Beamten Müller“ problematisiert die Ausländerfrage auf humorvoll-ironische Weise, indem er einen äußerst mürrischen ausländerfeindlichen Beamten im deutschen Büro für Aufenthaltsbewilligungen mit Hilfe eines Monologs von innen her charakterisiert. Dies wird jedoch erst am Schluss des Textes klar. Zuvor ist man unmittelbar mit zahllosen Wertungen, Schimpfworten, Missverständnissen und Vorurteilen konfrontiert, die Herr Müller in Ich-Form zum Besten gibt, sodass die Gefahr einer unmittelbaren Identifizierung gegeben ist und nur die Kenntnis der Technik des inneren Monologs davor schützt, sowie allenfalls die Irritation, dass der Text durch einen arabischen Schriftsteller verfasst wurde, der selbst einmal als Gastarbeiter und arabischer Schriftsteller um Aufenthaltsgenehmigung in Deutschland ansuchen musste. Nun werden die Erkenntnisse der letzten Stunde auf eine harte Probe gestellt:`}</Box>
         <br />
-        <b>4. UE</b>
-        <div>{`Der Text von Rafik Shami, einem syrischen Schriftsteller, der in Deutschland äußerst beliebt ist und zahlreiche Preise erringen konnte, „Der Kummer des Beamten Müller“ problematisiert die Ausländerfrage auf humorvoll-ironische Weise, indem er einen äußerst mürrischen ausländerfeindlichen Beamten im deutschen Büro für Aufenthaltsbewilligungen mit Hilfe eines Monologs von innen her charakterisiert. Dies wird jedoch erst am Schluss des Textes klar. Zuvor ist man unmittelbar mit zahllosen Wertungen, Schimpfworten, Missverständnissen und Vorurteilen konfrontiert, die Herr Müller in Ich-Form zum Besten gibt, sodass die Gefahr einer unmittelbaren Identifizierung gegeben ist und nur die Kenntnis der Technik des inneren Monologs davor schützt, sowie allenfalls die Irritation, dass der Text durch einen arabischen Schriftsteller verfasst wurde, der selbst einmal als Gastarbeiter und arabischer Schriftsteller um Aufenthaltsgenehmigung in Deutschland ansuchen musste. Nun werden die Erkenntnisse der letzten Stunde auf eine harte Probe gestellt:`}</div>
-        <br />
-        <i>Angaben zum Autor:</i>
-        <br />
+        <Typography variant="subtitle1">Angaben zum Autor</Typography>
         <b>Rafik Schami </b>
         <span>{`(* 23. Juni 1946 in Damaskus) (arabisch رفيق شامي) ist ein syrisch-deutscher Schriftsteller und ein promovierter Chemiker. Der nom de plume (=Pseudonym) „Rafik Schami“ bedeutet Damaszener Freund oder „der aus Damaskus kommt“, der bürgerliche Name des Autors ist Suheil Fādél (arabisch سهيل فاضل). Er stammt aus der christlich-aramäischen Minderheit in Damaskus, besuchte ein jesuitisches Kloster-Internat im Libanon und studierte in Damaskus Chemie, Mathematik und Physik. Schon mit 19 hatte sich Rafik Shami der Literatur verschrieben und gründete 1966 in der Altstadt von Damaskus die Wandzeitung „Al-Muntalak“ (dt. Ausgangspunkt), die 1969 verboten wurde. 1970 floh Rafik Schami aus seinem Heimatland Syrien zunächst in den Libanon, zum einen um dem Militärdienst zu entgehen, zum anderen weil er wegen der Zensur nach eigenen Angaben ‚zu ersticken’ drohte. 1971 exilierte er nach Westdeutschland, wo er mit der Einwanderungsbehörde zu tun bekam. Er setzte sein Chemiestudium in Heidelberg fort und schloss es 1979 mit der Promotion ab. Neben seinem Studium arbeitete er in verschiedenen Aushilfsjobs und veröffentlichte zahlreiche Texte in Zeitschriften und Anthologien, zunächst in arabischer, seit 1977 auch in deutscher Sprache. 1978 erschien mit ‚Andere Märchen’ sein erstes Buch in deutscher Sprache. 1980 war er Mitbegründer der literarischen Gruppen Südwind und PoLiKunst (= Polynationaler Literatur- und Kunstverein). Seit 1982 lebt er als freier Schriftsteller in der Pfalz. Rafik Shami gehört zu den erfolgreichsten und beliebtesten deutschsprachigen Autoren der Gegenwart, für sein Werk hat er zahlreiche Auszeichnungen und Preise erhalten. Sein Erfolg gründet sich nicht zuletzt auf seine zahlreichen Lesungen, bei denen er sein Talent zum freien Fabulieren entfaltet. Der Verkauf des ein Millionsten Exemplars der Taschenbücher Schamis bei dtv im Januar 2005 zeugt von seiner gleich bleibend  großen Beliebtheit beim deutschen Publikum. Schami hat die Staatsbürgerschaft von Syrien und Deutschland.`}</span>
         <br />
@@ -823,7 +1070,7 @@ Was ist das Problem dieser Interpretationsarbeit?`}
         <b>{`         Der Kummer des Beamten Müller`}</b>
         <br />
         <br />
-        <div>{`Sie glauben doch nicht im Ernst, daß es mir mit diesen Kanaken, Kamel­treibern und Spaghettis gut geht!
+        <Box>{`Sie glauben doch nicht im Ernst, daß es mir mit diesen Kanaken, Kamel­treibern und Spaghettis gut geht!
 Da kommt doch dieser halbwüchsige Spaghetti, der mich jedes Jahr wahnsin­nig macht, mit seinem offenen Hemd und seiner speckigen Lederjacke hereingetanzt, als wäre die Behörde eine Diskothek. Ich werde das Gefühl nicht los,  dass diese Itaker von Geburt an keinen Respekt vorm Gesetz haben.Weißt du, was er mir sagt, mein Lieber? Der Freche sagt zu mir, an meiner Stelle würde er sich die Arbeit ganz einfach machen, und ich Idiot frage auch noch: „Wie denn?"
 Da sagt doch dieser Kerl, er würde jedem einen Stempel schenken, zum Mitnehmen nach Hause. "Warum immer hierher? Besser zu Hause ein Stempel!"
 Wo kämen wir da hin, wenn das so wäre! Nein, seit zwei Jahren schreibt dieser Spaghetti bei „Nationalität" nicht mehr „Italiener",sondern „Gastarbeiter".
@@ -859,7 +1106,7 @@ Also, ich mußte ihm den Stempel geben. Erst nachmittags hatte ich Zeit und nahm
 Mein Lieber, dir geht's gut, aber mir geht's, seitdem ich in diesem Amt bin, nicht mehr gut. Nicht einmal meine Frau versteht mich mehr. Sie sagt, ich rede mit ihr in gebrochenem Deutsch, vor allem, wenn ich wütend bin, das habe ich nun davon!
  
 
-Herr Müller sprach an diesem Abend immer wieder den Barkeeper an, der hin­ter der Theke der kleinen Kneipe stand. Aber der Barkeeper hörte nicht zu, ab und zu sagte er „Na ja" oder „Was Sie nicht sagen!" Er war sehr beschäftigt,sein Blick wanderte über die Gläser, er füllte immer wieder nach, stellte neue auf    die Theke, kritzelte Striche auf die Bierdeckel. Auch wenn Herr Müller sein Glas geleert hatte, schenkte ihm der Barkeeper das nächste voll, kritzelte einen Strich auf den Bierdeckel und sagte geistesabwesend:,Zum Wohl!"`}</div>
+Herr Müller sprach an diesem Abend immer wieder den Barkeeper an, der hin­ter der Theke der kleinen Kneipe stand. Aber der Barkeeper hörte nicht zu, ab und zu sagte er „Na ja" oder „Was Sie nicht sagen!" Er war sehr beschäftigt,sein Blick wanderte über die Gläser, er füllte immer wieder nach, stellte neue auf    die Theke, kritzelte Striche auf die Bierdeckel. Auch wenn Herr Müller sein Glas geleert hatte, schenkte ihm der Barkeeper das nächste voll, kritzelte einen Strich auf den Bierdeckel und sagte geistesabwesend:,Zum Wohl!"`}</Box>
         <br />
         <br />
         <b>
@@ -870,18 +1117,18 @@ Herr Müller sprach an diesem Abend immer wieder den Barkeeper an, der hin­ter 
         <br />
         <b>Warum hat Schami nicht folgenden Text verfasst?</b> <br /> <br />
         <b>Ein Tag im Leben des Beamten Hans Meier</b>
-        <div>{`Ein Italiener kommt in die Behörde. Er hat einen tänzelnden Gang. Er trägt eine Lederjacke. Das ist aber sympathisch, Südländer sind so besonders lebenslustig, denke ich mir.
+        <Box>{`Ein Italiener kommt in die Behörde. Er hat einen tänzelnden Gang. Er trägt eine Lederjacke. Das ist aber sympathisch, Südländer sind so besonders lebenslustig, denke ich mir.
 Er klagt, er sei kein richtiger Italiener mehr, er sei auch kein Österreicher, er sei Gastarbeiter.
 Er hat seine italienische Sprache, seine Kultur verloren, aber keine neue gefunden. Er lebt in einer Zwischenwelt. Es tut mir weh und ich weiß nicht, wie ich ihm helfen soll. Er schreibt in dem Formular in der Spalte Nationalität statt Italiener Gastarbeiter und ich verstehe ihn. Ich werde das den Behörden erklären. Tatsächlich verlieren die Gastarbeiter wegen des Anpassungszwangs ihre nationale Identität. Er sagt, er träumt sogar von seinem Chef. Ich stelle mir vor, dass dieser ihn anschreit und demütigt und dass er davon Alpträume bekommt, weil er nicht ausweichen und sich nicht helfen kann. Ich rate ihm in einer Gruppe betreuter Ausländer Zuflucht zu suchen. Ich gebe ihm eine Adresse.
 Er will nicht mehr so oft zur Einwanderungsbehörde kommen wegen einer Aufenthaltsbewilligung, er findet das unerträglich. Er schlägt scherzhaft vor, ihm den Stempel für die häufigen Formulare mitzugeben. Ich kann ihn verstehen. Er arbeitet seit 10 Jahren hier und immer noch muss er jährlich seine Arbeitsbewilligung abholen und mit dieser um Aufenthaltsbewilligung ansuchen. Er fühlt sich wie ein Mensch zweiter Klasse. Ich senke den Kopf und sage nichts. Ich stemple seine Aufenthaltsbewilligung ab.
 Dann kommt Ali Muchmad Achtal, ein arabischer Schriftsteller, der sich bei Frauen beliebt macht und selbstbewusst auftritt. Ich gebe ihm die Hand und sage, dass es mir schwer fällt seinen Namen richtig auszusprechen, weil er für mich ein Zungenbrecher ist. Er sagt, dass es ihm mit meinem Namen auch so geht. Wir einigen uns darauf, dass ich ihn Ali und er mich Hansi nennt, das ist für uns beide nicht schwer. Er sagt, Hansi bedeute auf arabisch „Mein Hans“. Das finde ich sehr nett. Irgendwie freundschaftlich. Er zeigt mir ein Büchlein, er sagt in seinem gebrochenen Deutsch, es sei eine schöne Erzählung, die koste nur 10,60 für mich, im Buchladen wäre sie teurer. Sicher ist er stolz, dass er eine Erzählung geschrieben hat und dass man sie kaufen kann. Ich lache, ich sage, dass ich leider gar kein arabisch verstehe und das Büchlein gar nicht lesen kann. Er sagt, dass er 1320 geboren ist. Ich habe schon Erfahrung mit der islamischen Zeitrechnung, ich schaue schnell auf meinem Umrechnungskalender nach und trage dann 1940 als Geburtsjahr ein. Wir reden darüber, dass es seltsam ist, dass es auf der Welt so viele verschiedene Arten der Zeitrechnung gibt. Er erzählt mir, dass manche Menschen in arabischen Ländern oft gar nicht genau wissen, in welchem Jahr sie geboren sind. Die Verwaltung sei dort noch nicht so wichtig und streng. Manchmal lassen Eltern aus bäuerlichen Gegenden ihre Kinder erst in dem Jahr ins Geburtsregister eintragen, in dem sie zufällig in die Stadt kommen. Das Geburtsjahr sei nicht besonders wichtig für die Leute und auch nicht für die Verwaltung. Ich denke darüber nach, warum es bei uns eigentlich so wichtig ist genau auf den Tag zu wissen, wie alt jemand ist und seit wann das bei uns so ist.
 Ali geht.
 Dann kommt eine türkische Familie. Der Vater hätte auch alleine kommen können, aber es sind vermutlich Dörfler aus Anatolien, da ist der Gang zu einem Amt ein bedeutsames Ereignis. Der Respekt gegenüber dem Amt zeigt sich auch in außerordentlich festlicher Kleidung. Das Kind ist sehr lebendig. Es nimmt von meinem Tisch einen Kugelschreiber und spielt damit. Der Vater bemerkt meinen Blick und sagt. „Kind muss spielen.“ Ich weiß, Türken lieben Kinder über alles. Dass Kinder spielen müssen, braucht selbst einem türkischen Dörfler kein Experte erzählen. Ich sage, das ist wahr und gebe dem Kind einen Ball im Tausch gegen den Kuli, den brauche ich nämlich selber. Den Ball habe ich für solche Fälle in meiner Schublade. Der Vater fragt, ob ich auch Kinder habe. Ich weiß, es gehört zu türkischer Höflichkeit und Freundlichkeit sich zuerst danach zu erkundigen, ob man Kinder hat, ob man verheiratet ist. Ich erzähle, dass ich 2 Kinder habe. Er freut sich über alle Maßen über dieses Gottesgeschenk und gibt mir eine Schachtel türkischer Süßigkeiten für meine Kinder. Ich finde das rührend, es muss ihn viel gekostet haben. Doch das türkische Gefühl für Großzügigkeit und persönliche Freundlichkeit und Familienehre steht über dem Finanziellen. Ich bedanke mich, indem ich mich verbeuge, für das Geschenk. Ich hole aus der Schublade eine Schachtel Merci und schenke sie ihm für sein Kind. Er weint fast vor Rührung. Ich sage ihm, dass wir nun Freunde sind. Er braucht in Zukunft nicht mehr Geschenke mitzubringen, versuche ich auch noch zu sagen. Doch ich weiß nicht, ob er mich verstanden hat. Der zeremonielle Teil der Höflichkeiten ist für ihn nun vorbei. Nun geht es um das Ausfüllen der Dokumente. Er macht das langsam und umständlich und stets etwas scheu und respektvoll. Wir verabschieden uns.
-Ich bin müde von den vielen Eindrücken und gehe nach Hause.`}</div>
+Ich bin müde von den vielen Eindrücken und gehe nach Hause.`}</Box>
         <br />
         <br />
         <b>Eine mögliche Textinterpretation „Der Kummer des Beamten Müller“</b>
-        <div>{` 
+        <Box>{` 
 Der Text „Der Kummer des Beamten Müller“ ist eine Erzählung von Rafik Shami, die 1996 erschienen ist.
 In dem Text geht es um einen deutschen Beamten, der bei der Einwanderungsbehörde arbeitet. Er sitzt in einer Kneipe und erzählt einem Barkeeper in einem langen Monolog von seinem Arbeitsalltag und seiner Sicht der Probleme, die sich aus dem Zusammentreffen mit Ausländern in seinem Amt ergeben. Er ist frustriert und verärgert und bezeichnet die Ausländer mit abwertenden Schimpfwörtern. Der Barkeeper jedoch hört ihm kaum zu und antwortet mit nichts sagenden Floskeln.
  
@@ -906,18 +1153,26 @@ Dass der Türke nicht allein, sondern mit der gesamten Familie erschienen ist, d
  
 Insgesamt ist die Situation vertrackt, da Herr Müller in seiner Weltsicht sicher von Kumpels bestärkt wird oder andererseits nur als Rassist beschimpft wird, er mit seiner Haltung zur Welt jedoch selten die Möglichkeit haben wird, die Anderen von innen her kennen zu lernen und zu verstehen. Andererseits erfährt auch er mit seinen Problemen kein wirkliches Verständnis. Rafik Shami zeigt dies, indem er den Beamten Müller sein Leid ins Leere klagen lässt, denn der Barkeeper hört ihm nicht zu und interessiert sich überhaupt nicht für ihn.
  
-Der Text ist hochaktuell, er ist in sich verschachtelt, er lässt sowohl nach der realen Weltsicht der Gastarbeiter und ihrer Probleme fragen wie nach der Möglichkeit der Überwindung begrenzter Weltbilder wie dem des Herrn Müller. Er behandelt das Problem der Integration und das Problem der Vereinzelung des Menschen, der mit seinen Problemen allein gelassen ist.`}</div>
-      </>,
+Der Text ist hochaktuell, er ist in sich verschachtelt, er lässt sowohl nach der realen Weltsicht der Gastarbeiter und ihrer Probleme fragen wie nach der Möglichkeit der Überwindung begrenzter Weltbilder wie dem des Herrn Müller. Er behandelt das Problem der Integration und das Problem der Vereinzelung des Menschen, der mit seinen Problemen allein gelassen ist.`}</Box>
+      </Box>,
     ],
   },
   Sachbuch: {
     title: "Frauen und ihr Erbe",
     content: [
-      <div>
-        <i>{`Veröffentlichung im März 2021
-
-`}</i>
-        <div>
+      <Box
+        sx={{
+          fontFamily: '"Lora", serif',
+          // color: "#3A3836",
+          lineHeight: 1.5,
+          fontSize: "0.9rem",
+          whiteSpace: "pre-line",
+        }}
+      >
+        <i style={{ textAlign: "center" }}>Veröffentlichung im März 2021</i>
+        <br />
+        <br />
+        <Box>
           Als ebook z.B. bei{" "}
           <a href="https://www.amazon.de/Frauen-ihr-Erbe-Marianne-Peternell/dp/3754970380">
             amazon für den Kindle.{" "}
@@ -928,11 +1183,28 @@ Der Text ist hochaktuell, er ist in sich verschachtelt, er lässt sowohl nach de
             Morawa{" "}
           </a>
           <br /> <br />
-          <b>Beschreibung</b> <br />
-          {`
-Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem Gender von Menschen, nach dem historisch Gewachsenen von Frauen- und Männerentwürfen in ihrem Menschenleben. Zahlreiche Facetten der weiblichen Rolle 'Mutter' werden dargestellt. Es werden auch bedeutende Beiträge zum Diskurs des Frauen- und Männerbildes, des Menschenbildes aus der Geschichte (Hegel, Kant, Judith Butler, Maria Montessori) herangezogen. Dabei wird auch die Frage nach Patriarchat und Matriarchat gestreift. Ich befasse mich damit, eine möglichst eigenständige Positionierung herauszuarbeiten und besonders die Frage der Fruchtbarkeit, der Reprodiktion der Gesellschaft und der Rollenverteilung zwischen Frauen und Männern für das Individuum und für die Gesellschaft zuuntersuchen. Ich beschäftige mich schon seit Jahrzehnten mit der Thematik meines Buches, ich war auch im Radio Agora vor vielen Jahren zum Thema als Interviewpartnerin in einer einstündigen Sendung zum Thema 'Frauen und ihr Erbe'. Ich habe Germanistik und Geschichte studiert, viele Jahrzehnte an einer HTL und am BFI unterrichtet, bin literarisch produktiv und habe als Alleinerzieherin nebenbei zwei Kinder großgezogen. Ich bin 1956 geboren und seit 2016 in Alterspension.`}
-        </div>
-      </div>,
+          <Typography variant="h6">Beschreibung</Typography>
+          Im Wesentlichen befasst sich das Sachbuch mit der Frage nach dem
+          Gender von Menschen, nach dem historisch Gewachsenen von Frauen- und
+          Männerentwürfen in ihrem Menschenleben. Zahlreiche Facetten der
+          weiblichen Rolle 'Mutter' werden dargestellt. Es werden auch
+          bedeutende Beiträge zum Diskurs des Frauen- und Männerbildes, des
+          Menschenbildes aus der Geschichte (Hegel, Kant, Judith Butler, Maria
+          Montessori) herangezogen. Dabei wird auch die Frage nach Patriarchat
+          und Matriarchat gestreift. Ich befasse mich damit, eine möglichst
+          eigenständige Positionierung herauszuarbeiten und besonders die Frage
+          der Fruchtbarkeit, der Reprodiktion der Gesellschaft und der
+          Rollenverteilung zwischen Frauen und Männern für das InBoxiduum und
+          für die Gesellschaft zuuntersuchen. Ich beschäftige mich schon seit
+          Jahrzehnten mit der Thematik meines Buches, ich war auch im Radio
+          Agora vor vielen Jahren zum Thema als Interviewpartnerin in einer
+          einstündigen Sendung zum Thema 'Frauen und ihr Erbe'. Ich habe
+          Germanistik und Geschichte studiert, viele Jahrzehnte an einer HTL und
+          am BFI unterrichtet, bin literarisch produktiv und habe als
+          Alleinerzieherin nebenbei zwei Kinder großgezogen. Ich bin 1956
+          geboren und seit 2016 in Alterspension.
+        </Box>
+      </Box>,
     ],
   },
   Lebenslauf: {
