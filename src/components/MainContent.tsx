@@ -294,7 +294,7 @@ export default function MainContent() {
           transformStyle: "preserve-3d",
           transform: isOpen
             ? {
-                xs: "translateX(-25%) scale(1.1)",
+                xs: "translateX(-15%) scale(1.1)",
                 sm: "translateX(-40%) scale(1.15)",
                 md: "translateX(-35%) scale(1.25)",
               }
